@@ -1,3 +1,4 @@
+#work in progress
 FROM php:7.2.11-apache-stretch
 
 RUN docker-php-ext-install pdo pdo_mysql

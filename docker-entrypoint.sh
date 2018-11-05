@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ue
-
+#work in progress
 shutdown_mysql() {
     if [[ -S /var/run/mysqld/mysqld.sock ]]; then
         mysqladmin -u root shutdown || true
