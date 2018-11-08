@@ -139,6 +139,7 @@ a li:hover{
     /* to stop flickering of text in safari */
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
+    /*http://cubic-bezier.com/*/
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
@@ -153,9 +154,9 @@ a li:hover{
 #menuToggle input:checked ~ ul {
     transform: none;
 }
-
+/*Mobile */
 @media screen and (max-width: 600px) {
-    .column {
+    .column3 {
         width: 100%;
     }
 }
@@ -165,4 +166,9 @@ a li:hover{
 }
 .italics{
     font-style: italic;
+}
+.container {
+    padding-top: 40px;
+    width: 100%;
+    background-color: #232323;
 }
