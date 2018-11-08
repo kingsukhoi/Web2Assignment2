@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
-echo "home page";
+include 'development.php'
 ?>
-
-</body>
-</html>
