@@ -9,7 +9,7 @@ include 'inc/header.inc'
 <br>
 <div class="row">
     <div class="column3">
-        <h1>Farsos Bursara</h1>
+        <h1>Farsos Bulsara</h1>
         <img src="images/farsus.png">
         <p> Backbone Machine</p>
        <p><a class="link" href="https://github.com/kingsukhoi">Github Account</a></p>
