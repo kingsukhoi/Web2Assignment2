@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/style.css">
-<div class="container">
+<div class="header">
 
     <nav role="navigation">
         <div id="menuToggle">

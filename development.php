@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+<!--<head>-->
+<!--    --><?php
+//    include 'inc/header.inc'
+//    ?>
+<!--</head>-->
 <body>
 
-<?php
-include 'inc/header.inc'
-?>
+
 <div class="row">
     <div class="column">
 

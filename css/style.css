@@ -1,5 +1,9 @@
 html, body {
     background: #ffffff;
+
+}
+div{
+    float: left;
 }
 
 p {
@@ -8,7 +12,7 @@ p {
 
 .column3 {
 
-    float: left;
+    float: right;
     width: 33.33%;
 }
 
@@ -474,7 +478,10 @@ a li:hover {
         color: #39ed00;
     }
 }
-
+#menuToggle li {
+    position:relative;
+    color: #39ed00;
+}
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button,
