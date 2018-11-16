@@ -1,9 +1,18 @@
+.green{
+    color: green;
+    background-color: #39ed00;
+}
+.blue {
+    background-color: #0FA0CE;
+    color
+}
+.yellow{
+    background-color: yellow;
+}
+
 html, body {
     background: #ffffff;
 
-}
-div{
-    float: left;
 }
 
 p {
@@ -29,7 +38,6 @@ body {
     padding: 0;
     /* make it look decent enough */
     background: #ffffff;
-    color: #cdcdcd;
     font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
@@ -187,19 +195,11 @@ a li:hover {
     background-color: #ffffff;
 }
 
-/**/
-
-/*
-* Gio Moros
-* Free to use under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
-*Resources: https://www.w3schools.com/css/css_grid.asp
-			https://css-tricks.com/snippets/css/complete-guide-grid/
-*/
-
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
+.row{
+    margin-left:45px;
+}
 .one.column,
 .one.columns {
     width: 4.66666666667%;
@@ -214,6 +214,7 @@ a li:hover {
 }
 
 .four.columns {
+    margin-left:40px;
     width: 30.6666666667%;
 }
 
@@ -347,6 +348,7 @@ a li:hover {
 .columns {
     width: 100%;
     float: left;
+    position:center;
     box-sizing: border-box;
 }
 
@@ -765,7 +767,14 @@ there.
 */
 
 /* Larger than mobile */
-@media (min-width: 400px) {
+@media (max-width: 400px) {
+
+    .four.columns {
+        margin-top: 10%;
+        width:100%;
+        margin-left:40px;
+
+    }
 }
 
 /* Larger than phablet (also point when grid becomes active) */
@@ -783,3 +792,4 @@ there.
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
 }
+

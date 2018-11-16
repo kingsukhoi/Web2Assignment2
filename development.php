@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html>
-<!--<head>-->
-<!--    --><?php
-//    include 'inc/header.inc'
-//    ?>
-<!--</head>-->
-<body>
+<section class="container row">
+    <div class="eight column">
+        <h1 class="eleven columns">Page in Development- see <a class="link" href="about.php">About</a> page to learn
+            more</h1>
 
-
-<div class="row">
-    <div class="column">
-
-        <h1 class="eleven columns">Page in Development- see <a class="link" href="about.php">About</a> page to learn more</h1>
     </div>
+</section>
 
-
-
-</div>
-
-
-
-</body>
