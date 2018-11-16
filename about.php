@@ -38,7 +38,7 @@ include 'components/nav.php'
 </div>
 
 
-
+</body>
 </html>
 
 

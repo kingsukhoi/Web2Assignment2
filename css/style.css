@@ -1,3 +1,26 @@
+img{
+    max-width:100%;
+    max-height:100%;
+}
+#gallery-list{
+    padding-left: 20px;
+}
+
+#login{
+    margin-top: 10%;
+}
+div{
+    /*border-style: dotted;*/
+    color: black;
+}
+#login .columns{
+    width:100%;
+
+}
+#login input{
+    float: right;
+}
+
 .green{
     color: green;
     background-color: #39ed00;
@@ -65,7 +88,7 @@ a li:hover {
 
 #menuToggle {
     display: block;
-    position: relative;
+    position: fixed;
     top: 50px;
     left: 10px;
     z-index: 1;
@@ -214,7 +237,6 @@ a li:hover {
 }
 
 .four.columns {
-    margin-left:40px;
     width: 30.6666666667%;
 }
 
@@ -368,7 +390,7 @@ a li:hover {
 
     .column,
     .columns {
-        margin-left: 4%;
+
     }
 
     .column:first-child,
@@ -531,8 +553,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
     color: #FFF;
-    background-color: #33C3F0;
-    border-color: #33C3F0;
+    background-color:#60A94A ;
+    border-color: #60A95A;
 }
 
 .button.button-primary:hover,
@@ -599,7 +621,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-    border: 1px solid #33C3F0;
+    border: 1px solid #60A95A;
     outline: 0;
 }
 
@@ -775,6 +797,8 @@ there.
         margin-left:40px;
 
     }
+
+
 }
 
 /* Larger than phablet (also point when grid becomes active) */
