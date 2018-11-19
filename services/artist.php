@@ -1,15 +1,23 @@
 <?php
 include "../db/db_helper.php";
-/*with no parameter, return JSON representation of all artists.
+include "../json/json_helper.php";
+/*
+with no parameter, return JSON representation of all artists.
 If supplied with id parameter, then return just JSON data for single specified artist.
 */
 header('Content-Type: application/json');
 
+/**
+ * @param PDO $connection
+ * @param string $id Artist id. If not set pass empty string
+ * @return bool|PDOStatement
+ */
 function getArtist(PDO $connection, string $id){
     $sql = '
 SELECT ArtistID,FirstName,LastName,Nationality,Gender,YearOfBirth,YearOfDeath,Details,ArtistLink 
 FROM art.Artists
 ';
+    // truthy falsy baby
     if ($id){
         $sql .= 'WHERE ArtistID = :id';
     }
@@ -26,10 +34,7 @@ if (isset($_GET['id'])){
     $id = $_GET['id'];
 }
 
-$result = getArtist($connection, $id);
 
-$result = $result->fetchAll(PDO::FETCH_ASSOC);
+echo pdoStmtToJson(getArtist($connection, $id));
 
-$json = json_encode($result);
-
-echo $json;
+$connection = null;
