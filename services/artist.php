@@ -35,6 +35,6 @@ if (isset($_GET['id'])){
 }
 
 
-echo pdoStmtToJson(getArtist($connection, $id));
+echo pdoStmtToJson(getData($connection, $id));
 
 $connection = null;
