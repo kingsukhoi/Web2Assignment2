@@ -1,5 +1,7 @@
 <?php
 include 'config.inc.php';
+// contains functions to use with the database only
+
 /**
  * @return PDO New Connection all setup and ready to go
  */
