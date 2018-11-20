@@ -32,6 +32,15 @@ elseif(isset($_GET['artist'])){
 elseif(isset($_GET['gallery'])){
     echo pdoStmtToJson(getData($conn, $_GET['gallery'],"GalleryID", $rows, $table));
 }
+elseif(isset($_GET['genre'])){
+    $sql = "SELECT $rows
+FROM Paintings
+WHERE PaintingID IN (SELECT PaintingID FROM PaintingGenres WHERE GenreID = :gid);";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> bindValue(':gid', $_GET['genre']);
+    $stmt -> execute();
+    echo pdoStmtToJson($stmt);
+}
 else{
     echo pdoStmtToJson(getData($conn, "","", $rows, $table));
 }
