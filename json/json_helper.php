@@ -4,6 +4,10 @@
  * @return false|string
  */
 function pdoStmtToJson(PDOStatement $stmt){
-    //todo add 404 if there is no data, via exception
-    return json_encode($stmt -> fetchAll(PDO::FETCH_ASSOC));
+    $data = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    if (count($data) == 0){
+        header("HTTP/1.0 404 Not Found");
+        return json_encode(['error' => 'page not found']);
+    }
+    return json_encode($data);
 }
