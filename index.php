@@ -10,8 +10,8 @@
 <div id="gallery-list" class="row">
     <div class="twelve columns ">
         <button class="button-primary u-pull-right">Sign in</button>
-        <h2>Galleries Go here </h2>
-
+        <h2>Galleries</h2>
+        <ul></ul>
         <p>we will use a toggle to hide and show the list, will cover the page</p>
 
     </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-
+<script src="js/index.js"></script>
 
 </body>
 
