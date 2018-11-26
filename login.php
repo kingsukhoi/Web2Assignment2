@@ -5,7 +5,7 @@ include 'inc/header.inc'
 include 'components/nav.php'
 ?>
 <div id="login" class="container">
-    <form>
+    <form action="services/login.php" method="post">
         <div class="row">
             <div class="five columns">
                 <label for="Username">Username</label>
