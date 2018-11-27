@@ -8,7 +8,8 @@
 <?php include 'components/nav.php' ?>
 
 <div id="gallery-list" class="row">
-    <div class="twelve columns ">
+    <div class="twelve columns ">\
+        <!--todo gio this needs to be a link, or do some JS to redirect shit-->
         <button class="button-primary u-pull-right">Sign in</button>
         <h2>Galleries</h2>
         <ul></ul>
