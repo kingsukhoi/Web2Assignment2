@@ -11,7 +11,7 @@ include "../db/db_helper.php";
 include "../db/data_helper.php";
 include "../json/json_helper.php";
 
-header('Content-Type: application/json');
+include "../inc/json.inc.php";
 
 $conn = newConnection();
 
