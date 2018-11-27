@@ -8,6 +8,9 @@
  * Will also redirect back home
  */
 
+include "../inc/json.inc.php";
+
+include "../helpers/HTTPReturn.php";
 
 include '../db/db_helper.php';
 include "../db/data_helper.php";
@@ -22,7 +25,7 @@ $params = 'CustomerID, UserName, Pass, Salt';
 $data = getData($conn, $username, "UserName", $params, 'CustomerLogon');
 
 if ($data -> rowCount() != 1){
-    header("HTTP/1.0 500 Database Problem");
+    set_http_status(500, 'Database Error');
     exit(1);
 }
 
@@ -33,12 +36,8 @@ $dbSalt = $data['Salt'];
 
 if(IsPasswordSame($password, $dbPass, $dbSalt)){
     $_SESSION['CustomerID'] = $data['CustomerID'];
-    header("Location: ../index.php");
     session_start();
 }
 else{
-    header("HTTP/1.0 401 Unauthorized");
+    set_http_status(401, 'Not Authorized');
 }
-
-
-
