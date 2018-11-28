@@ -7,7 +7,7 @@
     $source = $_GET['type'];
     $width = $_GET['width'];
 
-    $imgSource = "images/$source/$pic.jpg";
+    $imgSource = "randy/images/$source/$pic.jpg";
 
     header('Content-Type: image/jpeg');
 
