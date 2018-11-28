@@ -1,19 +1,41 @@
 <?
 /**
- * This will return a php generated image when you pass the file name/number, the file path, and the desired width in
- * the query string.
+ * This will return a php generated image
+ * Necessary query string parameters include:
+ * $file - which is the identifier of the jpeg
+ * $source - which is the folder for the image i.e. artists, genres, or paintings
+ * Optional query string parameters include:
+ * $width - if nothing is provided, will default to original size
+ * $size - can either be full or square, if nothing is provided it will automatically default to square as per Randy's spec.
  */
     $pic = $_GET['file'];
     $source = $_GET['type'];
-    $width = $_GET['width'];
 
-    $imgSource = "randy/images/$source/$pic.jpg";
+    if(isset($_GET['width'])) {
+        $width = $_GET['width'];
+    }
+
+    if(isset($_GET['size'])) {
+        $size =$_GET['size'];
+        $imgSource = "randy/images/$source/$size/$pic.jpg";
+    } else {
+        $imgSource = "randy/images/$source/$pic.jpg";
+        $size = "square";
+    }
 
     header('Content-Type: image/jpeg');
 
     $img = imagecreatefromjpeg($imgSource);
 
-    $newImg = imagescale($img, $width, $width);
+    if ($width) {
+        if ($size == "square") {
+            $newImg = imagescale($img, $width, $width);
+        } else {
+            $newImg = imagescale($img, $width, -1);
+        }
+    } else {
+        $newImg = $img;
+    }
 
     imagejpeg($newImg);
 
