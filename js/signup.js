@@ -1,43 +1,44 @@
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+window.addEventListener('load', main);
 
     var $this = $(this),
         label = $this.prev('label');
 
-    if (e.type === 'keyup') {
-        if ($this.val() === '') {
-            label.removeClass('active highlight');
-        } else {
-            label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-        if ($this.val() === '') {
-            label.removeClass('active highlight');
-        } else {
-            label.removeClass('highlight');
-        }
-    } else if (e.type === 'focus') {
+function removeElem(elem) {
+    elem.parentNode.removeChild(elem)
+}
 
-        if ($this.val() === '') {
-            label.removeClass('highlight');
-        }
-        else if ($this.val() !== '') {
-            label.addClass('highlight');
-        }
-    }
+function main() {
+    addIsBlankCheck();
+}
 
-});
+/**
+ * adds the is blank check to all elements
+ */
+function addIsBlankCheck() {
+    const elems = document.querySelectorAll(".five.columns input");
+    elems.forEach((curr)=>{
+        curr.addEventListener('blur', (e)=>{
+            const elem = e.target;
+            const existingErrMsg = Array.from(e.target.parentElement.children).find(x=>x.classList.contains('error'));
+            if (existingErrMsg) removeElem(existingErrMsg);
+            if (!elem.value.trim()) {
+                const fieldName = elem.getAttribute('placeholder');
+                addError(elem, `${fieldName} cannot be empty`)
+            }
+        })
+    });
+}
 
-$('.tab a').on('click', function (e) {
-
-    e.preventDefault();
-
-    $(this).parent().addClass('active');
-    $(this).parent().siblings().removeClass('active');
-
-    target = $(this).attr('href');
-
-    $('.tab-content > div').not(target).hide();
-
-    $(target).fadeIn(600);
-
-});
+/**
+ * add error message in div
+ * NEEDS INPUT ELEMENT TO BE INSIDE A DIV!!!!!!!!
+ * @param element an input element on the signup page
+ * @param message Message you want displayed
+ */
+function addError(element, message) {
+    //<p class="error">Email cannot be empty</p>
+    const newElement = document.createElement('p');
+    newElement.classList.add('error');
+    newElement.textContent = message;
+    element.parentElement.appendChild(newElement);
+}

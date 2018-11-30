@@ -29,6 +29,7 @@ include 'components/nav.php'
             <div class="five columns">
                 <label for="email">Email</label>
                 <input class="u-full-width" name="email" type="text" placeholder="Email" id="email">
+
             </div>
             <div class="five columns">
                 <label for="pass1">Password</label>
@@ -45,6 +46,7 @@ include 'components/nav.php'
         </div>
     </form>
 </div>
+<script src="js/signup.js"></script>
 </body>
 
 </html>
