@@ -8,31 +8,33 @@
 
 include "../db/db_helper.php";
 include "../helpers/password_helper.php";
-$dbArray = [];
 
-$dbArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname'] : null;
-$dbArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname'] : null;
-$dbArray[':city'] = isset($_POST['city'])?$_POST['city'] : null;
-$dbArray[':country'] = isset($_POST['country'])?$_POST['country'] : null;
-$dbArray[':email'] = isset($_POST['email'])?$_POST['email'] : null;
-$dbArray[':pwd'] = isset($_POST['password'])?$_POST['password'] : null;
-$dbArray[':salt'] = GenSalt();
-$dbArray[':pwd'] = GenHash($dbArray[':pwd'], $dbArray[':salt']);
+
+$customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname'] : null;
+$customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname'] : null;
+$customerArray[':city'] = isset($_POST['city'])?$_POST['city'] : null;
+$customerArray[':country'] = isset($_POST['country'])?$_POST['country'] : null;
+$customerArray[':email'] = isset($_POST['email'])?$_POST['email'] : null;
+
+$pwdArray[':email'] = $customerArray[':email'];
+$pwdArray[':pwd'] = isset($_POST['password'])?$_POST['password'] : null;
+$pwdArray[':salt'] = GenSalt();
+$pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
 
 
 $pdo = newConnection();
 
 $customerInsert = $pdo->prepare(
     '
-INSERT INTO Customers (FirstName, LastName, Address, City, Country, Postal, Phone, Email)
-VALUES (:fname, :lname, :address, :city, :country, :postal, :email );
+INSERT INTO Customers (FirstName, LastName, City, Country, Email)
+VALUES (:fname, :lname, :city, :country, :email );
 ');
-$customerInsert -> execute($dbArray);
+$customerInsert -> execute($customerArray);
 
 $pwdInsert = $pdo->prepare(
     'INSERT INTO CustomerLogon (UserName, Pass, Salt)
 VALUES (:email,:pwd,:salt);'
 );
-$pwdInsert -> execute($dbArray);
+$pwdInsert -> execute($pwdArray);
 
-header('Location: ../helpers/whats-in-json.php?json='.json_encode($dbArray));
+header('Location: ../helpers/whats-in-json.php?json='.json_encode($pwdArray));
