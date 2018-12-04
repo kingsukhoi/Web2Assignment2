@@ -35,8 +35,8 @@ $dbPass = $data['Pass'];
 $dbSalt = $data['Salt'];
 
 if(IsPasswordSame($password, $dbPass, $dbSalt)){
-    $_SESSION['CustomerID'] = $data['CustomerID'];
     session_start();
+    $_SESSION['CustomerID'] = $data['CustomerID'];
 }
 else{
     set_http_status(401, 'Not Authorized');
