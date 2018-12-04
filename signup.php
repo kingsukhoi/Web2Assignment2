@@ -9,6 +9,7 @@ include 'components/nav.php'
 ?>
 <div id="login" class="container">
     <form action="services/signup.php" method="post">
+        <div><?echo $_GET['error']?></div>
         <div class="row">
             <div class="five columns">
                 <label for="Username">Firstname</label>

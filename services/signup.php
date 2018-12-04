@@ -9,6 +9,11 @@
 include "../db/db_helper.php";
 include "../helpers/password_helper.php";
 
+function send_err_to_page($msg){
+    header('Location: ../signup.php?error='.$msg);
+    set_http_status(400, 'Bad Request');
+    exit(1);
+}
 
 $customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname'] : null;
 $customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname'] : null;
