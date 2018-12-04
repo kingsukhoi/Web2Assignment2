@@ -31,12 +31,16 @@ function GenHash(string $UserPwd, string $salt){
 }
 
 /** generate a salt
+ * @param int $length length of salt
  * @return string salt
  */
-function GenSalt(){
-    try {
-        return random_bytes(32);
-    } catch (Exception $e) {
-        die($e);
+function GenSalt($length = 32){
+    // from https://stackoverflow.com/questions/4356289/php-random-string-generator
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
+    return $randomString;
 }
