@@ -9,14 +9,15 @@
 include "../db/db_helper.php";
 include "../helpers/password_helper.php";
 
+include "../helpers/HTTPFunctions.php";
+
 /**
  * @param $msg string message to send
  * @return bool did it work this is purely there to silence php storm
  */
 function sendErrorToSignUpPage(string $msg){
-    header('Location: ../signup.php?error='.$msg);
-    set_http_status(400, 'Bad Request');
-    exit(1);
+    set_redirect('../signup.php?error='.$msg);
+    exit();
     /** @noinspection PhpUnreachableStatementInspection */
     return false;
 }
