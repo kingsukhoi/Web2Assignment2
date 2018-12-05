@@ -9,7 +9,11 @@
 include "../db/db_helper.php";
 include "../helpers/password_helper.php";
 
-function sendErrorToSignUpPage($msg){
+/**
+ * @param $msg string message to send
+ * @return bool did it work this is purely there to silence php storm
+ */
+function sendErrorToSignUpPage(string $msg){
     header('Location: ../signup.php?error='.$msg);
     set_http_status(400, 'Bad Request');
     exit(1);
@@ -17,8 +21,9 @@ function sendErrorToSignUpPage($msg){
     return false;
 }
 
-
-
+/** TODO if there's time, maybe refactor into separate functions and use sql commit thingy */
+// I'm going to keep it like this instead of refactoring into different functions because this way I get to extract all
+// vars and then run sql just in cae
 $customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname']
     : sendErrorToSignUpPage('First Name cannot be empty');
 $customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname']
