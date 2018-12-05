@@ -3,7 +3,7 @@
  * This will return a php generated image
  * Necessary query string parameters include:
  * $file - which is the identifier of the jpeg
- * $source - which is the folder for the image i.e. artists, genres, or paintings
+ * $type - which is the folder for the image i.e. artists, genres, or paintings
  * Optional query string parameters include:
  * $width - if nothing is provided, will default to original size
  * $size - can either be full or square, if nothing is provided it will automatically default to square as per Randy's spec.
