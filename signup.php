@@ -9,8 +9,14 @@ include 'components/nav.php'
 ?>
 <div id="login" class="container">
     <form action="services/signup.php" method="post">
-        <div class="error"><?echo htmlentities($_GET['error'])?></div>
         <div class="row">
+            <?
+            if (isset($_GET['error'])) {
+                ?>
+                <div class="error five column"><strong>Error: </strong><?echo htmlentities($_GET['error'])?></div>
+                <?
+            }
+            ?>
             <div class="five columns">
                 <label for="Username">Firstname</label>
                 <input class="u-full-width" name="firstname" type="text" placeholder="First Name" id="firstname" required>
