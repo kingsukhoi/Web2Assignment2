@@ -28,18 +28,12 @@ $pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
 
 
 $pdo = newConnection();
+$customerSql = 'INSERT INTO Customers (FirstName, LastName, City, Country, Email)
+VALUES (:fname, :lname, :city, :country, :email );';
+runQuery($pdo, $customerSql, $customerArray);
 
-$customerInsert = $pdo->prepare(
-    '
-INSERT INTO Customers (FirstName, LastName, City, Country, Email)
-VALUES (:fname, :lname, :city, :country, :email );
-');
-$customerInsert -> execute($customerArray);
+$pwdSql = 'INSERT INTO CustomerLogon (UserName, Pass, Salt) 
+VALUES (:email,:pwd,:salt);';
+runQuery($pdo, $pwdSql, $pwdArray);
 
-$pwdInsert = $pdo->prepare(
-    'INSERT INTO CustomerLogon (UserName, Pass, Salt)
-VALUES (:email,:pwd,:salt);'
-);
-$pwdInsert -> execute($pwdArray);
-
-header('Location: ../helpers/whats-in-json.php?json='.json_encode($pwdArray));
+header('Location: ../helpers/whats-in-json.php?json='.json_encode(array_merge($customerArray, $pwdArray)));
