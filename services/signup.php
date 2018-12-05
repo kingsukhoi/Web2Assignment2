@@ -46,4 +46,9 @@ $pwdSql = 'INSERT INTO CustomerLogon (UserName, Pass, Salt)
 VALUES (:email,:pwd,:salt);';
 runQuery($pdo, $pwdSql, $pwdArray);
 
-header('Location: ../helpers/whats-in-json.php?json='.json_encode(array_merge($customerArray, $pwdArray)));
+$idStmt = $pdo -> prepare('SELECT CustomerID FROM art.Customers WHERE Email = :email');
+$idStmt->execute([':email'=>$customerArray[':email']]);
+$id = $idStmt -> fetch();
+$id = $id[0];
+
+header('Location: ../helpers/whats-in-json.php?json='.json_encode($id));
