@@ -24,13 +24,13 @@ Cost,MSRP,GoogleLink,GoogleDescription,WikiLink
 $table = "art.Paintings";
 
 if(isset($_GET['id'])){
-    echo pdoStmtToJson(getData($conn, $_GET['id'],"PaintingID", $rows, $table));
+    echo pdoStmtToJson(getDataByID($conn, $_GET['id'],"PaintingID", $rows, $table));
 }
 elseif(isset($_GET['artist'])){
-    echo pdoStmtToJson(getData($conn, $_GET['artist'],"ArtistID", $rows, $table));
+    echo pdoStmtToJson(getDataByID($conn, $_GET['artist'],"ArtistID", $rows, $table));
 }
 elseif(isset($_GET['gallery'])){
-    echo pdoStmtToJson(getData($conn, $_GET['gallery'],"GalleryID", $rows, $table));
+    echo pdoStmtToJson(getDataByID($conn, $_GET['gallery'],"GalleryID", $rows, $table));
 }
 elseif(isset($_GET['genre'])){
     $sql = "SELECT $rows
@@ -42,5 +42,5 @@ WHERE PaintingID IN (SELECT PaintingID FROM PaintingGenres WHERE GenreID = :gid)
     echo pdoStmtToJson($stmt);
 }
 else{
-    echo pdoStmtToJson(getData($conn, "","", $rows, $table));
+    echo pdoStmtToJson(getDataByID($conn, "","", $rows, $table));
 }

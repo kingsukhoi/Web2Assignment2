@@ -19,6 +19,6 @@ if (isset($_GET['id'])){
 }
 $paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID
 ';
-echo pdoStmtToJson(getData($connection, $id,"GalleryID", $paramList, 'art.Galleries'));
+echo pdoStmtToJson(getDataByID($connection, $id,"GalleryID", $paramList, 'art.Galleries'));
 
 $connection = null;

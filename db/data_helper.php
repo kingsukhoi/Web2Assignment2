@@ -3,7 +3,8 @@
  * contains functions to help with querying data.
  */
 
-/** For use in services. Run query that will return all parameters if ID is empty, or a specific row if there is an id
+/**get data by id
+ * For use in services. Run query that will return all parameters if ID is empty, or a specific row if there is an id
  * @param PDO $connection $pdo connection
  * @param string $id id you want to fetch
  * @param string $idName name of the PK in database
@@ -11,7 +12,7 @@
  * @param string $table table name
  * @return bool|PDOStatement
  */
-function getData(PDO $connection, string $id, string $idName,string $paramList, string $table){
+function getDataByID(PDO $connection, string $id, string $idName, string $paramList, string $table){
     $sql = "
 SELECT $paramList
 FROM $table

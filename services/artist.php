@@ -17,6 +17,6 @@ if (isset($_GET['id'])){
 
 $paramList = "ArtistID,FirstName,LastName,Nationality,Gender,YearOfBirth,YearOfDeath,Details,ArtistLink";
 
-echo pdoStmtToJson(getData($connection, $id,"ArtistID" ,$paramList, "art.Artists"));
+echo pdoStmtToJson(getDataByID($connection, $id,"ArtistID" ,$paramList, "art.Artists"));
 
 $connection = null;

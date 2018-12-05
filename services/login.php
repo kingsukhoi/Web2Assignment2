@@ -22,7 +22,7 @@ $password = $_POST['password'];
 $conn = newConnection();
 
 $params = 'CustomerID, UserName, Pass, Salt';
-$data = getData($conn, $username, "UserName", $params, 'CustomerLogon');
+$data = getDataByID($conn, $username, "UserName", $params, 'CustomerLogon');
 
 if ($data -> rowCount() != 1){
     set_http_status(500, 'Database Error');
