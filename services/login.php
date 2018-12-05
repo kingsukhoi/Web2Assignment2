@@ -10,7 +10,7 @@
 
 include "../inc/json.inc.php";
 
-include "../helpers/HTTPReturn.php";
+include "../helpers/HTTPFunctions.php";
 
 include '../db/db_helper.php';
 include "../db/data_helper.php";

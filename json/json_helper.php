@@ -1,5 +1,5 @@
 <?php
-include '../helpers/HTTPReturn.php';
+include '../helpers/HTTPFunctions.php';
 /**
  * @param PDOStatement $stmt pdo statement that has been executed
  * @return false|string json representation of pdo stmt. If there is no data in pdo stmt, it set's the header
