@@ -35,3 +35,27 @@ function SessionStarted(){
     // copied from https://stackoverflow.com/questions/3538513/detect-if-php-session-exists#answer-40939132
     return session_status() == PHP_SESSION_ACTIVE;
 }
+
+/**
+ * add painting id to favorites
+ * @param $id int painting id
+ * @return bool true if success, false if not
+ */
+function addToFavorites(int $id){
+    if(SessionStarted()) {
+        $_SESSION['favorites'][] = $id;
+        return true;
+    }
+    return false;
+}
+
+/**
+ * get list of all favorites
+ * @return array|null array of favorites
+ */
+function listAllFavorites(){
+    if(SessionStarted()) {
+        return $_SESSION['favorites'];
+    }
+    return null;
+}
