@@ -8,7 +8,7 @@
 <?php include 'components/nav.php' ?>
 
 <div id="gallery-list" class="row">
-    <div class="twelve columns ">\
+    <div class="twelve columns ">
         <!--todo gio this needs to be a link, or do some JS to redirect shit-->
         <button class="button-primary u-pull-right">Sign in</button>
         <h2>Galleries</h2>
@@ -20,7 +20,7 @@
 <div class="row">
 
     <div id="artist" class="eight columns">
-        <h1>Artist</h1>
+        <h1>Artist</h1>html_entity_decode
         <div class="row">
             <div class="three columns">
                 <img>
