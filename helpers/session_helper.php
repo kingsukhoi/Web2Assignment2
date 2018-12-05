@@ -15,6 +15,9 @@ function StartUserSession(string $CustomerID){
     $_SESSION['ID'] = $CustomerID;
 }
 
+/** kill a user session
+ * @return bool
+ */
 function EndUserSession(){
     return session_destroy();
 }
