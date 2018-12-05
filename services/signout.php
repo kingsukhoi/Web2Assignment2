@@ -6,5 +6,5 @@
  * Time: 8:50 PM
  */
 
-$_SESSION = [];
-session_destroy();
+include "../helpers/session_helper.php";
+EndUserSession();

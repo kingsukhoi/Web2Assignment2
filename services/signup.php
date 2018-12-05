@@ -53,7 +53,7 @@ runQuery($pdo, $pwdSql, $pwdArray);
 
 $idStmt = $pdo -> prepare('SELECT CustomerID FROM art.Customers WHERE Email = :email');
 $idStmt->execute([':email'=>$customerArray[':email']]);
-$id = $idStmt -> fetch();
-$id = $id[0];
+
+StartUserSession($idStmt -> fetch()[0]);
 
 header('Location: ../helpers/whats-in-json.php?json='.json_encode($id));

@@ -16,6 +16,8 @@ include '../db/db_helper.php';
 include "../db/data_helper.php";
 include "../helpers/password_helper.php";
 
+include "../helpers/session_helper.php";
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -35,8 +37,7 @@ $dbPass = $data['Pass'];
 $dbSalt = $data['Salt'];
 
 if(IsPasswordSame($password, $dbPass, $dbSalt)){
-    session_start();
-    $_SESSION['CustomerID'] = $data['CustomerID'];
+    StartUserSession($data['CustomerID']);
 }
 else{
     set_http_status(401, 'Not Authorized');
