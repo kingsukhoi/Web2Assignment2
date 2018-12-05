@@ -19,11 +19,11 @@ function StartUserSession(string $CustomerID){
 }
 
 /** kill a user session
- * @return bool
+ * @return bool true if session existed and was destroyed, false if there was not session or something else went wrong
  */
 function EndUserSession(){
     if (!SessionStarted()){
-        return;
+        return false;
     }
     return session_destroy();
 }
@@ -32,5 +32,6 @@ function EndUserSession(){
  * @return bool True if session exists.
  */
 function SessionStarted(){
-    return session_id() == '' || !isset($_SESSION);
+    // copied from https://stackoverflow.com/questions/3538513/detect-if-php-session-exists#answer-40939132
+    return session_status() == PHP_SESSION_ACTIVE;
 }
