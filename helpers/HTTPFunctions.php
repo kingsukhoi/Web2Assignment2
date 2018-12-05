@@ -18,3 +18,7 @@ function set_http_status($status=200, $msg="success"){
     if ($status != 200)
         echo json_encode(['status'=>$status, 'message'=>$msg]);
 }
+
+function set_redirect(string $location){
+    header('Location: ' . $location);
+}

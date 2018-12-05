@@ -56,4 +56,4 @@ $idStmt->execute([':email'=>$customerArray[':email']]);
 
 StartUserSession($idStmt -> fetch()[0]);
 
-header('Location: ../helpers/whats-in-json.php?json='.json_encode($id));
+set_redirect('../index.php');
