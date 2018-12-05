@@ -9,20 +9,30 @@
 include "../db/db_helper.php";
 include "../helpers/password_helper.php";
 
-function send_err_to_page($msg){
+function sendErrorToSignUpPage($msg){
     header('Location: ../signup.php?error='.$msg);
     set_http_status(400, 'Bad Request');
     exit(1);
+    /** @noinspection PhpUnreachableStatementInspection */
+    return false;
 }
 
-$customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname'] : null;
-$customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname'] : null;
-$customerArray[':city'] = isset($_POST['city'])?$_POST['city'] : null;
-$customerArray[':country'] = isset($_POST['country'])?$_POST['country'] : null;
-$customerArray[':email'] = isset($_POST['email'])?$_POST['email'] : null;
+
+
+$customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname']
+    : sendErrorToSignUpPage('First Name cannot be empty');
+$customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname']
+    : sendErrorToSignUpPage('Last Name cannot be empty');
+$customerArray[':city'] = isset($_POST['city'])?$_POST['city']
+    : sendErrorToSignUpPage('City cannot be empty');
+$customerArray[':country'] = isset($_POST['country'])?$_POST['country']
+    : sendErrorToSignUpPage('Country cannot be empty');
+$customerArray[':email'] = isset($_POST['email'])?$_POST['email']
+    : sendErrorToSignUpPage('Email cannot be empty');
 
 $pwdArray[':email'] = $customerArray[':email'];
-$pwdArray[':pwd'] = isset($_POST['password'])?$_POST['password'] : null;
+$pwdArray[':pwd'] = isset($_POST['password'])?$_POST['password']
+    : sendErrorToSignUpPage('Password cannot be empty');
 $pwdArray[':salt'] = GenSalt();
 $pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
 
