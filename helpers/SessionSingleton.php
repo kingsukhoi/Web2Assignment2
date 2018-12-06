@@ -39,8 +39,7 @@ class Session_Singleton
      */
     static function SessionStarted()
     {
-        // copied from https://stackoverflow.com/questions/3538513/detect-if-php-session-exists#answer-40939132
-        return isset($_SESSION[self::$CUSTOMER_ID_KEY]);
+        return (!trim($_SESSION[self::$CUSTOMER_ID_KEY])=="");
     }
 
     /**
@@ -51,7 +50,7 @@ class Session_Singleton
     static function AddToFavorites(int $paintingID)
     {
         if (self::SessionStarted()) {
-            $_SESSION['favorites'][] = $paintingID;
+            $_SESSION[self::$FAVORITES_KEY][] = $paintingID;
             return true;
         }
         return false;
