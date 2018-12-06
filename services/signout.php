@@ -6,5 +6,5 @@
  * Time: 8:50 PM
  */
 
-include "../helpers/session_helper.php";
-EndUserSession();
+include "../helpers/SessionSingleton.php";
+Session_Singleton::EndUserSession();
