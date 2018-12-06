@@ -8,6 +8,9 @@
  * Will also redirect back home
  */
 
+session_start();
+include "../helpers/SessionSingleton.php";
+
 include "../inc/json.inc.php";
 
 include "../helpers/HTTPFunctions.php";
@@ -15,8 +18,6 @@ include "../helpers/HTTPFunctions.php";
 include '../db/db_helper.php';
 include "../db/data_helper.php";
 include "../helpers/password_helper.php";
-
-include "../helpers/session_helper.php";
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -37,7 +38,8 @@ $dbPass = $data['Pass'];
 $dbSalt = $data['Salt'];
 
 if(IsPasswordSame($password, $dbPass, $dbSalt)){
-    StartUserSession($data['CustomerID']);
+    Session_Singleton::StartUserSession($data['CustomerID']);
+    set_redirect('../index.php');
 }
 else{
     set_http_status(401, 'Not Authorized');
