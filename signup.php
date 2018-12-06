@@ -1,6 +1,6 @@
+<?include "inc/session.inc.php";?>
 <html lang="en">
 <?php
-include "inc/session.inc.php";
 include 'inc/header.inc'
 ?>
 
