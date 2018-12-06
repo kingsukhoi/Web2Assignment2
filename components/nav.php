@@ -1,3 +1,7 @@
+<?php
+/** @noinspection ALL */
+?>
+
 <div class="row one">
     <div class="two columns">
         <header>
@@ -15,18 +19,22 @@
                         <a href="about.php">
                             <li>About</li>
                         </a>
-                        <a href="signup.php">
-                            <li>Sign-up</li>
-                        </a>
+
                         <a href="single-artist.php">
                             <li>Single Artist</li>
                         </a>
-                        <a href="login.php">
-                            <li>Login</li>
-                        </a>
-                        <a href="signup.php">
-                            <li>Signup</li>
-                        </a>
+                        <?
+                        if(!Session_Singleton::SessionStarted()){
+                            ?>
+                            <a href="login.php">
+                                <li>Login</li>
+                            </a>
+                            <a href="signup.php">
+                                <li>Sign-up</li>
+                            </a>
+                        <?} else{?>
+                            <a href="services/signout.php"><li>Sign Out</li></a>
+                        <?}?>
                     </ul>
                 </div>
             </nav>
