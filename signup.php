@@ -1,5 +1,6 @@
 <html lang="en">
 <?php
+session_start();
 include 'inc/header.inc'
 ?>
 
