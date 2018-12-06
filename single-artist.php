@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php
+include "inc/session.inc.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--header-->

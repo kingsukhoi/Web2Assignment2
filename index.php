@@ -1,4 +1,5 @@
-<?php session_start()?>
+<? include "inc/session.inc.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--header-->

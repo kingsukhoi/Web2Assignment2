@@ -1,6 +1,6 @@
 <html lang="en">
 <?php
-session_start();
+include "inc/session.inc.php";
 include 'inc/header.inc'
 ?>
 
