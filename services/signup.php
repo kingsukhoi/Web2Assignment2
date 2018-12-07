@@ -26,22 +26,27 @@ function sendErrorToSignUpPage(string $msg){
     return false;
 }
 
+function getPostVar(string $postName, string $prettyName){
+    return isset($_POST['firstname']) ?
+        : sendErrorToSignUpPage($prettyName. ' cannot be empty');
+}
+
 /**
- * extract vars from POST
+ * extract customer vars from POST
  * @return mixed
  */
 function getCustomerData()
 {
-    $customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname']
-        : sendErrorToSignUpPage('First Name cannot be empty');
-    $customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname']
-        : sendErrorToSignUpPage('Last Name cannot be empty');
-    $customerArray[':city'] = isset($_POST['city']) ? $_POST['city']
-        : sendErrorToSignUpPage('City cannot be empty');
-    $customerArray[':country'] = isset($_POST['country']) ? $_POST['country']
-        : sendErrorToSignUpPage('Country cannot be empty');
-    $customerArray[':email'] = isset($_POST['email']) ? $_POST['email']
-        : sendErrorToSignUpPage('Email cannot be empty');
+    $customerArray[':fname'] = getPostVar('firstname', 'First Name');
+    $customerArray[':lname'] = getPostVar('lastname', 'Last Name');
+    $customerArray[':city'] = getPostVar('city', 'City');
+    $customerArray[':country'] = getPostVar('country', 'Country');
+    $customerArray[':email'] = getPostVar('email', 'Email');
+
+    if (!filter_var($customerArray[':email'], FILTER_VALIDATE_EMAIL)){
+        sendErrorToSignUpPage('Email format is invalid' . filter_var($customerArray[':email'], FILTER_VALIDATE_EMAIL));
+    }
+
     return $customerArray;
 }
 
@@ -53,8 +58,7 @@ function getCustomerData()
 function GetPasswordArray(string $email)
 {
     $pwdArray[':email'] = $email;
-    $pwdArray[':pwd'] = isset($_POST['password']) ? $_POST['password']
-        : sendErrorToSignUpPage('Password cannot be empty');
+    $pwdArray[':pwd'] = getPostVar('password', 'Password');
     $pwdArray[':salt'] = GenSalt();
     $pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
     return $pwdArray;
