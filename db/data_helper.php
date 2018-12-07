@@ -32,3 +32,12 @@ function getDataByEmail(PDO $connection, string $email, string $paramList){
     $stmt->execute([':email'=>$email]);
     return $stmt;
 }
+
+/** check if user email exists in database
+ * @param PDO $pdo pdo connection
+ * @param string $email email address
+ * @return bool True email isn't in use. False email is in use
+ */
+function CheckIfEmailInUse(PDO $pdo , string $email){
+    return getDataByEmail($pdo, $email, 'CustomerID')->rowCount() == 0;
+}
