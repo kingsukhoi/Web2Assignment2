@@ -23,8 +23,11 @@
                         <a href="single-artist.php">
                             <li>Single Artist</li>
                         </a>
+                        <a href="single-painting.php">
+                            <li>Single-Image</li>
+                        </a>
                         <?
-                        if(!Session_Singleton::SessionStarted()){
+                        if (!Session_Singleton::SessionStarted()) {
                             ?>
                             <a href="login.php">
                                 <li>Login</li>
@@ -32,9 +35,18 @@
                             <a href="signup.php">
                                 <li>Sign-up</li>
                             </a>
-                        <?} else{?>
-                            <a href="services/signout.php"><li>Sign Out</li></a>
-                        <?}?>
+                        <? } else { ?>
+                            <a href="services/signout.php">
+                                <li>Sign Out</li>
+                            </a>
+                        <? } ?>
+                        <a href="single-genre.php">
+                            <li>Single-Genre</li>
+                        </a>
+                        <a href="single-gallery.php">
+                            <li>Single-Gallery</li>
+                        </a>
+
                     </ul>
                 </div>
             </nav>

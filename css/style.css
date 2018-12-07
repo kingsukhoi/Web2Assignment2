@@ -1,39 +1,45 @@
-.error{
+.error {
     color: red;
 }
 
-img{
-    max-width:100%;
-    max-height:100%;
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
-#gallery-list{
+
+#gallery-list {
     padding-left: 20px;
 }
 
-#login{
+#login {
     margin-top: 10%;
 }
-div{
-    /*border-style: dotted;*/
+
+div {
+    border-style: dotted;
     color: black;
 }
-#login .columns{
-    width:100%;
+
+#login .columns {
+    width: 100%;
 
 }
-#login input{
+
+#login input {
     float: right;
 }
 
-.green{
+.green {
     color: green;
     background-color: #39ed00;
 }
+
 .blue {
     background-color: #0FA0CE;
     color: #0FA0CE; /*todo gio this was an error please fix*/
 }
-.yellow{
+
+.yellow {
     background-color: yellow;
 }
 
@@ -173,7 +179,7 @@ a li:hover {
 #menu {
     position: fixed;
     width: 300px;
-    height: 100%;
+    height: auto;
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
@@ -181,7 +187,6 @@ a li:hover {
     background: #7a7a7a;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
-    /`* to stop flickering of text in safari */
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
     /*http://cubic-bezier.com/*/
@@ -224,9 +229,10 @@ a li:hover {
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.row{
-    margin-left:45px;
+.row {
+    margin-left: 45px;
 }
+
 .one.column,
 .one.columns {
     width: 4.66666666667%;
@@ -374,7 +380,7 @@ a li:hover {
 .columns {
     width: 100%;
     float: left;
-    position:center;
+    position: center;
     box-sizing: border-box;
 }
 
@@ -502,14 +508,16 @@ a li:hover {
     }
 
     #menuToggle li {
-        position:relative;
+        position: relative;
         color: #39ed00;
     }
 }
+
 #menuToggle li {
-    position:relative;
+    position: relative;
     color: #39ed00;
 }
+
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button,
@@ -557,7 +565,7 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
     color: #FFF;
-    background-color:#60A94A ;
+    background-color: #60A94A;
     border-color: #60A95A;
 }
 
@@ -797,8 +805,8 @@ there.
 
     .four.columns {
         margin-top: 10%;
-        width:100%;
-        margin-left:40px;
+        width: 100%;
+        margin-left: 40px;
 
     }
 
@@ -821,3 +829,23 @@ there.
 @media (min-width: 1200px) {
 }
 
+
+/*CARROUSEL */
+
+.row {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.item {
+    margin: 10px 0;
+
+> .item-content {
+    background: #39ed00;
+    padding: 10px;
+    text-align: center;
+    font-size: 36px;
+    height: 350px;
+}
+
+}
