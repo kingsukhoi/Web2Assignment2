@@ -7,9 +7,13 @@
  */
 
 include "../db/db_helper.php";
+include "../db/data_helper.php";
 include "../helpers/password_helper.php";
 
 include "../helpers/HTTPFunctions.php";
+
+session_start();
+include "../helpers/SessionSingleton.php";
 
 /**
  * @param $msg string message to send
@@ -22,39 +26,98 @@ function sendErrorToSignUpPage(string $msg){
     return false;
 }
 
-/** TODO if there's time, maybe refactor into separate functions and use sql commit thingy */
-// I'm going to keep it like this instead of refactoring into different functions because this way I get to extract all
-// vars and then run sql just in cae
-$customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname']
-    : sendErrorToSignUpPage('First Name cannot be empty');
-$customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname']
-    : sendErrorToSignUpPage('Last Name cannot be empty');
-$customerArray[':city'] = isset($_POST['city'])?$_POST['city']
-    : sendErrorToSignUpPage('City cannot be empty');
-$customerArray[':country'] = isset($_POST['country'])?$_POST['country']
-    : sendErrorToSignUpPage('Country cannot be empty');
-$customerArray[':email'] = isset($_POST['email'])?$_POST['email']
-    : sendErrorToSignUpPage('Email cannot be empty');
+/**
+ * extract vars from POST
+ * @return mixed
+ */
+function getCustomerData()
+{
+    $customerArray[':fname'] = isset($_POST['firstname']) ? $_POST['firstname']
+        : sendErrorToSignUpPage('First Name cannot be empty');
+    $customerArray[':lname'] = isset($_POST['lastname']) ? $_POST['lastname']
+        : sendErrorToSignUpPage('Last Name cannot be empty');
+    $customerArray[':city'] = isset($_POST['city']) ? $_POST['city']
+        : sendErrorToSignUpPage('City cannot be empty');
+    $customerArray[':country'] = isset($_POST['country']) ? $_POST['country']
+        : sendErrorToSignUpPage('Country cannot be empty');
+    $customerArray[':email'] = isset($_POST['email']) ? $_POST['email']
+        : sendErrorToSignUpPage('Email cannot be empty');
+    return $customerArray;
+}
 
-$pwdArray[':email'] = $customerArray[':email'];
-$pwdArray[':pwd'] = isset($_POST['password'])?$_POST['password']
-    : sendErrorToSignUpPage('Password cannot be empty');
-$pwdArray[':salt'] = GenSalt();
-$pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
+
+/**
+ * @param $email string Email of user
+ * @return mixed
+ */
+function GetPasswordArray(string $email)
+{
+    $pwdArray[':email'] = $email;
+    $pwdArray[':pwd'] = isset($_POST['password']) ? $_POST['password']
+        : sendErrorToSignUpPage('Password cannot be empty');
+    $pwdArray[':salt'] = GenSalt();
+    $pwdArray[':pwd'] = GenHash($pwdArray[':pwd'], $pwdArray[':salt']);
+    return $pwdArray;
+}
 
 
-$pdo = newConnection();
-$customerSql = 'INSERT INTO Customers (FirstName, LastName, City, Country, Email)
+/**
+ * @param $pdo
+ * @param $customerArray
+ */
+function InsertCustomerData(PDO $pdo, $customerArray)
+{
+    $customerSql = 'INSERT INTO Customers (FirstName, LastName, City, Country, Email)
 VALUES (:fname, :lname, :city, :country, :email );';
-runQuery($pdo, $customerSql, $customerArray);
+    runQuery($pdo, $customerSql, $customerArray);
+}
 
-$pwdSql = 'INSERT INTO CustomerLogon (UserName, Pass, Salt) 
+
+/**
+ * @param $pdo
+ * @param $pwdArray
+ */
+function InsertPassword(PDO $pdo, $pwdArray)
+{
+    $pwdSql = 'INSERT INTO CustomerLogon (UserName, Pass, Salt) 
 VALUES (:email,:pwd,:salt);';
-runQuery($pdo, $pwdSql, $pwdArray);
+    runQuery($pdo, $pwdSql, $pwdArray);
+}
 
-$idStmt = $pdo -> prepare('SELECT CustomerID FROM art.Customers WHERE Email = :email');
-$idStmt->execute([':email'=>$customerArray[':email']]);
 
-StartUserSession($idStmt -> fetch()[0]);
+/**
+ * @param PDO $pdo
+ * @param string $email email address of user
+ * @return mixed
+ */
+function GetNewCustomerID(PDO $pdo, string $email)
+{
+    return getDataByEmail($pdo, $email, 'CustomerID') -> fetch()[0];
+}
 
-set_redirect('../index.php');
+function main(){
+    $pdo = newConnection();
+    try {
+        $pdo->beginTransaction();
+
+        $customerArray = getCustomerData();
+        $email = $customerArray[':email'];
+        if(EmailExists($pdo, $email)){
+            $pdo -> rollBack();
+            sendErrorToSignUpPage($email. " is in use");
+        }
+        InsertCustomerData($pdo, $customerArray);
+        $pwdArray = GetPasswordArray($email);
+        InsertPassword($pdo, $pwdArray);
+        Session_Singleton::StartUserSession(GetNewCustomerID($pdo, $email));
+
+        $pdo->commit();
+    }catch (PDOException $e){
+        $pdo->rollBack();
+        sendErrorToSignUpPage($e->getMessage());
+    }
+
+    set_redirect('../index.php');
+}
+
+main();
