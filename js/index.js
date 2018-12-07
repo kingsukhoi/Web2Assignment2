@@ -2,24 +2,45 @@ window.addEventListener('load', main);
 
 function main() {
     addGalleries();
+    addArtists();
+}
+
+function addArtists() {
+    fetch('services/artist.php')
+        .then()
+}
+
+
+
+/**
+ * do a web call
+ * @param done done call back
+ */
+function doWebCall(url, done) {
+    function catchError(reason) {
+        console.error(reason)
+    }
+    function checkResponse(response) {
+        if(response.ok)
+            return response.json();
+        else {
+            return Promise.reject({
+                status: response.status,
+                statusText: response.statusText
+            })
+        }
+    }
+    fetch(url)
+        .then((checkResponse))
+        .then(done)
+        .catch(catchError);
 }
 
 /**
  * add gallery list
  */
 function addGalleries() {
-    fetch('services/gallery.php')
-        .then(((response) => {
-            if(response.ok)
-                return response.json();
-            else {
-                return Promise.reject({
-                    status: response.status,
-                    statusText: response.statusText
-                })
-            }
-        })).then(done)
-        .catch(reason => console.error(reason));
+    doWebCall('./services/gallery.php', done);
     function done(response) {
         const elem = document.querySelector('#gallery-list div ul');
         response.forEach((curr)=>{
