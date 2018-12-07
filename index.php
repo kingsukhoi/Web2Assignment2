@@ -23,30 +23,6 @@
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
         <div class="row">
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
         </div>
 
     </div>
