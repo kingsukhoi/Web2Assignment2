@@ -27,7 +27,7 @@ function sendErrorToSignUpPage(string $msg){
 }
 
 function getPostVar(string $postName, string $prettyName){
-    return isset($_POST['firstname']) ?
+    return isset($_POST[$postName]) ? $_POST[$postName]
         : sendErrorToSignUpPage($prettyName. ' cannot be empty');
 }
 
@@ -44,7 +44,7 @@ function getCustomerData()
     $customerArray[':email'] = getPostVar('email', 'Email');
 
     if (!filter_var($customerArray[':email'], FILTER_VALIDATE_EMAIL)){
-        sendErrorToSignUpPage('Email format is invalid' . filter_var($customerArray[':email'], FILTER_VALIDATE_EMAIL));
+        sendErrorToSignUpPage('Email format is invalid');
     }
 
     return $customerArray;
