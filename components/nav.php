@@ -32,7 +32,17 @@
                             <a href="signup.php">
                                 <li>Sign-up</li>
                             </a>
-                        <?} else{?>
+                        <?} else{
+                            include "db/db_helper.php";
+                            $pdo = newConnection();
+                            $stmt = $pdo -> prepare(
+'SELECT concat(FirstName, \' \', LastName) FROM art.Customers
+WHERE CustomerID=:id');
+                            $stmt->execute([':id'=>Session_Singleton::GetCustomerID()]);
+                            $result = $stmt->fetch()[0];
+
+                            ?>
+                            <li>Hello <?echo htmlentities($result)?></li>
                             <a href="services/signout.php"><li>Sign Out</li></a>
                         <?}?>
                     </ul>
