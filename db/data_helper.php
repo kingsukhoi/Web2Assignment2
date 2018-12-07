@@ -26,3 +26,9 @@ FROM $table
     $stmt -> execute();
     return $stmt;
 }
+
+function getDataByEmail(PDO $connection, string $email, string $paramList){
+    $stmt = $connection->prepare("SELECT $paramList FROM art.Customers WHERE Email = :email;");
+    $stmt->execute([':email'=>$email]);
+    return $stmt;
+}
