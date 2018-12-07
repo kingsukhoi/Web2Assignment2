@@ -17,11 +17,10 @@
 
     if(isset($_GET['size'])) {
         $size =$_GET['size'];
-        $imgSource = "randy/images/$source/$size/$pic.jpg";
     } else {
-        $imgSource = "randy/images/$source/$pic.jpg";
         $size = "square";
     }
+    $imgSource = "randy/images/$source/$size/$pic.jpg";
 
     header('Content-Type: image/jpeg');
 
