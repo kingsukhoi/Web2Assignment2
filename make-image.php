@@ -20,7 +20,13 @@
     } else {
         $size = "square";
     }
-    $imgSource = "randy/images/$source/$size/$pic.jpg";
+
+    $imgSource='';
+    if($source == 'genres') {
+        $imgSource = "randy/images/$source/$pic.jpg";
+    }else{
+        $imgSource = "randy/images/$source/$size/$pic.jpg";
+    }
 
     header('Content-Type: image/jpeg');
 
