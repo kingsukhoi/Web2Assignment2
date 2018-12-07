@@ -33,7 +33,7 @@ function getPostVar(string $postName, string $prettyName){
 
 /**
  * extract customer vars from POST
- * @return mixed
+ * @return array customer data
  */
 function getCustomerData()
 {
@@ -53,7 +53,7 @@ function getCustomerData()
 
 /**
  * @param $email string Email of user
- * @return mixed
+ * @return array password data
  */
 function GetPasswordArray(string $email)
 {
@@ -67,7 +67,7 @@ function GetPasswordArray(string $email)
 
 /**
  * @param $pdo
- * @param $customerArray
+ * @param $customerArray array customer array
  */
 function InsertCustomerData(PDO $pdo, $customerArray)
 {
@@ -79,7 +79,7 @@ VALUES (:fname, :lname, :city, :country, :email );';
 
 /**
  * @param $pdo
- * @param $pwdArray
+ * @param $pwdArray array password array
  */
 function InsertPassword(PDO $pdo, $pwdArray)
 {
@@ -92,13 +92,16 @@ VALUES (:email,:pwd,:salt);';
 /**
  * @param PDO $pdo
  * @param string $email email address of user
- * @return mixed
+ * @return string customer id
  */
 function GetNewCustomerID(PDO $pdo, string $email)
 {
     return getDataByEmail($pdo, $email, 'CustomerID') -> fetch()[0];
 }
 
+/**
+ * main function
+ */
 function main(){
     $pdo = newConnection();
     try {
