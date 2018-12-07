@@ -34,7 +34,6 @@ function getPostVar(string $postName, string $prettyName){
  * @return array customer data
  */
 function getCustomerData()    //exit();
-
 {
     $customerArray[':fname'] = getPostVar('firstname', 'First Name');
     $customerArray[':lname'] = getPostVar('lastname', 'Last Name');
