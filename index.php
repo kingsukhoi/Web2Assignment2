@@ -21,9 +21,8 @@
 <div class="row">
 
     <div id="artist" class="eight columns">
-        <h1>Artist</h1>html_entity_decode
+        <h1>Artist</h1>
         <div class="row">
-
             <div class="three columns">
                 <img>
             </div>
