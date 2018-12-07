@@ -20,9 +20,7 @@ include "../helpers/SessionSingleton.php";
  * @return bool did it work this is purely there to silence php storm
  */
 function sendErrorToSignUpPage(string $msg){
-    set_redirect('../signup.php?error='.$msg);
-    exit();
-    /** @noinspection PhpUnreachableStatementInspection */
+    send_error(400, $msg, '../signup.php');
     return false;
 }
 

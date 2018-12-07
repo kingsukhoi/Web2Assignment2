@@ -28,7 +28,7 @@ $params = 'CustomerID, UserName, Pass, Salt';
 $data = getDataByID($conn, $username, "UserName", $params, 'CustomerLogon');
 
 if ($data -> rowCount() != 1){
-    set_http_status(500, 'Database Error');
+    send_error(500, 'Database Error');
     exit(1);
 }
 
@@ -42,5 +42,6 @@ if(IsPasswordSame($password, $dbPass, $dbSalt)){
     set_redirect('../index.php');
 }
 else{
-    set_http_status(401, 'Not Authorized');
+    send_error(401, 'Not Authorized');
 }
+
