@@ -24,7 +24,10 @@ function addGalleries() {
         const elem = document.querySelector('#gallery-list div ul');
         response.forEach((curr)=>{
             const li = document.createElement('li');
-            li.textContent = curr['GalleryName'];
+            const link = document.createElement('a');
+            link.setAttribute('href',`./single-gallery.php?id=${curr['GalleryID']}`)
+            link.textContent = curr['GalleryName'];
+            li.appendChild(link);
             elem.appendChild(li);
         })
     }
