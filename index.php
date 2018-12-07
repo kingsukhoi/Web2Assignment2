@@ -31,18 +31,6 @@
         <div class="row">
             <div id="genres-list" class="two column">
                 <ul>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
                 </ul>
             </div>
 

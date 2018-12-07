@@ -3,6 +3,7 @@ window.addEventListener('load', main);
 function main() {
     addGalleries();
     addArtists();
+    addGenres();
 }
 
 function addArtists() {
@@ -23,7 +24,25 @@ function addArtists() {
     }
 }
 
+function addGenres() {
+    function done(response) {
+        const elem = document.querySelector('#genres-list > ul');
+        response.forEach((curr)=>{
+            const li = document.createElement('li');
 
+            const img = document.createElement('img');
+            img.setAttribute('src', `./make-image.php?type=genres&file=${curr['GenreID']}`);
+            li.appendChild(img);
+
+            const p = document.createElement('p');
+            p.textContent = curr['GenreName'];
+            li.appendChild(p);
+
+            elem.appendChild(li);
+        })
+    }
+    doWebCall('./services/genre.php', done);
+}
 
 /**
  * do a web call
