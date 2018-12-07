@@ -23,30 +23,6 @@
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
         <div class="row">
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
-            <div class="three columns">
-                <img>
-            </div>
         </div>
 
     </div>
@@ -55,18 +31,6 @@
         <div class="row">
             <div id="genres-list" class="two column">
                 <ul>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
-                    <li>Modern</li>
-                    <li>Contemporary</li>
-                    <li>Abstract</li>
                 </ul>
             </div>
 
