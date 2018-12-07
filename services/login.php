@@ -28,22 +28,29 @@
         return $data;
     }
 
-    function LoginSuccess($id)
-    {
+    function LoginSuccess($id){
         Session_Singleton::StartUserSession($id);
         set_redirect('../index.php');
     }
 
-    function LoginFail()
-    {
+    function LoginFail(){
         send_error_to_login(401, 'Not Authorized');
     }
-    
+
+    function getPostVar(string $postName, string $prettyName){
+        if (isset($_POST[$postName])) {
+            return $_POST[$postName];
+        } else {
+            send_error_to_login(400, $prettyName . ' cannot be empty');
+        }
+        return false;
+    }
+
     function main (){
         $conn = newConnection();
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = getPostVar('email', 'Email');
+        $password = getPostVar('password', 'Password');
         if(!EmailExists($conn, $username)){
             send_error_to_login(401, 'Email not found');
         }
@@ -54,3 +61,5 @@
             LoginFail();
         }
     }
+
+    main();
