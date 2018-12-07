@@ -1,46 +1,65 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: farsos
- * Date: 26/11/18
- * Time: 10:18 AM
- * This will handle storing login info in session.
- * Will also redirect back home
- */
+    /**
+     * Created by PhpStorm.
+     * User: farsos
+     * Date: 26/11/18
+     * Time: 10:18 AM
+     * This will handle storing login info in session.
+     * Will also redirect back home
+     */
 
-session_start();
-include "../helpers/SessionSingleton.php";
+    session_start();
+    include "../helpers/SessionSingleton.php";
 
-include "../inc/json.inc.php";
+    include "../helpers/HTTPFunctions.php";
 
-include "../helpers/HTTPFunctions.php";
+    include '../db/db_helper.php';
+    include "../db/data_helper.php";
+    include "../helpers/password_helper.php";
 
-include '../db/db_helper.php';
-include "../db/data_helper.php";
-include "../helpers/password_helper.php";
+    function send_error_to_login(int $status, string $msg){
+        send_error($status, $msg, '../login.php');
+    }
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+    function GetCustomerData($conn, $username){
+        $params = 'CustomerID, UserName, Pass, Salt';
+        $data = getDataByID($conn, $username, "UserName", $params, 'CustomerLogon');
+        $data = $data -> fetch();
+        return $data;
+    }
 
-$conn = newConnection();
+    function LoginSuccess($id){
+        Session_Singleton::StartUserSession($id);
+        set_redirect('../index.php');
+    }
 
-$params = 'CustomerID, UserName, Pass, Salt';
-$data = getDataByID($conn, $username, "UserName", $params, 'CustomerLogon');
+    function LoginFail(){
+        send_error_to_login(401, 'Not Authorized');
+    }
 
-if ($data -> rowCount() != 1){
-    set_http_status(500, 'Database Error');
-    exit(1);
-}
+    function getPostVar(string $postName, string $prettyName){
+        if (isset($_POST[$postName])) {
+            return $_POST[$postName];
+        } else {
+            send_error_to_login(400, $prettyName . ' cannot be empty');
+        }
+        return false;
+    }
 
-$data = $data -> fetch();
+    function main (){
+        $conn = newConnection();
 
-$dbPass = $data['Pass'];
-$dbSalt = $data['Salt'];
+        $username = getPostVar('email', 'Email');
+        $password = getPostVar('password', 'Password');
+        if(!EmailExists($conn, $username)){
+            send_error_to_login(401, 'Email not found');
+        }
+        $data = GetCustomerData($conn, $username);
+        if(IsPasswordSame($password, $data['Pass'], $data['Salt'])){
+            LoginSuccess($data['CustomerID']);
+        }else{
+            LoginFail();
+        }
+    }
 
-if(IsPasswordSame($password, $dbPass, $dbSalt)){
-    Session_Singleton::StartUserSession($data['CustomerID']);
-    set_redirect('../index.php');
-}
-else{
-    set_http_status(401, 'Not Authorized');
-}
+    main();

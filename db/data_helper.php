@@ -26,3 +26,18 @@ FROM $table
     $stmt -> execute();
     return $stmt;
 }
+
+function getDataByEmail(PDO $connection, string $email, string $paramList){
+    $stmt = $connection->prepare("SELECT $paramList FROM art.Customers WHERE Email = :email;");
+    $stmt->execute([':email'=>$email]);
+    return $stmt;
+}
+
+/** check if user email exists in database
+ * @param PDO $pdo pdo connection
+ * @param string $email email address
+ * @return bool True email exists. False no exist
+ */
+function EmailExists(PDO $pdo , string $email){
+    return !(getDataByEmail($pdo, $email, 'CustomerID')->rowCount() == 0);
+}
