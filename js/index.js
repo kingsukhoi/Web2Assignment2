@@ -14,6 +14,7 @@ function addArtists() {
 
 /**
  * do a web call
+ * @param url url to query
  * @param done done call back
  */
 function doWebCall(url, done) {
