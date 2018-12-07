@@ -1,5 +1,6 @@
 <?php
 /** @noinspection ALL */
+include 'db/db_helper.php'
 ?>
 
 <div class="row one">
@@ -13,6 +14,17 @@
                     <span></span>
                     <ul id="menu">
                         <img src="images/logo.png" width="256" height="256">
+                        <li><?
+                            if(Session_Singleton::SessionStarted()){
+                                $pdo = newConnection();
+                                $stmt = $pdo -> prepare(
+'SELECT concat(FirstName, \' \', LastName) FROM art.Customers
+WHERE CustomerID=:id');
+                                $stmt->execute([':id'=>Session_Singleton::GetCustomerID()]);
+                                $result = $stmt->fetch()[0];
+                                echo "Hello $result".'!!';
+                            }
+                            ?></li>
                         <a href="index.php">
                             <li>Home</li>
                         </a>
@@ -24,28 +36,29 @@
                             <li>Single Artist</li>
                         </a>
                         <a href="single-painting.php">
-                            <li>Single-Image</li>
+                            <li>Single Image</li>
                         </a>
-                        <?
-                        if (!Session_Singleton::SessionStarted()) {
-                            ?>
-                            <a href="login.php">
-                                <li>Login</li>
-                            </a>
-                            <a href="signup.php">
-                                <li>Sign-up</li>
-                            </a>
-                        <? } else { ?>
-                            <a href="services/signout.php">
-                                <li>Sign Out</li>
-                            </a>
-                        <? } ?>
+
                         <a href="single-genre.php">
                             <li>Single-Genre</li>
                         </a>
                         <a href="single-gallery.php">
                             <li>Single-Gallery</li>
                         </a>
+                        <?
+                            if (!Session_Singleton::SessionStarted()) {
+                                ?>
+                                <a href="login.php">
+                                    <li>Login</li>
+                                </a>
+                                <a href="signup.php">
+                                    <li>Sign-up</li>
+                                </a>
+                            <? } else { ?>
+                                <a href="services/signout.php">
+                                    <li>Sign Out</li>
+                                </a>
+                            <? } ?>
 
                     </ul>
                 </div>
