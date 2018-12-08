@@ -60,16 +60,7 @@ function setGalleryID() {
 function addPaintings(response) {
     clearLoadingGif();
     const elem = document.querySelector('#painting-table > table > tbody');
-    function makeTD(elem, classList){
-        const rtnMe = document.createElement('td');
-        rtnMe.classList.add(classList);
-        if (typeof elem !== 'string')
-            rtnMe.appendChild(elem);
-        else {
-            rtnMe.innerText = elem;
-        }
-        return rtnMe;
-    }
+
     response.forEach((curr)=>{
         const tr = document.createElement('tr');
         let img = document.createElement('img');

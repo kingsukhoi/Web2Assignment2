@@ -26,3 +26,14 @@ function doWebCall(url, done) {
 function clearDiv(div) {
     div.innerHTML = '';
 }
+
+function makeTD(elem, classList){
+    const rtnMe = document.createElement('td');
+    rtnMe.classList.add(classList);
+    if (typeof elem !== 'string')
+        rtnMe.appendChild(elem);
+    else {
+        rtnMe.innerText = elem;
+    }
+    return rtnMe;
+}
