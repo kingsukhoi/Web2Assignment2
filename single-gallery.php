@@ -105,7 +105,7 @@ $pdo = 'null';
     </div>
 </div>
     <script src="js/helpers.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuSb5sL7FELTXolq5pJeQPQ5tuc7HI4Q" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt1wAaw0Z-_1vEZ9tuqqi_IcErPMihTDY" async defer></script>
     <script src="js/single-gallery.js"></script>
 
 </body>
