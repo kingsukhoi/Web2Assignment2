@@ -21,11 +21,14 @@
         $size = "square";
     }
 
-    $imgSource='';
     if($source == 'genres') {
         $imgSource = "randy/images/$source/$pic.jpg";
     }else{
         $imgSource = "randy/images/$source/$size/$pic.jpg";
+    }
+
+    if(!file_exists($imgSource)){
+        $imgSource='randy/images/artists/full/131.jpg';
     }
 
     header('Content-Type: image/jpeg');

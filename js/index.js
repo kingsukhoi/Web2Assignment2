@@ -29,6 +29,7 @@ function addGenres() {
         const elem = document.querySelector('#genres-list > ul');
         response.forEach((curr)=>{
             const li = document.createElement('li');
+            li.classList.add('six', 'columns');
 
             const img = document.createElement('img');
             img.setAttribute('src', `./make-image.php?type=genres&file=${curr['GenreID']}`);
