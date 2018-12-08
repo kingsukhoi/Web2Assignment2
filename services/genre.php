@@ -16,8 +16,7 @@ $id = "";
 if (isset($_GET['id'])){
     $id = $_GET['id'];
 }
-$paramList = 'GenreID,GenreName,EraID,Description,Link
-';
+$paramList = 'GenreID,GenreName,EraID,Description,Link';
 echo pdoStmtToJson(getDataByID($connection, $id,"GenreID", $paramList, 'art.Genres'));
 
 $connection = null;
