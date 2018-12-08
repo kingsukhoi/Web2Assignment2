@@ -35,14 +35,7 @@ function setMap(lat, lng) {
 
 }
 
-/**
- * can't remove loading gif the normal way so we doing this
- */
-function clearLoadingGif() {
-    const elem = document.querySelector('.loading');
-    elem.parentElement.removeChild(elem);
 
-}
 
 /**
  * get gallery id from query string and set the global var
