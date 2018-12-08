@@ -14,32 +14,27 @@ include "inc/session.inc.php";
     $pdo = newConnection();
     generateNavBar($pdo);
 
-?>
-
-<?php
 /**
  * I'm gonna clean this up later, just trying to get shit to work for now.
  */
 
-include "db/db_helper.php";
 include "db/data_helper.php";
 
-
-$conn = newConnection();
 
 $id = "";
 if (isset($_GET['id'])){
     $id = $_GET['id'];
 }
+
 $paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID';
 
-$data = getDataByID($conn, $id,"GalleryID", $paramList, 'art.Galleries');
+$data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
 
-$galleryName = '';
-
-$conn = 'null';
+$result = $data->fetch();
 
 
+
+$pdo = 'null';
 ?>
 
 <div class="row">
