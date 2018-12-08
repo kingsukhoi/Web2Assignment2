@@ -25,11 +25,23 @@ if ($data->rowCount() == 0){
 $result = $data->fetch();
 
 $artistName = $result['FirstName']. " ". $result['LastName'];
-$artistYears = $result['YearOfBirth']. ' - '. $result['YearOfDeath'];
+
+if ($result['YearOfDeath']) {
+    $artistYears = $result['YearOfBirth'] . ' - ' . $result['YearOfDeath'];
+} else {
+    $artistYears = $result['YearOfBirth'];
+}
 $artistNationality = $result['Nationality'];
 $artistGender = $result['Gender'];
+
+if ($artistGender == 'M'){
+    $artistGender = "Male";
+} else {
+    $artistGender = "Female";
+}
 $artistDetails = $result['Details'];
 $artistLink = $result['ArtistLink'];
+
 
 ?>
 <!DOCTYPE html>
@@ -52,13 +64,12 @@ $artistLink = $result['ArtistLink'];
         <h1>About the artist</h1>
         <div class="row">
             <div id="artist-info" class="two column">
-                <img src="images/farsus.png">
-                <div id="artist-name"><?php echo $artistName ?></div>
-                <div id="artist-dob"><?php echo $artistYears ?></div>
-                <div id="artist-gender"><?php echo $artistGender ?></div>
-                <div id="artist-nat"><?php echo $artistNationality ?></div>
-                <div id="artist-desc"><?php echo $artistDetails ?></div>
-                <div id="artist-link"> <a href = '<? echo $artistLink?>'> <? echo $artistLink?> </div>
+                <img src="make-image.php?size=square&type=artists&file=<?php echo $id ?>"/>
+                <div id="artist-name"><?php echo $artistName. ', '. $artistYears ?></div>
+                <div id="artist-gender">Gender: <?php echo $artistGender ?></div>
+                <div id="artist-nat">Nationality: <?php echo $artistNationality ?></div>
+                <div id="artist-desc">Description: <?php echo $artistDetails ?></div>
+                <div id="artist-link">WebLink: <a href = '<? echo $artistLink?>'> <? echo $artistLink?> </div>
             </div>
 
         </div>
