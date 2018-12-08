@@ -37,9 +37,9 @@ function clearDiv(div) {
  * @param classList
  * @returns {HTMLElement}
  */
-function makeTD(elem, classList){
+function makeTD(elem, classList=''){
     const rtnMe = document.createElement('td');
-    rtnMe.classList.add(classList);
+    if (classList.trim()) rtnMe.classList.add(classList);
     if (typeof elem !== 'string')
         rtnMe.appendChild(elem);
     else {
