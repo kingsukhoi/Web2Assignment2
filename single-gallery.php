@@ -4,6 +4,7 @@ include "db/db_helper.php";
 include "db/data_helper.php";
 include 'helpers/HTTPFunctions.php';
 $pdo = newConnection();
+$id = "";
 if (isset($_GET['id'])){
     $id = $_GET['id'];
 } else {
@@ -39,8 +40,6 @@ if ($data->rowCount() == 0){
  */
 
 
-$id = "";
-
 $result = $data->fetch();
 
 
@@ -53,10 +52,6 @@ $lat = $result['Latitude'];
 $long = $result['Longitude'];
 $site = $result['GalleryWebSite'];
 $GalleryID = $result['GalleryID'];
-
-
-
-$pdo = 'null';
 ?>
 
 <div class="row">

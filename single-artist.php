@@ -1,9 +1,28 @@
 <?php
 include "inc/session.inc.php";
 include "db/db_helper.php";
+include "db/data_helper.php";
+include 'helpers/HTTPFunctions.php';
 $pdo = newConnection();
 
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+} else {
+    // redirect to error page
+    send_error(400, "Single artist page: Shits borked, query string not set or not valid");
+}
 
+$paramList = 'ArtistID,FirstName,LastName,Nationality,Gender,YearOfBirth,YearOfDeath,Details,ArtistLink';
+
+$data = getDataByID($pdo, $id,"ArtistID", $paramList, 'art.Artists');
+
+
+if ($data->rowCount() == 0){
+    // redirect to error page
+    send_error(400, "Single artist page: Shits borked, artist ID not valid");
+}
+
+$result = $data->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
