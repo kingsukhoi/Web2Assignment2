@@ -839,6 +839,7 @@ there.
 
 .item {
     margin: 10px 0;
+}
 
 > .item-content {
     background: #39ed00;
@@ -848,4 +849,14 @@ there.
     height: 350px;
 }
 
+td.image{
+    width: 11%;
+
+}
+td.image > img{
+    transition: transform .2s;
+}
+
+td.image > img:hover{
+    transform: scale(4);
 }
