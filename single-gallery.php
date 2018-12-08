@@ -24,9 +24,7 @@ if ($data->rowCount() == 0){
 
 <!DOCTYPE html>
 <html lang="en">
-<script src="js/helpers.js"></script>
-<script src="js/single-gallery.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuSb5sL7FELTXolq5pJeQPQ5tuc7HI4Q" async defer></script>
+
 <!--header-->
 <?php include 'inc/header.inc' ?>
 <!---->
@@ -106,7 +104,9 @@ $pdo = 'null';
         </div>
     </div>
 </div>
-
+    <script src="js/helpers.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuSb5sL7FELTXolq5pJeQPQ5tuc7HI4Q" async defer></script>
+    <script src="js/single-gallery.js"></script>
 
 </body>
 
