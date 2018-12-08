@@ -1,6 +1,10 @@
 <?php
 /** @noinspection ALL */
-include 'db/db_helper.php'
+function generateNavBar($pdo=null){
+    if(!pdo){
+        include "db/db_helper.php";
+        $pdo = newConnection();
+    }
 ?>
 
 <div class="row one">
@@ -68,3 +72,4 @@ WHERE CustomerID=:id');
             <!--</header>-->
     </div>
 </div>
+<?}?>

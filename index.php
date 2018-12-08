@@ -7,7 +7,8 @@
 <!---->
 
 <body>
-<?php include 'components/nav.php' ?>
+<?php include 'components/nav.php';
+generateNavBar() ?>
 
 <div id="gallery-list" class="row">
     <div class="twelve columns ">
