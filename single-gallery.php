@@ -26,13 +26,22 @@ include "db/data_helper.php";
 $id = "";
 if (isset($_GET['id'])){
     $id = $_GET['id'];
+} else {
+    // redirect to error page
 }
 
 $paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID';
 
 $data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
 
+
+if ($data->rowCount() == 0){
+    // redirect to error page
+
+}
+
 $result = $data->fetch();
+
 
 $GalleryName = $result['GalleryName'];
 $GalleryNativeName = $result['GalleryNativeName'];
