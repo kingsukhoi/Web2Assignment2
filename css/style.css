@@ -839,6 +839,7 @@ there.
 
 .item {
     margin: 10px 0;
+}
 
 > .item-content {
     background: #39ed00;
@@ -848,9 +849,15 @@ there.
     height: 350px;
 }
 
+td.growable{
+    width: 11%;
+
+}
+/*copied from https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
+td.growable > img{
+    transition: transform .2s;
 }
 
-/*Genres list */
-#genres-list li{
-    margin: 2px;
+td.growable > img:hover{
+    transform: scale(4);
 }

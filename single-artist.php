@@ -1,5 +1,51 @@
 <?php
 include "inc/session.inc.php";
+include "db/db_helper.php";
+include "db/data_helper.php";
+include 'helpers/HTTPFunctions.php';
+$pdo = newConnection();
+
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+} else {
+    // redirect to error page
+    send_error(400, "Single artist page: Shits borked, query string not set or not valid");
+}
+
+$paramList = 'ArtistID,FirstName,LastName,Nationality,Gender,YearOfBirth,YearOfDeath,Details,ArtistLink';
+
+$data = getDataByID($pdo, $id,"ArtistID", $paramList, 'art.Artists');
+
+
+if ($data->rowCount() == 0){
+    // redirect to error page
+    send_error(400, "Single artist page: Shits borked, artist ID not valid");
+}
+
+$result = $data->fetch();
+
+if($result['FirstName']) {
+    $artistName = $result['FirstName'] . " " . $result['LastName'];
+} else {
+    $artistName = $result['LastName'];
+}
+if ($result['YearOfDeath']) {
+    $artistYears = $result['YearOfBirth'] . ' - ' . $result['YearOfDeath'];
+} else {
+    $artistYears = $result['YearOfBirth'];
+}
+$artistNationality = $result['Nationality'];
+$artistGender = $result['Gender'];
+
+if ($artistGender == 'M'){
+    $artistGender = "Male";
+} else {
+    $artistGender = "Female";
+}
+$artistDetails = $result['Details'];
+$artistLink = $result['ArtistLink'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +54,10 @@ include "inc/session.inc.php";
 <!---->
 
 <body>
-<?php include 'components/nav.php' ?>
+<?php
+    include 'components/nav.php';
+    generateNavBar($pdo);
+?>
 
 
 <div class="row">
@@ -18,11 +67,12 @@ include "inc/session.inc.php";
         <h1>About the artist</h1>
         <div class="row">
             <div id="artist-info" class="two column">
-                <img src="images/farsus.png">
-                <div id="artist-name">Name:</div>
-                <div id="artist-dob">DOB:</div>
-                <div id="artist-nat">Nat:</div>
-                <div id="artist-desc">desc:</div>
+                <img src="make-image.php?size=square&type=artists&file=<?php echo $id ?>"/>
+                <div id="artist-name"><?php echo $artistName. ', '. $artistYears ?></div>
+                <div id="artist-gender">Gender: <?php echo $artistGender ?></div>
+                <div id="artist-nat">Nationality: <?php echo $artistNationality ?></div>
+                <div id="artist-desc">Description: <?php echo $artistDetails ?></div>
+                <div id="artist-link">WebLink: <a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?> </div>
             </div>
 
         </div>
@@ -42,25 +92,15 @@ include "inc/session.inc.php";
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
+                    <img class="loading" src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-
+<script src="js/helpers.js"></script>
+<script src="js/single-artist.js"></script>
 </body>
 
 </html>

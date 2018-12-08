@@ -7,14 +7,15 @@
 <!---->
 
 <body>
-<?php include 'components/nav.php' ?>
+<?php include 'components/nav.php';
+generateNavBar() ?>
 
 <div id="gallery-list" class="row">
     <div class="twelve columns ">
         <!--todo gio this needs to be a link, or do some JS to redirect shit-->
         <h2>Galleries</h2>
-        <ul></ul>
-        <p>we will use a toggle to hide and show the list, will cover the page</p>
+        <ul><img src="images/Blocks-1s-200px.gif" alt="Loading"></ul>
+        <!--<p>we will use a toggle to hide and show the list, will cover the page</p>-->
 
     </div>
 </div>
@@ -23,6 +24,7 @@
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
         <div class="row">
+            <img src="images/Blocks-1s-200px.gif" alt="Loading">
         </div>
 
     </div>
@@ -31,12 +33,14 @@
         <div class="row">
             <div id="genres-list" class="two column">
                 <ul>
+                    <img src="images/Blocks-1s-200px.gif" alt="Loading">
                 </ul>
             </div>
 
         </div>
     </div>
 </div>
+    <script src="js/helpers.js"></script>
 <script src="js/index.js"></script>
 
 </body>

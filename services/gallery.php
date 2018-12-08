@@ -21,4 +21,6 @@ $paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress
 ';
 echo pdoStmtToJson(getDataByID($connection, $id,"GalleryID", $paramList, 'art.Galleries'));
 
+
+
 $connection = null;

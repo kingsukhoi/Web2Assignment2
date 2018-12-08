@@ -10,6 +10,7 @@ function addArtists() {
     doWebCall('./services/artist.php', done);
     function done(response) {
         const elem = document.querySelector('#artist > div');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const div = document.createElement('div');
             div.classList.add('three', 'columns');
@@ -27,6 +28,7 @@ function addArtists() {
 function addGenres() {
     function done(response) {
         const elem = document.querySelector('#genres-list > ul');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const li = document.createElement('li');
             li.classList.add('six', 'columns');
@@ -45,30 +47,7 @@ function addGenres() {
     doWebCall('./services/genre.php', done);
 }
 
-/**
- * do a web call
- * @param url url to query
- * @param done done call back. Needs response parameter
- */
-function doWebCall(url, done) {
-    function catchError(reason) {
-        console.error(reason)
-    }
-    function checkResponse(response) {
-        if(response.ok)
-            return response.json();
-        else {
-            return Promise.reject({
-                status: response.status,
-                statusText: response.statusText
-            })
-        }
-    }
-    fetch(url)
-        .then((checkResponse))
-        .then(done)
-        .catch(catchError);
-}
+
 
 /**
  * add gallery list
@@ -77,6 +56,7 @@ function addGalleries() {
     doWebCall('./services/gallery.php', done);
     function done(response) {
         const elem = document.querySelector('#gallery-list div ul');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const li = document.createElement('li');
             const link = document.createElement('a');

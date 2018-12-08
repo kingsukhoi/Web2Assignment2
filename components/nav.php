@@ -1,6 +1,10 @@
 <?php
 /** @noinspection ALL */
-include 'db/db_helper.php'
+function generateNavBar($pdo=null){
+    if(!pdo){
+        include "db/db_helper.php";
+        $pdo = newConnection();
+    }
 ?>
 
 <div class="row one">
@@ -23,6 +27,7 @@ WHERE CustomerID=:id');
                                 $stmt->execute([':id'=>Session_Singleton::GetCustomerID()]);
                                 $result = $stmt->fetch()[0];
                                 echo "Hello $result".'!!';
+                                $pdo = null;
                             }
                             ?></li>
                         <a href="index.php">
@@ -67,3 +72,4 @@ WHERE CustomerID=:id');
             <!--</header>-->
     </div>
 </div>
+<?}?>
