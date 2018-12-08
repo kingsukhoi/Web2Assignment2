@@ -1,5 +1,8 @@
+let map;
+let mapUp=false;
+let galleryID = 0;
 function initMap(lat, long) {
-    var map = new window.google.maps.Map(document.getElementById('#map'), {
+    map = new window.google.maps.Map(document.getElementById('#map'), {
         center: {
             lat: lat,
             lng: long
@@ -7,6 +10,23 @@ function initMap(lat, long) {
         mapTypeId: 'satellite',
         zoom: 18
     });
+    mapUp = true;
+}
+
+/**
+ * set map coords
+ * @param lat latitude
+ * @param lng longitude
+ */
+function setMap(lat, lng) {
+    /*document.querySelector(".d").setAttribute('style', 'display:;');*/
+    if(!mapUp){
+        initMap();
+    }
+    map.setCenter({lat:lat, lng: lng});
+    map.setZoom(18);
+    map.setTilt(45);
+
 }
 
 /**
