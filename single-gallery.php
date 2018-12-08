@@ -32,23 +32,35 @@ $data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
 
 $result = $data->fetch();
 
-
+$GalleryName = $result['GalleryName'];
+$GalleryNativeName = $result['GalleryNativeName'];
+$GalleryCity = $result['GalleryCity'];
+$GalleryCountry = $result['GalleryCountry'];
+$GalleryAddress = $result['GalleryAddress'];
+$lat = $result['Latitude'];
+$long = $result['Longitude'];
+$site = $result['GalleryWebSite'];
+$GalleryID = $result['GalleryID'];
 
 $pdo = 'null';
 ?>
 
 <div class="row">
 
-    <div id="artist-single" class="three columns">
+    <div id="gallery-single" class="three columns">
 
         <h1>Gallery Info</h1>
         <div class="row">
-            <div id="artist-info" class="two column">
-                <div id="artist-name">Name:</div>
-                <div id="artist-dob">DOB:</div>
-                <div id="artist-nat">Nat:</div>
-                <div id="artist-desc">desc:</div>
+            <div id="gallery-info" class="two column">
+                <div id="gallery-name">Name: <? echo $GalleryName?></div>
+                <div id="gallery-native-name">Native name: <? echo $GalleryNativeName?></div>
+                <div id="gallery-address">Address: <? echo $GalleryAddress?></div>
+                <div id="gallery-city">City: <? echo $GalleryCity?></div>
+                <div id="gallery-country">Country: <? echo $GalleryCountry?></div>
+                <div id="gallery-website">WebSite: <a href = '<? echo $site?>'> <? echo $site?> </a> </div>
             </div>
+
+
 
         </div>
         <h1>GalleryMap</h1>
