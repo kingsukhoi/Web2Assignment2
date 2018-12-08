@@ -4,11 +4,12 @@ include "db/db_helper.php";
 include "db/data_helper.php";
 include 'helpers/HTTPFunctions.php';
 $pdo = newConnection();
+$id = "";
 if (isset($_GET['id'])){
     $id = $_GET['id'];
 } else {
     // redirect to error page
-    send_error(400, "Shits borked");
+    send_error(400, "Single gallery page: Shits borked, query string not set");
 }
 
 $paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID';
@@ -18,7 +19,7 @@ $data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
 
 if ($data->rowCount() == 0){
     // redirect to error page
-    send_error(400, "Shits borked");
+    send_error(400, "Single gallery page: Shits borked, gallery ID not valid");
 }
 ?>
 
@@ -39,8 +40,6 @@ if ($data->rowCount() == 0){
  */
 
 
-$id = "";
-
 $result = $data->fetch();
 
 
@@ -53,10 +52,6 @@ $lat = $result['Latitude'];
 $long = $result['Longitude'];
 $site = $result['GalleryWebSite'];
 $GalleryID = $result['GalleryID'];
-
-
-
-$pdo = 'null';
 ?>
 
 <div class="row">
@@ -71,7 +66,7 @@ $pdo = 'null';
                 <div id="gallery-address">Address: <? echo $GalleryAddress?></div>
                 <div id="gallery-city">City: <? echo $GalleryCity?></div>
                 <div id="gallery-country">Country: <? echo $GalleryCountry?></div>
-                <div id="gallery-website">WebSite: <a href = '<? echo $site?>'> <? echo $site?> </a> </div>
+                <div id="gallery-website">WebSite: <a href = '<? echo $site?>'> <? echo $site?> </div>
             </div>
 
 
