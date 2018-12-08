@@ -8,10 +8,11 @@ include '../helpers/HTTPFunctions.php';
 function pdoStmtToJson(PDOStatement $stmt){
     $data = $stmt -> fetchAll(PDO::FETCH_ASSOC);
     if (count($data) == 0){
-        //header("HTTP/1.0 404 Not Found");
         send_error(404, 'id not found');
-        //return json_encode(['HTTPReturn' => 'id not found']);
         return "";
+    }
+    if(count($data) == 1){
+        $data = $data[0];
     }
     return json_encode($data);
 }

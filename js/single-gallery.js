@@ -74,7 +74,6 @@ function addPaintings(response) {
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response)=>{
             // this is where stuff get's appended
             // need to query the artist name since that dose not come with the painting info
-            response = response[0];
             const artist = makeTD(`${response['FirstName']} ${response['LastName']}`);
             tr.appendChild(img);
             tr.appendChild(title);
@@ -97,7 +96,6 @@ function main(){
         addPaintings(response);
     });
     doWebCall(`services/gallery.php?id=${galleryID}`, (r)=>{
-        r = r[0];
         setMap(r['Latitude'], r['Longitude']);
     })
 
