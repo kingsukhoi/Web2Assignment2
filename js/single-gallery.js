@@ -65,7 +65,15 @@ function addPaintings(response) {
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response)=>{
             // this is where stuff get's appended
             // need to query the artist name since that dose not come with the painting info
-            const artist = makeTD(`${response['FirstName']} ${response['LastName']}`);
+            let firstName = '';
+            let lastName = '';
+            if (response['FirstName']){
+                firstName = response['FirstName']
+            }
+            if (response['LastName']){
+                firstName = response['LastName']
+            }
+            const artist = makeTD(`${firstName} ${lastName}`);
             tr.appendChild(img);
             tr.appendChild(title);
             tr.appendChild(artist);

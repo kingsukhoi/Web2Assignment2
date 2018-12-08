@@ -66,7 +66,8 @@ $GalleryID = $result['GalleryID'];
                 <div id="gallery-address">Address: <? echo $GalleryAddress?></div>
                 <div id="gallery-city">City: <? echo $GalleryCity?></div>
                 <div id="gallery-country">Country: <? echo $GalleryCountry?></div>
-                <div id="gallery-website">WebSite: <a target="_blank" href = '<? echo $site?>'> <? echo $site?> </div>
+                <div id="gallery-website">WebSite:
+                    <a target="_blank" href = '<? echo $site?>'> <? echo $site?></a> </div>
             </div>
 
 
