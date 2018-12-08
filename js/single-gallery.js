@@ -107,7 +107,6 @@ function main(){
     });
     doWebCall(`services/gallery.php?id=${galleryID}`, (r)=>{
         r = r[0];
-        console.log(r);
         setMap(r['Latitude'], r['Longitude']);
     })
 
