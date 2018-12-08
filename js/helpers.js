@@ -23,10 +23,20 @@ function doWebCall(url, done) {
         .catch(catchError);
 }
 
+/**
+ * clear inside of a div
+ * @param div
+ */
 function clearDiv(div) {
     div.innerHTML = '';
 }
 
+/**
+ * make a td element and add element or text content
+ * @param elem
+ * @param classList
+ * @returns {HTMLElement}
+ */
 function makeTD(elem, classList){
     const rtnMe = document.createElement('td');
     rtnMe.classList.add(classList);
@@ -47,6 +57,10 @@ function clearLoadingGif() {
 
 }
 
+/**
+ * get current id from query string
+ * @returns {string}
+ */
 function getCurrentID() {
     //copied from https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
     const params = (new URL(document.location)).searchParams;
