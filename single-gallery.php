@@ -1,6 +1,27 @@
 <?php
 include "inc/session.inc.php";
+include "db/db_helper.php";
+include "db/data_helper.php";
+include 'helpers/HTTPFunctions.php';
+$pdo = newConnection();
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+} else {
+    // redirect to error page
+    send_error(400, "Shits borked");
+}
+
+$paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID';
+
+$data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
+
+
+if ($data->rowCount() == 0){
+    // redirect to error page
+    send_error(400, "Shits borked");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <script src="js/single-gallery.js"></script>
@@ -12,33 +33,14 @@ include "inc/session.inc.php";
 <body>
 <?php
     include 'components/nav.php';
-    include "db/db_helper.php";
-    $pdo = newConnection();
     generateNavBar($pdo);
 
 /**
  * I'm gonna clean this up later, just trying to get shit to work for now.
  */
 
-include "db/data_helper.php";
-
 
 $id = "";
-if (isset($_GET['id'])){
-    $id = $_GET['id'];
-} else {
-    // redirect to error page
-}
-
-$paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID';
-
-$data = getDataByID($pdo, $id,"GalleryID", $paramList, 'art.Galleries');
-
-
-if ($data->rowCount() == 0){
-    // redirect to error page
-
-}
 
 $result = $data->fetch();
 
