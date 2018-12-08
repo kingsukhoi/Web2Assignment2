@@ -3,6 +3,8 @@ include "inc/session.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<script src="single-gallery.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVshRDR6jMy2PTWORIhuaA5-LE73vYlN4=initMap" async defer></script>
 <!--header-->
 <?php include 'inc/header.inc' ?>
 <!---->
@@ -42,6 +44,7 @@ $long = $result['Longitude'];
 $site = $result['GalleryWebSite'];
 $GalleryID = $result['GalleryID'];
 
+
 $pdo = 'null';
 ?>
 
@@ -65,11 +68,8 @@ $pdo = 'null';
         </div>
         <h1>GalleryMap</h1>
         <div class="row">
-            <div id="gallery-map" class="two column">
-
-
+            <div id="map" class="two column">
             </div>
-
         </div>
 
     </div>
