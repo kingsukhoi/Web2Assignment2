@@ -25,14 +25,15 @@ function addPaintings() {
     function done(response){
         clearLoadingGif();
         const elem = document.querySelector('#painting-table > table > tbody');
-        function makeTD(elem){
+        function makeTD(elem, classList){
+            const rtnMe = document.createElement('td');
+            rtnMe.classList.add(classList);
             if (typeof elem !== 'string')
-                return document.createElement('td').appendChild(elem);
+                rtnMe.appendChild(elem);
             else {
-                const rtnMe = document.createElement('td');
                 rtnMe.innerText = elem;
-                return rtnMe;
             }
+            return rtnMe;
         }
         response.forEach((curr)=>{
             const tr = document.createElement('tr');
@@ -40,7 +41,7 @@ function addPaintings() {
             img.setAttribute('src',
                 `make-image.php?type=paintings&file=${curr['ImageFileName']}`);
             img.setAttribute('alt', curr['Title']);
-            img = makeTD(img);
+            img = makeTD(img, 'image');
             const title = makeTD(curr['Title']);
             const year = makeTD(curr['YearOfWork']);
             doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response)=>{
