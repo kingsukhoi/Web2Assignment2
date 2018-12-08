@@ -853,6 +853,7 @@ td.image{
     width: 11%;
 
 }
+/*copied from https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
 td.image > img{
     transition: transform .2s;
 }
