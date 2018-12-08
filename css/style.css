@@ -849,3 +849,8 @@ there.
 }
 
 }
+
+/*Genres list */
+#genres-list li{
+    margin: 2px;
+}
