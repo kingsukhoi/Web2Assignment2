@@ -24,8 +24,11 @@ if ($data->rowCount() == 0){
 
 $result = $data->fetch();
 
-$artistName = $result['FirstName']. " ". $result['LastName'];
-
+if($result['FirstName']) {
+    $artistName = $result['FirstName'] . " " . $result['LastName'];
+} else {
+    $artistName = $result['LastName'];
+}
 if ($result['YearOfDeath']) {
     $artistYears = $result['YearOfBirth'] . ' - ' . $result['YearOfDeath'];
 } else {
