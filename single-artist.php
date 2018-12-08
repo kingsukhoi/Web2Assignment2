@@ -1,5 +1,9 @@
 <?php
 include "inc/session.inc.php";
+include "db/db_helper.php";
+$pdo = newConnection();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +14,6 @@ include "inc/session.inc.php";
 <body>
 <?php
     include 'components/nav.php';
-    include "db/db_helper.php";
-    $pdo = newConnection();
     generateNavBar($pdo);
 ?>
 
