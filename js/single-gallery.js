@@ -8,7 +8,7 @@ let galleryID = 0;
  * @param long
  */
 function initMap(lat, long) {
-    map = new window.google.maps.Map(document.getElementById('#map'), {
+    map = new google.maps.Map(document.getElementById('#map'), {
         center: {
             lat: lat,
             lng: long
