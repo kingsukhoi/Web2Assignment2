@@ -42,9 +42,7 @@ function setMap(lat, lng) {
  * @returns {string} gallery id
  */
 function setGalleryID() {
-//copied from https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
-    const params = (new URL(document.location)).searchParams;
-    galleryID = params.get("id");
+    galleryID = getCurrentID();
 }
 
 /**

@@ -46,3 +46,9 @@ function clearLoadingGif() {
     elem.parentElement.removeChild(elem);
 
 }
+
+function getCurrentID() {
+    //copied from https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
+    const params = (new URL(document.location)).searchParams;
+    return params.get("id");
+}
