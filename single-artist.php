@@ -23,6 +23,14 @@ if ($data->rowCount() == 0){
 }
 
 $result = $data->fetch();
+
+$artistName = $result['FirstName']. " ". $result['LastName'];
+$artistYears = $result['YearOfBirth']. ' - '. $result['YearOfDeath'];
+$artistNationality = $result['Nationality'];
+$artistGender = $result['Gender'];
+$artistDetails = $result['Details'];
+$artistLink = $result['ArtistLink'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,10 +53,12 @@ $result = $data->fetch();
         <div class="row">
             <div id="artist-info" class="two column">
                 <img src="images/farsus.png">
-                <div id="artist-name">Name:</div>
-                <div id="artist-dob">DOB:</div>
-                <div id="artist-nat">Nat:</div>
-                <div id="artist-desc">desc:</div>
+                <div id="artist-name"><?php echo $artistName ?></div>
+                <div id="artist-dob"><?php echo $artistYears ?></div>
+                <div id="artist-gender"><?php echo $artistGender ?></div>
+                <div id="artist-nat"><?php echo $artistNationality ?></div>
+                <div id="artist-desc"><?php echo $artistDetails ?></div>
+                <div id="artist-link"> <a href = '<? echo $artistLink?>'> <? echo $artistLink?> </div>
             </div>
 
         </div>
