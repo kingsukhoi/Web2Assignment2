@@ -12,6 +12,7 @@ function setArtistID(){
 }
 
 function addPaintings(response) {
+    clearLoadingGif();
     const elem = document.querySelector('#painting-table > table > tbody');
     response.forEach((curr)=>{
         const tr = document.createElement('tr');

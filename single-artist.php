@@ -89,25 +89,15 @@ $artistLink = $result['ArtistLink'];
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
+                    <img class="loading" src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-
+<script src="js/helpers.js"></script>
+<script src="js/single-artist.js"></script>
 </body>
 
 </html>
