@@ -76,7 +76,7 @@ function addPaintings(response) {
         img.setAttribute('src',
             `make-image.php?type=paintings&file=${curr['ImageFileName']}`);
         img.setAttribute('alt', curr['Title']);
-        img = makeTD(img, 'image');
+        img = makeTD(img, 'growable');
         const title = makeTD(curr['Title']);
         const year = makeTD(curr['YearOfWork']);
         // get the artist id

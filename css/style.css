@@ -849,15 +849,15 @@ there.
     height: 350px;
 }
 
-td.image{
+td.growable{
     width: 11%;
 
 }
 /*copied from https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
-td.image > img{
+td.growable > img{
     transition: transform .2s;
 }
 
-td.image > img:hover{
+td.growable > img:hover{
     transform: scale(4);
 }
