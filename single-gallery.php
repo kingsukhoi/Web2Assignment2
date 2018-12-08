@@ -10,7 +10,7 @@ include "inc/session.inc.php";
 <body>
 <?php include 'components/nav.php' ?>
 
-<?php include 'services/gallery.php'?>
+
 
 <div class="row">
 
