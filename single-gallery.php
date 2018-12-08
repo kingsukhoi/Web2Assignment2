@@ -89,7 +89,7 @@ $pdo = 'null';
                 </tr>
                 </thead>
                 <tbody>
-                    <img src="images/Blocks-1s-200px.gif">
+                    <img class="loading" src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>
