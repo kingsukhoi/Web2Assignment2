@@ -24,7 +24,7 @@ include 'components/nav.php'
         </p>
     </div>
     <div class="four columns">
-        <h1>Nyk Segunda</h1>
+        <h1>Nick Sekunda</h1>
 
         <img src="images/nik.png">
         <p class=""> Jack of All Trades</p>
