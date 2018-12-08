@@ -3,6 +3,7 @@ include "inc/session.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<script src="js/helpers.js"></script>
 <script src="js/single-gallery.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPuSb5sL7FELTXolq5pJeQPQ5tuc7HI4Q" async defer></script>
 <!--header-->
@@ -88,54 +89,7 @@ $pdo = 'null';
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
+                    <img src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>

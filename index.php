@@ -40,6 +40,7 @@ generateNavBar() ?>
         </div>
     </div>
 </div>
+    <script src="js/helpers.js"></script>
 <script src="js/index.js"></script>
 
 </body>
