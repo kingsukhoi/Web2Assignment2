@@ -60,30 +60,20 @@ function setGalleryID() {
 function addPaintings(response) {
     clearLoadingGif();
     const elem = document.querySelector('#painting-table > table > tbody');
-    function makeTD(elem, classList){
-        const rtnMe = document.createElement('td');
-        rtnMe.classList.add(classList);
-        if (typeof elem !== 'string')
-            rtnMe.appendChild(elem);
-        else {
-            rtnMe.innerText = elem;
-        }
-        return rtnMe;
-    }
+
     response.forEach((curr)=>{
         const tr = document.createElement('tr');
         let img = document.createElement('img');
         img.setAttribute('src',
             `make-image.php?type=paintings&file=${curr['ImageFileName']}`);
         img.setAttribute('alt', curr['Title']);
-        img = makeTD(img, 'image');
+        img = makeTD(img, 'growable');
         const title = makeTD(curr['Title']);
         const year = makeTD(curr['YearOfWork']);
         // get the artist id
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response)=>{
             // this is where stuff get's appended
             // need to query the artist name since that dose not come with the painting info
-            response = response[0];
             const artist = makeTD(`${response['FirstName']} ${response['LastName']}`);
             tr.appendChild(img);
             tr.appendChild(title);
@@ -106,7 +96,6 @@ function main(){
         addPaintings(response);
     });
     doWebCall(`services/gallery.php?id=${galleryID}`, (r)=>{
-        r = r[0];
         setMap(r['Latitude'], r['Longitude']);
     })
 
