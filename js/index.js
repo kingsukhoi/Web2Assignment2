@@ -6,10 +6,15 @@ function main() {
     addGenres();
 }
 
+function clearDiv(div) {
+    div.innerHTML = '';
+}
+
 function addArtists() {
     doWebCall('./services/artist.php', done);
     function done(response) {
         const elem = document.querySelector('#artist > div');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const div = document.createElement('div');
             div.classList.add('three', 'columns');
@@ -27,6 +32,7 @@ function addArtists() {
 function addGenres() {
     function done(response) {
         const elem = document.querySelector('#genres-list > ul');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const li = document.createElement('li');
             li.classList.add('six', 'columns');
@@ -77,6 +83,7 @@ function addGalleries() {
     doWebCall('./services/gallery.php', done);
     function done(response) {
         const elem = document.querySelector('#gallery-list div ul');
+        clearDiv(elem);
         response.forEach((curr)=>{
             const li = document.createElement('li');
             const link = document.createElement('a');
