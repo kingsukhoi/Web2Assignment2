@@ -8,7 +8,12 @@ include "inc/session.inc.php";
 <!---->
 
 <body>
-<?php include 'components/nav.php' ?>
+<?php
+    include 'components/nav.php';
+    include "db/db_helper.php";
+    $pdo = newConnection();
+    generateNavBar($pdo);
+?>
 
 
 <div class="row">
