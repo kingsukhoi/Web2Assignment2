@@ -10,7 +10,30 @@ include "inc/session.inc.php";
 <body>
 <?php include 'components/nav.php' ?>
 
+<?php
+/**
+ * I'm gonna clean this up later, just trying to get things to work for now.
+ */
 
+include "db/db_helper.php";
+include "db/data_helper.php";
+
+
+$connection = newConnection();
+
+$id = "";
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+}
+$paramList = 'GalleryID,GalleryName,GalleryNativeName,GalleryCity,GalleryAddress,GalleryCountry,Latitude,Longitude,GalleryWebSite,FlickrPlaceID,YahooWoeID,GooglePlaceID
+';
+
+$data = getDataByID($connection, $id,"GalleryID", $paramList, 'art.Galleries');
+
+$galleryName = '';
+
+$connection = 'null';
+?>
 
 <div class="row">
 
