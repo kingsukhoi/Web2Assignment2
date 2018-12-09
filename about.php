@@ -5,7 +5,7 @@ include "inc/session.inc.php";
 <html lang="en">
 <!--header-->
 <?php
-include 'inc/header.inc'
+include 'inc/header.inc.php'
 ?>
 <!---->
 <body>

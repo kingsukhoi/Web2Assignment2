@@ -1,9 +1,7 @@
-<? include "inc/session.inc.php";
-?>
+<? include "inc/session.inc.php"; ?>
 <!DOCTYPE html>
-<html lang="en">
 <!--header-->
-<?php include 'inc/header.inc' ?>
+<?php include 'inc/header.inc.php' ?>
 <!---->
 
 <body>
@@ -23,8 +21,8 @@ generateNavBar() ?>
 
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
-        <div id="carrousel">
-            <div class="row listPhotos">
+        <div class="owl-carousel">
+            <div>
                 <img src="images/Blocks-1s-200px.gif" alt="Loading">
             </div>
         </div>
@@ -43,11 +41,12 @@ generateNavBar() ?>
     </div>
 </div>
 </body>
-<script src="js/helpers.js"></script>
-<script src="js/index.js"></script>
-<script src="js/carrousel.js">
+<?php include 'inc/footer.inc.php' ?>
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel();
+    });
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
 </html>
 
 

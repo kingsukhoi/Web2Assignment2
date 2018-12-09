@@ -1,6 +1,6 @@
 <?php
 include "inc/session.inc.php";
-include 'inc/header.inc'
+include 'inc/header.inc.php'
 ?>
 <?
 include 'components/nav.php'

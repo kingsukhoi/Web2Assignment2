@@ -1,7 +1,7 @@
 <?include "inc/session.inc.php";?>
 <html lang="en">
 <?php
-include 'inc/header.inc'
+include 'inc/header.inc.php'
 ?>
 
 <body>
