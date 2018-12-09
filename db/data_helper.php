@@ -12,7 +12,7 @@
  * @param string $table table name
  * @return bool|PDOStatement
  */
-function getDataByID(PDO $connection, string $id, string $idName, string $paramList, string $table){
+function getDataByID(PDO $connection, string $id, string $idName, string $paramList, string $table, string $sortParam = null){
     $sql = "
 SELECT $paramList
 FROM $table
@@ -21,8 +21,12 @@ FROM $table
     if ($id){
         $sql .= "WHERE $idName = :id";
     }
+    if ($sortParam){
+        $sql .= "ORDER BY :sort";
+    }
     $stmt = $connection -> prepare($sql);
     $stmt -> bindValue(':id', $id);
+    $stmt -> bindValue(':sort', $sortParam);
     $stmt -> execute();
     return $stmt;
 }
