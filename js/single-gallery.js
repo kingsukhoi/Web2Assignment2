@@ -6,7 +6,7 @@ let galleryID = 0;
  * initialize the map
  */
 function initMap() {
-    map = new google.maps.Map(document.getElementById('#map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 41.89474, lng: 12.4839},
         mapTypeId: 'satellite',
         zoom: 18
