@@ -446,7 +446,7 @@ a li:hover {
         font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
         line-height: 1.6;
         font-weight: 400;
-        color: #ffffff;
+        color: #000000;
     }
 
     /* Typography
@@ -923,4 +923,7 @@ div.tns-nav > button {
 div.tns-nav > button:active {
     background: #39ed00;
 }
-]
+
+.artist-info div{
+    color: black;
+}

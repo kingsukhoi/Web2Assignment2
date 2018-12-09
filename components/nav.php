@@ -2,7 +2,7 @@
 /** @noinspection ALL */
 function generateNavBar($pdo = null)
 {
-    if (!pdo) {
+    if (!$pdo) {
         include "db/db_helper.php";
         $pdo = newConnection();
     }
