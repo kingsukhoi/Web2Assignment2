@@ -158,6 +158,9 @@ function sortTable(byWhat="title") {
 
 }
 
+/**
+ * add on click elements to table
+ */
 function addTableHeaderClicks() {
     const onclickFunc = (e)=>{
         const sortType = e.target.getAttribute('data-sort');
