@@ -1,9 +1,19 @@
 window.addEventListener('load', main);
 
+/*function addGalleryEvent() {
+    function hideList() {
+        const list = document.querySelector('#gallery-list > div > ul');
+        list.classList.toggle('dropdown-show');
+    }
+    const galleryHeader = document.querySelector('#gallery-list > div > h2');
+    galleryHeader.addEventListener('click', hideList);
+}*/
+
 function main() {
     addGalleries();
     addArtists();
     addGenres();
+    /*addGalleryEvent();*/
 }
 
 function addArtists() {

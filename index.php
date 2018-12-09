@@ -10,11 +10,10 @@
 <?php include 'components/nav.php';
 generateNavBar() ?>
 
-<div id="gallery-list" class="row">
+<div id="gallery-list" class="row dropdown">
     <div class="twelve columns ">
-        <!--todo gio this needs to be a link, or do some JS to redirect shit-->
-        <h2>Galleries</h2>
-        <ul><img src="images/Blocks-1s-200px.gif" alt="Loading"></ul>
+        <h2 >Galleries</h2>
+        <ul class="dropdown-content"><img src="images/Blocks-1s-200px.gif" alt="Loading"></ul>
         <!--<p>we will use a toggle to hide and show the list, will cover the page</p>-->
 
     </div>
