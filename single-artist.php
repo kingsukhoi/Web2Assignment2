@@ -72,7 +72,7 @@ $artistLink = $result['ArtistLink'];
                 <div id="artist-gender">Gender: <?php echo $artistGender ?></div>
                 <div id="artist-nat">Nationality: <?php echo $artistNationality ?></div>
                 <div id="artist-desc">Description: <?php echo $artistDetails ?></div>
-                <div id="artist-link">WebLink: <a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?> </div>
+                <div id="artist-link">WebLink: <a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?></a> </div>
             </div>
 
         </div>
