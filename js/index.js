@@ -13,7 +13,6 @@ function main() {
     addGalleries();
     addArtists();
     addGenres();
-   startCarrousel();
     /*addGalleryEvent();*/
 }
 
@@ -38,35 +37,50 @@ function addArtists() {
         });
         const slider = tns({
             container: '.slider1',
-            items: 3,
+            items: 6,
             slideBy: 'page',
-            autoplay: true,
-            controls: false
-        })
+            controls: false,
+            gutter: 2,
+            navPosition: 'bottom',
+            edgePadding: 30,
+
+        });
     }
 }
 
 function addGenres() {
+    doWebCall('./services/genre.php', done);
+
     function done(response) {
-        const elem = document.querySelector('#genres-list > ul');
+        const elem = document.querySelector('#genres > div');
         clearDiv(elem);
         response.forEach((curr) => {
-            const li = document.createElement('li');
-            li.classList.add('six', 'columns');
-
+            const div = document.createElement('div');
+            // li.classList.add('six', 'columns');
+            div.classList.add('item');
             const img = document.createElement('img');
             img.setAttribute('src', `./make-image.php?type=genres&file=${curr['GenreID']}`);
-            li.appendChild(img);
+            div.appendChild(img);
 
             const p = document.createElement('p');
             p.textContent = curr['GenreName'];
-            li.appendChild(p);
+            div.appendChild(p);
 
-            elem.appendChild(li);
-        })
+            elem.appendChild(div);
+        });
+
+        const slider = tns({
+            container: '.slider2',
+            items: 6,
+            slideBy: 'page',
+            controls: false,
+            gutter: 2,
+            navPosition: 'bottom',
+            edgePadding: 30,
+
+        });
     }
 
-    doWebCall('./services/genre.php', done);
 }
 
 
@@ -81,6 +95,7 @@ function addGalleries() {
         clearDiv(elem);
         response.forEach((curr) => {
             const li = document.createElement('li');
+            li.classList.add("menu")
             const link = document.createElement('a');
             link.setAttribute('href', `./single-gallery.php?id=${curr['GalleryID']}`)
             link.textContent = curr['GalleryName'];
@@ -90,15 +105,6 @@ function addGalleries() {
     }
 }
 
-function startCarrousel() {
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        margin: 10,
-        nav: true,
-        startPosition: 'URLHash',
-        loop: true
-    });
-}
 
 
 

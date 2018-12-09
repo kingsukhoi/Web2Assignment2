@@ -1,6 +1,10 @@
 .error {
      color: red;
  }
+li{
+    list-style-type: none;
+}
+
 
 /*copied from https://www.w3schools.com/css/css_dropdowns.asp*/
 .dropdown {
@@ -883,14 +887,31 @@ td.growable > img:hover{
     transform: scale(4);
 }
 
-#carrousel{
-    height: 60%;
-    width: 60%;
-}
 
 div.photo-item{
     height:30px;
     width: 30px;
+}
+
+div.tns-nav{
+float:right;
+}
+
+div.tns-nav button{
+    border: 1px solid #333333;
+    padding: 1px;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+div.tns-nav button:active{
+    border-color: #39ed00 !important;
+}
+
+div.tns-nav button:active{
+    border-color: #39ed00 !important;
+}
 
 
+div.tns-nav button:active{
+    border-color: #39ed00 !important;
 }
