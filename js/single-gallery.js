@@ -49,7 +49,8 @@ function main(){
     });
     doWebCall(`services/gallery.php?id=${galleryID}`, (r)=>{
         setMap(r['Latitude'], r['Longitude']);
-    })
+    });
+    addTableHeaderClicks();
 
 }
 

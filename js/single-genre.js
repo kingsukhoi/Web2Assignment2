@@ -3,11 +3,11 @@ let genreID;
  * main function
  */
 function main(){
-
     setGenreID();
     doWebCall(`services/painting.php?genre=${genreID}`, (response)=>{
         addPaintings(response);
     });
+    addTableHeaderClicks();
 
 }
 

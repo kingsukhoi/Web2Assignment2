@@ -142,3 +142,14 @@ function sortTable(byWhat="artist") {
     }
 
 }
+
+function addTableHeaderClicks() {
+    const onclickFunc = (e)=>{
+        const sortType = e.target.getAttribute('data-sort');
+        sortTable(sortType)
+    };
+    const clickElems = Array.from(document.querySelectorAll('th')).filter((i)=> i.getAttribute('data-sort'));
+    clickElems.forEach((i)=>{
+        i.addEventListener('click', onclickFunc);
+    })
+}

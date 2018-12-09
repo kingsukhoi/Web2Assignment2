@@ -88,9 +88,9 @@ $GalleryID = $result['GalleryID'];
                 <thead>
                 <tr>
                     <th></th>
-                    <th>title</th>
-                    <th>Artist</th>
-                    <th>Year</th>
+                    <th data-sort="title">Title</th>
+                    <th data-sort="artist">Artist</th>
+                    <th data-sort="year">Year</th>
                 </tr>
                 </thead>
                 <tbody>

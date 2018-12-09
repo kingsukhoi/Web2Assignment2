@@ -60,7 +60,7 @@
                     <div id="genre-name"><?php echo $genreName ?></div>
                     <div id="genre-desc">Description: <?php echo $genreDesc ?></div>
                     <div id="era">Era: <?php echo $eraName . ' (' . $eraYears . ')' ?></div>
-                    <div id="genre-link">WebLink <a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?>
+                    <div id="genre-link">WebLink <a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a>
                     </div>
                 </div>
 
@@ -75,9 +75,9 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>title</th>
-                        <th>Artist</th>
-                        <th>Year</th>
+                        <th data-sort="title">Title</th>
+                        <th data-sort="artist">Artist</th>
+                        <th data-sort="year">Year</th>
                     </tr>
                     </thead>
                     <tbody>
