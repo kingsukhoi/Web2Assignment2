@@ -1,7 +1,8 @@
 .error {
-     color: red;
- }
-li{
+    color: red;
+}
+
+li {
     list-style-type: none;
 }
 
@@ -17,12 +18,13 @@ li{
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
 }
 
-.dropdown:hover .dropdown-content /*.dropdown-show*/{
+.dropdown:hover .dropdown-content /*.dropdown-show*/
+{
     display: block;
 }
 
@@ -41,8 +43,9 @@ img {
 }
 
 div {
-    border-style: dotted;
-    color: black;
+    border-color: black;
+    border-style: solid ;
+    padding: 1px;
 }
 
 #login .columns {
@@ -204,11 +207,10 @@ a li:hover {
 #menu {
     position: fixed;
     width: 300px;
-    height: auto;
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
-
+    overflow: scroll;
     background: #7a7a7a;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
@@ -874,44 +876,47 @@ there.
     height: 350px;
 }
 
-td.growable{
+td.growable {
     width: 11%;
 
 }
+
 /*copied from https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
-td.growable > img{
+td.growable > img {
     transition: transform .2s;
 }
 
-td.growable > img:hover{
+td.growable > img:hover {
     transform: scale(4);
 }
 
 
-div.photo-item{
-    height:30px;
+div.photo-item {
+    height: 30px;
     width: 30px;
 }
 
-div.tns-nav{
-float:right;
+div.tns-nav {
+    display: flex;
+    justify-content: center;
 }
 
-div.tns-nav button{
+div.tns-nav button {
     border: 1px solid #333333;
     padding: 1px;
     margin: 0 5px;
     border-radius: 50%;
 }
-div.tns-nav button:active{
-    border-color: #39ed00 !important;
+
+div.tns-nav > button {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border-radius: 50%;
+    opacity: 0.66;
+    background: #747475;
 }
 
-div.tns-nav button:active{
-    border-color: #39ed00 !important;
-}
-
-
-div.tns-nav button:active{
-    border-color: #39ed00 !important;
+div.tns-nav > button:active {
+    background: #39ed00;
 }
