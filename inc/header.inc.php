@@ -5,10 +5,9 @@
 
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--    Carrousel-->
-    <link href="http://www.owlcarousel.owlgraphic.com/assets/css/docs.theme.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.carousel.min.css" rel="stylesheet"/>
+    <!--tiny slider-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.8/tiny-slider.css">
 
-<!--    <link rel="stylesheet" type="text/css" href="css/owl-carousel/owl.carousel.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="css/owl-carousel/owl.carousel.css">-->
 
 </head>
