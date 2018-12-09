@@ -927,3 +927,7 @@ div.tns-nav > button:active {
 .artist-info div{
     color: black;
 }
+
+#map {
+    height: 250px;
+}
