@@ -76,12 +76,21 @@ function getCurrentID() {
 function addPaintings(response) {
     clearLoadingGif();
     const elem = document.querySelector('#painting-table > table > tbody');
-    response.forEach((curr) => {
-        const tr = document.createElement('tr');
+
+    function makeImage(curr) {
         let img = document.createElement('img');
-        img.setAttribute('src', `make-image.php?type=paintings&file=${curr['ImageFileName']}`);
+        img.setAttribute('src', `make-image.php?size=square&width=100&type=paintings&file=${curr['ImageFileName']}`);
         img.setAttribute('alt', curr['Title']);
         img = makeTD(img, 'growable');
+        img.addEventListener('mouseenter', (e)=>console.log('enter'));
+        img.addEventListener('mouseleave', (e)=>console.log('leave'));
+        img.addEventListener('mousemove', (e)=>console.log(`${e.clientX}, ${e.clientY}`));
+        return img;
+    }
+
+    response.forEach((curr) => {
+        const tr = document.createElement('tr');
+        let img = makeImage(curr);
         const title = makeTD(curr['Title']);
         const year = makeTD(curr['YearOfWork']);
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response) => {
