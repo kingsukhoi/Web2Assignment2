@@ -75,7 +75,7 @@ $GalleryID = $result['GalleryID'];
         </div>
         <h1>GalleryMap</h1>
         <script src="js/helpers.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVshRDR6jMy2PTWORIhuaA5-LE73vYlN4" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt1wAaw0Z-_1vEZ9tuqqi_IcErPMihTDY" async defer></script>
         <script src="js/single-gallery.js"></script>
         <div class="row">
             <div id="map" class="two column">
