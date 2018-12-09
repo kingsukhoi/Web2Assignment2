@@ -83,7 +83,9 @@ function addPaintings(response) {
         img.setAttribute('alt', curr['Title']);
         img = makeTD(img, 'growable');
         const title = makeTD(curr['Title']);
+        title.classList.add('table-title');
         const year = makeTD(curr['YearOfWork']);
+        year.classList.add('table-year');
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response) => {
             // this is where stuff get's appended
             // need to query the artist name since that dose not come with the painting info
@@ -96,6 +98,7 @@ function addPaintings(response) {
                 firstName = response['LastName']
             }
             const artist = makeTD(`${firstName} ${lastName}`);
+            artist.classList.add('title-artist');
             tr.appendChild(img);
             tr.appendChild(title);
             tr.appendChild(artist);
