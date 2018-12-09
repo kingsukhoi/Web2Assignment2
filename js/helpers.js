@@ -104,3 +104,41 @@ function addPaintings(response) {
         })
     });
 }
+// got this from farsos' assignment 1
+function sortTable(byWhat="artist") {
+    const elem = document.querySelector('#painting-table > table > tbody');
+    let TableRows = Array.from(elem.children);
+    clearDiv(elem);
+    TableRows.sort((a, b)=>{
+        console.log("sorting");
+        let aString=getData(a, byWhat);
+        let bString=getData(b, byWhat);
+
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+        //this correctly handles years
+        if (aString.localeCompare(bString) < 0)
+            return -1;
+        if (aString.localeCompare(bString) > 0)
+            return 1;
+        return 0
+    });
+    TableRows.forEach((curr)=>elem.appendChild(curr));
+    /**
+     * extract desired field
+     * @param tableRow entire row
+     * @param field which column you want one of [ artist, title, year ]
+     * @returns string textContent in the tag
+     */
+    function getData(tableRow, field) {
+        const children = tableRow.childNodes;
+        switch (field) {
+            case 'artist':
+                return children[2].textContent;
+            case 'title':
+                return children[1].textContent;
+            case 'year':
+                return children[3].textContent;
+        }
+    }
+
+}
