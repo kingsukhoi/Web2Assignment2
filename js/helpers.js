@@ -101,6 +101,7 @@ function addPaintings(response) {
             tr.appendChild(artist);
             tr.appendChild(year);
             elem.appendChild(tr);
+            sortTable();// janky but it works
         })
     });
 }
