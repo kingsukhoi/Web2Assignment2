@@ -28,7 +28,6 @@ function addArtists() {
             const div = document.createElement('div');
             // div.classList.add('three', 'columns');
             div.classList.add('item');
-            div.typ
             const img = document.createElement("img");
             img.setAttribute('src', `./make-image.php?type=artists&file=${curr['ArtistID']}`);
             const p = document.createElement('p');
@@ -36,6 +35,13 @@ function addArtists() {
             div.appendChild(img);
             div.appendChild(p);
             elem.appendChild(div);
+        });
+        const slider = tns({
+            container: '.slider1',
+            items: 3,
+            slideBy: 'page',
+            autoplay: true,
+            controls: false
         })
     }
 }
