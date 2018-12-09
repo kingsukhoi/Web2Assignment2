@@ -55,8 +55,16 @@ function makeTD(elem, classList = '') {
  */
 function clearLoadingGif() {
     const elem = document.querySelector('.loading');
-    elem.parentElement.removeChild(elem);
+    removeElement(elem);
+}
 
+/**
+ * remove singular element.
+ * does this the js way.
+ * @param elem
+ */
+function removeElement(elem) {
+    elem.parentElement.removeChild(elem);
 }
 
 /**
@@ -69,6 +77,30 @@ function getCurrentID() {
     return params.get("id");
 }
 
+const imageFileTag = 'data-image-file';
+
+function imageFollow(e) {
+// copied from https://stackoverflow.com/questions/7143806/make-an-image-follow-mouse-pointer/7144024#7144024
+    const currFile = e.target.getAttribute(imageFileTag);
+    let img;
+    function makeImage() {
+        img = document.createElement('img');
+        img.setAttribute('src', `make-image.php?size=square&width=200&type=paintings&file=${currFile}`);
+        img.style.position = 'absolute';
+        img.style.margin = '0';
+        document.body.appendChild(img);
+    }
+    function updatePosition(e) {
+        e = e || window.event;
+        img.style.left  = (e.clientX - 5) + 'px';
+        img.style.top = (e.clientY - 5) + 'px';
+    }
+    console.log('start');
+    makeImage();
+    e.target.addEventListener('mousemove', updatePosition);
+    e.target.addEventListener('mouseleave', ()=> {console.log('end'); removeElement(img);})
+}
+
 /**
  * add paintings to painting tables
  * @param response
@@ -78,13 +110,13 @@ function addPaintings(response) {
     const elem = document.querySelector('#painting-table > table > tbody');
 
     function makeImage(curr) {
+        const fileName = curr['ImageFileName'];
         let img = document.createElement('img');
-        img.setAttribute('src', `make-image.php?size=square&width=100&type=paintings&file=${curr['ImageFileName']}`);
+        img.setAttribute('src', `make-image.php?size=square&width=100&type=paintings&file=${fileName}`);
         img.setAttribute('alt', curr['Title']);
-        img = makeTD(img, 'growable');
-        img.addEventListener('mouseenter', (e)=>console.log('enter'));
-        img.addEventListener('mouseleave', (e)=>console.log('leave'));
-        img.addEventListener('mousemove', (e)=>console.log(`${e.clientX}, ${e.clientY}`));
+        img.addEventListener('mouseenter', imageFollow);
+        img.setAttribute(imageFileTag, fileName);
+        img = makeTD(img);
         return img;
     }
 
