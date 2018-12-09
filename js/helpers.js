@@ -101,11 +101,31 @@ function addPaintings(response) {
             tr.appendChild(artist);
             tr.appendChild(year);
             elem.appendChild(tr);
-            sortTable();// janky but it works
+            sortTable();// due to the nature of async, I'm using the janky solution of resorting every time
         })
     });
 }
-// got this from farsos' assignment 1
+
+/**
+ * figure out the sort order
+ * @param a string 1
+ * @param b string 2
+ * @returns {number} sort order
+ */
+function resolveSort(a, b) {
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+    //this correctly handles years
+    if (a.localeCompare(b) < 0)
+        return -1;
+    if (a.localeCompare(b) > 0)
+        return 1;
+    return 0
+}
+
+/**
+ * sort table on page
+ * @param byWhat which column to sort by
+ */
 function sortTable(byWhat="title") {
     const elem = document.querySelector('#painting-table > table > tbody');
     let TableRows = Array.from(elem.children);
@@ -115,13 +135,7 @@ function sortTable(byWhat="title") {
         let aString=getData(a, byWhat);
         let bString=getData(b, byWhat);
 
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
-        //this correctly handles years
-        if (aString.localeCompare(bString) < 0)
-            return -1;
-        if (aString.localeCompare(bString) > 0)
-            return 1;
-        return 0
+        return resolveSort(aString, bString);
     });
     TableRows.forEach((curr)=>elem.appendChild(curr));
     /**
