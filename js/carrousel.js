@@ -6,10 +6,10 @@
 // //     </div>
 // //     </div>
 
-var Carrousel = new Class(
+var Carrousel = new Object(
     {
 
-        Implements: [Events, Options],
+        Implements: [event, options],
 
         options:
             {

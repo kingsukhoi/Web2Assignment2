@@ -22,8 +22,10 @@ generateNavBar() ?>
 
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
-        <div class="row">
-            <img src="images/Blocks-1s-200px.gif" alt="Loading">
+        <div id="carrousel">
+            <div class="row listPhotos">
+                <img src="images/Blocks-1s-200px.gif" alt="Loading">
+            </div>
         </div>
 
     </div>
@@ -39,11 +41,12 @@ generateNavBar() ?>
         </div>
     </div>
 </div>
-    <script src="js/helpers.js"></script>
-<script src="js/index.js"></script>
-
 </body>
-
+<script src="js/helpers.js"></script>
+<script src="js/index.js"></script>
+<script src="js/carrousel.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
 </html>
 
 
