@@ -1,6 +1,6 @@
 .error {
-    color: red;
-}
+     color: red;
+ }
 
 img {
     max-width: 100%;
@@ -860,4 +860,16 @@ td.growable > img{
 
 td.growable > img:hover{
     transform: scale(4);
+}
+
+#carrousel{
+    height: 60%;
+    width: 60%;
+}
+
+div.photo-item{
+    height:30px;
+    width: 30px;
+
+
 }
