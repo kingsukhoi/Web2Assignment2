@@ -48,7 +48,10 @@ function main(){
         addPaintings(response);
     });
     doWebCall(`services/gallery.php?id=${galleryID}`, (r)=>{
-        setMap(r['Latitude'], r['Longitude']);
+
+        let lat = parseFloat((r['Latitude']));
+        let long = parseFloat((r['Longitude']));
+        setMap(lat, long);
     });
     addTableHeaderClicks();
 
