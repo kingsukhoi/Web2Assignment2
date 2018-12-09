@@ -105,7 +105,7 @@ function addPaintings(response) {
     });
 }
 // got this from farsos' assignment 1
-function sortTable(byWhat="artist") {
+function sortTable(byWhat="title") {
     const elem = document.querySelector('#painting-table > table > tbody');
     let TableRows = Array.from(elem.children);
     clearDiv(elem);
