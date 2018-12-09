@@ -86,7 +86,7 @@ $artistLink = $result['ArtistLink'];
                 <thead>
                 <tr>
                     <th></th>
-                    <th>title</th>
+                    <th>Title</th>
                     <th>Artist</th>
                     <th>Year</th>
                 </tr>
