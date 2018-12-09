@@ -1,6 +1,6 @@
 .error {
-    color: red;
-}
+     color: red;
+ }
 
 li {
     list-style-type: none;
@@ -35,8 +35,9 @@ img {
 }
 
 #gallery-list {
-    padding-left: 20px;
+    width: fit-content;
 }
+
 
 #login {
     margin-top: 10%;
@@ -44,7 +45,7 @@ img {
 
 div {
     border-color: black;
-    border-style: solid ;
+    border-style:dashed;
     padding: 1px;
 }
 
@@ -919,4 +920,8 @@ div.tns-nav > button {
 
 div.tns-nav > button:active {
     background: #39ed00;
+}
+#gallery-list .dropdown:hover {
+    transition: width 2s;
+    -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
 }

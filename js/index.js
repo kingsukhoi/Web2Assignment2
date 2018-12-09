@@ -105,6 +105,21 @@ function addGalleries() {
     }
 }
 
+function showMenu() {
+    let button = document.querySelector('#gallery-list button');
+
+    button.onclick = function () {
+        let content = button.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+
+    }
+
+}
+
 
 
 

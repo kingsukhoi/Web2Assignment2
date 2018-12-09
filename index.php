@@ -9,9 +9,9 @@
 generateNavBar() ?>
 
 <div id="gallery-list" class="row">
-    <div class="twelve column dropdown">
-        <button>Galleries</button>
-        <ul class="dropdown-content">
+    <div >
+        <button onclick="showMenu()">Galleries</button>
+        <ul style="display: none;">
             <img src="images/Blocks-1s-200px.gif" alt="Loading">
         </ul>
         <!--<p>we will use a toggle to hide and show the list, will cover the page</p>-->
