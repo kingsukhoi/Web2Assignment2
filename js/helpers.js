@@ -7,8 +7,9 @@ function doWebCall(url, done) {
     function catchError(reason) {
         console.error(reason)
     }
+
     function checkResponse(response) {
-        if(response.ok)
+        if (response.ok)
             return response.json();
         else {
             return Promise.reject({
@@ -17,6 +18,7 @@ function doWebCall(url, done) {
             })
         }
     }
+
     fetch(url)
         .then((checkResponse))
         .then(done)
@@ -37,7 +39,7 @@ function clearDiv(div) {
  * @param classList
  * @returns {HTMLElement}
  */
-function makeTD(elem, classList=''){
+function makeTD(elem, classList = '') {
     const rtnMe = document.createElement('td');
     if (classList.trim()) rtnMe.classList.add(classList);
     if (typeof elem !== 'string')
@@ -74,23 +76,23 @@ function getCurrentID() {
 function addPaintings(response) {
     clearLoadingGif();
     const elem = document.querySelector('#painting-table > table > tbody');
-    response.forEach((curr)=>{
+    response.forEach((curr) => {
         const tr = document.createElement('tr');
         let img = document.createElement('img');
         img.setAttribute('src', `make-image.php?type=paintings&file=${curr['ImageFileName']}`);
         img.setAttribute('alt', curr['Title']);
-        img=makeTD(img, 'growable');
+        img = makeTD(img, 'growable');
         const title = makeTD(curr['Title']);
         const year = makeTD(curr['YearOfWork']);
-        doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response)=>{
+        doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response) => {
             // this is where stuff get's appended
             // need to query the artist name since that dose not come with the painting info
             let firstName = '';
             let lastName = '';
-            if (response['FirstName']){
+            if (response['FirstName']) {
                 firstName = response['FirstName']
             }
-            if (response['LastName']){
+            if (response['LastName']) {
                 firstName = response['LastName']
             }
             const artist = makeTD(`${firstName} ${lastName}`);

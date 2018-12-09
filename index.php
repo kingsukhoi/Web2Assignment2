@@ -10,8 +10,10 @@ generateNavBar() ?>
 
 <div id="gallery-list" class="row dropdown">
     <div class="twelve columns ">
-        <h2 >Galleries</h2>
-        <ul class="dropdown-content"><img src="images/Blocks-1s-200px.gif" alt="Loading"></ul>
+        <h2>Galleries</h2>
+        <ul class="dropdown-content">
+            <img src="images/Blocks-1s-200px.gif" alt="Loading">
+        </ul>
         <!--<p>we will use a toggle to hide and show the list, will cover the page</p>-->
 
     </div>
@@ -20,10 +22,9 @@ generateNavBar() ?>
 
     <div id="artist" class="eight columns">
         <h1>Artist</h1>
-        <div class="owl-carousel">
-            <div>
-                <img src="images/Blocks-1s-200px.gif" alt="Loading">
-            </div>
+
+        <div class="owl-carousel owl-theme">
+<!--            <img src="images/Blocks-1s-200px.gif" alt="Loading">-->
         </div>
 
     </div>
@@ -35,17 +36,11 @@ generateNavBar() ?>
                     <img src="images/Blocks-1s-200px.gif" alt="Loading">
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
 </body>
 <?php include 'inc/footer.inc.php' ?>
-<script>
-    $(document).ready(function () {
-        $(".owl-carousel").owlCarousel();
-    });
-</script>
 </html>
 
 

@@ -1,4 +1,4 @@
-<?php
+<?
 /** @noinspection ALL */
 function generateNavBar($pdo = null)
 {
@@ -69,8 +69,6 @@ WHERE CustomerID=:id');
                         </ul>
                     </div>
                 </nav>
-
-                <!--</header>-->
         </div>
     </div>
 <? } ?>
