@@ -13,7 +13,7 @@ function main() {
     addGalleries();
     addArtists();
     addGenres();
-    $(".owl-carousel").owlCarousel();
+   startCarrousel();
     /*addGalleryEvent();*/
 }
 
@@ -81,7 +81,16 @@ function addGalleries() {
             elem.appendChild(li);
         });
     }
+}
 
+function startCarrousel() {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        margin: 10,
+        nav: true,
+        startPosition: 'URLHash',
+        loop: true
+    });
 }
 
 
