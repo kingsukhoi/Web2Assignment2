@@ -916,12 +916,11 @@ div.tns-nav > button {
     border-radius: 50%;
     opacity: 0.66;
     background: #747475;
+    transition: width 2s;
+    -webkit-transition: width 2s;
 }
 
 div.tns-nav > button:active {
     background: #39ed00;
 }
-#gallery-list .dropdown:hover {
-    transition: width 2s;
-    -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
-}
+]

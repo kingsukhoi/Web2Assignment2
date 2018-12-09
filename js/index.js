@@ -25,13 +25,16 @@ function addArtists() {
         clearDiv(elem);
         response.forEach((curr) => {
             const div = document.createElement('div');
+            const link= document.createElement('a');
+            link.setAttribute('href', `./single-artist.php?id=${curr['ArtistID']}`);
             // div.classList.add('three', 'columns');
             div.classList.add('item');
             const img = document.createElement("img");
             img.setAttribute('src', `./make-image.php?type=artists&file=${curr['ArtistID']}`);
+            link.appendChild(img);
             const p = document.createElement('p');
             p.innerText = `${curr['FirstName']} ${curr['LastName']}`;
-            div.appendChild(img);
+            div.appendChild(link);
             div.appendChild(p);
             elem.appendChild(div);
         });
@@ -51,16 +54,20 @@ function addArtists() {
 function addGenres() {
     doWebCall('./services/genre.php', done);
 
+
     function done(response) {
         const elem = document.querySelector('#genres > div');
         clearDiv(elem);
         response.forEach((curr) => {
             const div = document.createElement('div');
+            const link = document.createElement('a');
+            link.setAttribute('href', `./single-genre.php?id=${curr['GenreID']}`);
             // li.classList.add('six', 'columns');
             div.classList.add('item');
             const img = document.createElement('img');
+            link.appendChild(img);
             img.setAttribute('src', `./make-image.php?type=genres&file=${curr['GenreID']}`);
-            div.appendChild(img);
+            div.appendChild(link);
 
             const p = document.createElement('p');
             p.textContent = curr['GenreName'];
