@@ -55,8 +55,8 @@ $artistLink = $result['ArtistLink'];
 
 <body>
 <?php
-    include 'components/nav.php';
-    generateNavBar($pdo);
+include 'components/nav.php';
+generateNavBar($pdo);
 ?>
 
 
@@ -68,11 +68,13 @@ $artistLink = $result['ArtistLink'];
         <div class="row">
             <div id="artist-info" class="two column">
                 <img src="make-image.php?size=square&type=artists&file=<?php echo $id ?>"/>
-                <div id="artist-name"><?php echo $artistName. ', '. $artistYears ?></div>
-                <div id="artist-gender">Gender: <?php echo $artistGender ?></div>
-                <div id="artist-nat">Nationality: <?php echo $artistNationality ?></div>
-                <div id="artist-desc">Description: <?php echo $artistDetails ?></div>
-                <div id="artist-link">WebLink: <a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?></a> </div>
+                <table>
+                    <tr id="artist-name"><td colspan="2"><?php echo $artistName. ', '. $artistYears ?></td></tr>
+                    <tr id="artist-gender"><td>Gender</td> <td><?php echo $artistGender ?></td></tr>
+                    <tr id="artist-nat"><td>Nationality</td> <td><?php echo $artistNationality ?></td></tr>
+                    <tr id="artist-desc"><td>Description</td> <td><?php echo $artistDetails ?></td></tr>
+                    <tr id="artist-link"><td>WebLink</td> <td><a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?></a></td> </tr>
+                </table>
             </div>
 
         </div>
@@ -92,7 +94,7 @@ $artistLink = $result['ArtistLink'];
                 </tr>
                 </thead>
                 <tbody>
-                    <img class="loading" src="images/Blocks-1s-200px.gif">
+                <img class="loading" src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>

@@ -32,8 +32,8 @@ if ($data->rowCount() == 0){
 
 <body>
 <?php
-    include 'components/nav.php';
-    generateNavBar($pdo);
+include 'components/nav.php';
+generateNavBar($pdo);
 
 /**
  * I'm gonna clean this up later, just trying to get shit to work for now.
@@ -61,13 +61,15 @@ $GalleryID = $result['GalleryID'];
         <h1>Gallery Info</h1>
         <div class="row">
             <div id="gallery-info" class="two column">
-                <div id="gallery-name">Name: <? echo $GalleryName?></div>
-                <div id="gallery-native-name">Native name: <? echo $GalleryNativeName?></div>
-                <div id="gallery-address">Address: <? echo $GalleryAddress?></div>
-                <div id="gallery-city">City: <? echo $GalleryCity?></div>
-                <div id="gallery-country">Country: <? echo $GalleryCountry?></div>
-                <div id="gallery-website">WebSite:
-                    <a target="_blank" href = '<? echo $site?>'> <? echo $site?></a> </div>
+                <table>
+                    <tr id="gallery-name"><td>Name</td> <td><? echo $GalleryName?></td></tr>
+                    <tr id="gallery-native-name"><td>Native name</td> <td><? echo $GalleryNativeName?></td></tr>
+                    <tr id="gallery-address"><td>Address</td> <td><? echo $GalleryAddress?></td></tr>
+                    <tr id="gallery-city"><td>City</td> <td><? echo $GalleryCity?></td></tr>
+                    <tr id="gallery-country"><td>Country</td> <td><? echo $GalleryCountry?></td></tr>
+                    <tr id="gallery-website"><td>WebSite</td>
+                        <td><a target="_blank" href = '<? echo $site?>'> <? echo $site?></a></td> </tr>
+                </table>
             </div>
 
 
@@ -97,7 +99,7 @@ $GalleryID = $result['GalleryID'];
                 </tr>
                 </thead>
                 <tbody>
-                    <img class="loading" src="images/Blocks-1s-200px.gif">
+                <img class="loading" src="images/Blocks-1s-200px.gif">
                 </tbody>
             </table>
         </div>
