@@ -65,7 +65,5 @@ ORDER BY Title");
             </table>
         </div>
     </div>
-    <script>
-    </script>
 </body>
 </html>
