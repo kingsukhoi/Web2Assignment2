@@ -38,19 +38,19 @@ WHERE CustomerID=:id');
                                 <li>About</li>
                             </a>
 
-                            <a href="single-artist.php">
-                                <li>Single Artist</li>
-                            </a>
-                            <a href="single-painting.php">
-                                <li>Single Image</li>
-                            </a>
-
-                            <a href="single-genre.php">
-                                <li>Single-Genre</li>
-                            </a>
-                            <a href="single-gallery.php">
-                                <li>Single-Gallery</li>
-                            </a>
+<!--                            <a href="single-artist.php">-->
+<!--                                <li>Single Artist</li>-->
+<!--                            </a>-->
+<!--                            <a href="single-painting.php">-->
+<!--                                <li>Single Image</li>-->
+<!--                            </a>-->
+<!---->
+<!--                            <a href="single-genre.php">-->
+<!--                                <li>Single-Genre</li>-->
+<!--                            </a>-->
+<!--                            <a href="single-gallery.php">-->
+<!--                                <li>Single-Gallery</li>-->
+<!--                            </a>-->
                             <?
                             if (!Session_Singleton::SessionStarted()) {
                                 ?>
