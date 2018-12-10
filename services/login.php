@@ -33,8 +33,8 @@
         set_redirect('../index.php');
     }
 
-    function LoginFail(){
-        send_error_to_login(401, 'Not Authorized');
+    function LoginFail($reason = 'Not Authorized'){
+        send_error_to_login(401, $reason);
     }
 
     function getPostVar(string $postName, string $prettyName){
@@ -58,7 +58,7 @@
         if(IsPasswordSame($password, $data['Pass'], $data['Salt'])){
             LoginSuccess($data['CustomerID']);
         }else{
-            LoginFail();
+            LoginFail("Invalid Password");
         }
     }
 
