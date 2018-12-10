@@ -24,12 +24,6 @@ function CheckArgNum(){
 }
 
 function AddToFav($id){
-
-    if (!isset($_GET['id'])){
-        send_error(400, 'No ID Provided');
-    }
-    $id = $_GET['id'];
-
     $pdo = newConnection();
 
     $stmt = $pdo -> prepare(
@@ -44,8 +38,13 @@ WHERE PaintingID = :id');
     }
 
     Session_Singleton::AddToFavorites($id);
+}
+function RemoveFromFav($id){
+    Session_Singleton::RemoveFavorite($id);
+}
 
-    set_redirect($_SERVER['HTTP_REFERER']);
+function RemoveAllFromFav(){
+    Session_Singleton::RemoveAllFavorites();
 }
 
 /**
@@ -53,19 +52,29 @@ WHERE PaintingID = :id');
  */
 function ProcessArguments(){
     if(isset($_GET['add'])){
-
+        AddToFav($_GET['add']);
     }
+    elseif (isset($_GET['remove'])){
+        RemoveFromFav($_GET['remove']);
+    }
+    elseif (isset($_GET['remove-all'])){
+        RemoveAllFromFav();
+    }
+    else{
+        send_error(400, 'No Valid Argument');
+    }
+    set_redirect($_SERVER['HTTP_REFERER']);
 }
 
 /**
  * allowed operations are:
  * add: id
  * remove: id
- * remove-all: empty
+ * remove-all: bool
  */
 function main(){
     CheckArgNum();
-
+    ProcessArguments();
 }
 
 
