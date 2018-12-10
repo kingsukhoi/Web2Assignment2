@@ -45,6 +45,7 @@ ORDER BY Title");
                     <th data-sort="title">Title</th>
                     <th data-sort="artist">Artist</th>
                     <th data-sort="year">Year</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
