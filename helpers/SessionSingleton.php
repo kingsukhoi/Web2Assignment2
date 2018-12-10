@@ -58,6 +58,23 @@ class Session_Singleton
     }
 
     /**
+     * remove a painting
+     * @param $id int painting id
+     */
+    static function RemoveFavorite(int $id){
+        $lambda = function ($curr) use ($id){
+            return $curr !== $id;
+        };
+        $currArray  = self::ListAllFavorites();
+        $_SESSION[self::$FAVORITES_KEY] = array_filter($currArray, $lambda);
+
+    }
+
+    static function RemoveAllFavorites(){
+        $_SESSION[self::$FAVORITES_KEY] = [];
+    }
+
+    /**
      * get list of all favorites
      * @return array|null array of favorites
      */
@@ -68,7 +85,6 @@ class Session_Singleton
         }
         return null;
     }
-
     /**
      * Get the customer ID
      * @return bool|string bool if shit hit the fan, string if there's an id
