@@ -61,6 +61,7 @@ WHERE CustomerID=:id');
                                     <li>Sign-up</li>
                                 </a>
                             <? } else { ?>
+                                <a href="favorites.php">Favorites</a>
                                 <a href="services/signout.php">
                                     <li>Sign Out</li>
                                 </a>
