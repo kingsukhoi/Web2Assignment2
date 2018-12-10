@@ -53,7 +53,7 @@ generateNavBar($pdo); ?>
 
     <div id="genre-single" class="three columns">
 
-        <h1>Genre</h1>
+        <h1><?php echo $genreName ?></h1>
         <div class="row">
             <div id="genre-info" class="two column">
                 <img src="make-image.php?type=genres&file=<?php echo $id ?>">

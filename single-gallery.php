@@ -58,11 +58,10 @@ $GalleryID = $result['GalleryID'];
 
     <div id="gallery-single" class="three columns">
 
-        <h1>Gallery Info</h1>
+        <h1><?echo $GalleryName?></h1>
         <div class="row">
             <div id="gallery-info" class="two column">
                 <table class="info-table">
-                    <tr id="gallery-name"><td>Name</td> <td><? echo $GalleryName?></td></tr>
                     <tr id="gallery-native-name"><td>Native name</td> <td><? echo $GalleryNativeName?></td></tr>
                     <tr id="gallery-address"><td>Address</td> <td><? echo $GalleryAddress?></td></tr>
                     <tr id="gallery-city"><td>City</td> <td><? echo $GalleryCity?></td></tr>

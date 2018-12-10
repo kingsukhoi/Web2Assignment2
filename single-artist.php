@@ -64,13 +64,13 @@ generateNavBar($pdo);
 
     <div id="artist-single" class="three columns">
 
-        <h1>About the artist</h1>
+        <h1><?php echo $artistName?></h1>
         <div class="row">
             <div id="artist-info" class="two column">
                 <img src="make-image.php?size=square&type=artists&file=<?php echo $id ?>"/>
                 <table class="info-table">
-                    <tr id="artist-name"><td colspan="2"><?php echo $artistName. ', '. $artistYears ?></td></tr>
-                    <tr id="artist-gender"><td>Gender</td> <td><?php echo $artistGender ?></td></tr>
+                    <tr id="artist-lifespan"><td>Life Span</td><td><?echo $artistYears?></td></tr>
+                    <tr ><td>Gender</td> <td><?php echo $artistGender ?></td></tr>
                     <tr id="artist-nat"><td>Nationality</td> <td><?php echo $artistNationality ?></td></tr>
                     <tr id="artist-desc"><td>Description</td> <td><?php echo $artistDetails ?></td></tr>
                     <tr id="artist-link"><td>WebLink</td> <td><a target="_blank" href = '<? echo $artistLink?>'> <? echo $artistLink?></a></td> </tr>
