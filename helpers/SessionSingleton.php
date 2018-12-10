@@ -76,14 +76,14 @@ class Session_Singleton
 
     /**
      * get list of all favorites
-     * @return array|null array of favorites
+     * @return array array of favorites
      */
     static function ListAllFavorites()
     {
         if (self::SessionStarted()) {
             return $_SESSION[self::$FAVORITES_KEY];
         }
-        return null;
+        return [];
     }
     /**
      * Get the customer ID
