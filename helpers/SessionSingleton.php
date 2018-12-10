@@ -50,7 +50,8 @@ class Session_Singleton
     static function AddToFavorites(int $paintingID)
     {
         if (self::SessionStarted()) {
-            $_SESSION[self::$FAVORITES_KEY][] = $paintingID;
+            if (!in_array($paintingID, $_SESSION[self::$FAVORITES_KEY]))
+                $_SESSION[self::$FAVORITES_KEY][] = $paintingID;
             return true;
         }
         return false;
