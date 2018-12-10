@@ -877,19 +877,6 @@ there.
     height: 350px;
 }
 
-td.growable {
-    width: 11%;
-
-}
-
-/*copied from https://www.w3schools.com/howto/howto_css_zoom_hover.asp*/
-td.growable > img {
-    transition: transform .2s;
-}
-
-td.growable > img:hover {
-    transform: scale(4);
-}
 
 
 div.photo-item {
