@@ -11,9 +11,11 @@
     include 'helpers/HTTPFunctions.php';
     $pdo = newConnection();
 /*testing only remove later*/
+if(count(Session_Singleton::ListAllFavorites())==0){
     $favs = [5,7,8,11,12,14,15,16,23,24,25,26,29,30,31,391,392,393, ];
     foreach ($favs as $curr)
         Session_Singleton::AddToFavorites($curr);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,6 @@ ORDER BY Title");
         $stmt -> execute();
     ?>
     <div class="row">
-        <p><?echo $stmt->rowCount()?></p>
         <div class="eleven columns">
             <table>
                 <thead>
@@ -54,6 +55,9 @@ ORDER BY Title");
                     <td><?echo $row['Title']?></td>
                     <td><?echo trim($row['Name'])?></td>
                     <td><?echo $row['YearOfWork']?></td>
+                    <td><a href="services/favorites.php?remove=<?echo $row['PaintingID']?>">
+                            <img src="images/garbage.png" alt="garbage" width="50px">
+                        </a> </td>
                 </tr>
                 <?}?>
                 </tbody>
