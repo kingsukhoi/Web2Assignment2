@@ -918,3 +918,8 @@ div.tns-nav > button:active {
 #map {
     height: 250px;
 }
+
+#favorite-table{
+    margin: auto;
+    width: 89%;
+}

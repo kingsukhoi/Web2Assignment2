@@ -36,9 +36,9 @@ ORDER BY Title");
         //$stmt -> bindValue(':ids', $favoriteList);
         $stmt -> execute();
     ?>
-    <div class="row">
-        <div class="eleven columns">
-            <table>
+    <div>
+        <div >
+            <table id="favorite-table">
                 <thead>
                 <tr>
                     <th></th>
