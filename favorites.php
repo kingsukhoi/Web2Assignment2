@@ -28,6 +28,7 @@ if(count(Session_Singleton::ListAllFavorites())==0){
         include 'components/nav.php';
         $favoriteList = implode(',', Session_Singleton::ListAllFavorites());
         generateNavBar($pdo);
+        if(Session_Singleton::SessionStarted()){
         $stmt = $pdo -> prepare(
 "SELECT p.PaintingID, p.ImageFileName, p.Title, p.ArtistID, p.YearOfWork, concat(IFNULL(a.FirstName, ''), ' ', IFNULL(a.LastName, ' ')) AS Name
 FROM Paintings p JOIN Artists a ON p.ArtistID = a.ArtistID
@@ -36,9 +37,9 @@ ORDER BY Title");
         //$stmt -> bindValue(':ids', $favoriteList);
         $stmt -> execute();
     ?>
-    <div>
+    <div id="favorite-table">
         <div >
-            <table id="favorite-table">
+            <table>
                 <thead>
                 <tr>
                     <th></th>
@@ -63,6 +64,15 @@ ORDER BY Title");
                 <?}?>
                 </tbody>
             </table>
+            <?
+            }
+            else{
+                ?>
+                <br>
+                <h1>Please <a href="./login.php">Login</a> To View Favorites</h1>
+                <?
+            }
+            ?>
         </div>
     </div>
 </body>
