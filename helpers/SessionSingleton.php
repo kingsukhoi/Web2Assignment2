@@ -6,6 +6,8 @@
  * Time: 9:27 PM
  */
 
+include "../db/db_helper.php";
+
 class Session_Singleton
 {
     /**
@@ -50,6 +52,14 @@ class Session_Singleton
     static function AddToFavorites(int $paintingID)
     {
         if (self::SessionStarted()) {
+            $pdo = newConnection();
+            $stmt = $pdo-> prepare(
+'SELECT PaintingID
+FROM Paintings
+WHERE PaintingID = :id;');
+            $stmt -> execute([':id'=>$paintingID]);
+            if ($stmt -> rowCount() == 0)
+                return false;
             if (!in_array($paintingID, $_SESSION[self::$FAVORITES_KEY]))
                 $_SESSION[self::$FAVORITES_KEY][] = $paintingID;
             return true;
