@@ -9,10 +9,10 @@ include "inc/session.inc.php";
 
 <body>
 <?php
-    include 'components/nav.php';
-    include "db/db_helper.php";
-    $pdo = newConnection();
-    generateNavBar($pdo);
+include 'components/nav.php';
+include "db/db_helper.php";
+$pdo = newConnection();
+generateNavBar($pdo);
 ?>
 
 
@@ -20,47 +20,55 @@ include "inc/session.inc.php";
 
     <div id="image-single" class="six columns">
 
-        <h1>Image</h1>
         <div class="row">
-            <div id="artist-info" class="two column">
-                <div id="artist-name">Name:</div>
-                <div id="artist-dob">DOB:</div>
-                <div id="artist-nat">Nat:</div>
-                <div id="artist-desc">desc:</div>
-            </div>
-
+            <img src="#">Image goes here
         </div>
 
     </div>
-    <div id="paintings" class="six columns">
-        <h1>Title</h1>
-
-        <div id='painting-table' class="row">
-            <table class="u-full-width">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>title</th>
-                    <th>Artist</th>
-                    <th>Year</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                <tr>
-                    <td><img></td>
-                    <td>Mona lisa</td>
-                    <td>Davinchi</td>
-                    <td>Italy</td>
-                </tr>
-                </tbody>
-            </table>
+    <div id="image-details" class="six columns">
+        <h2>Title, Artist</h2>
+        <p>
+            Gallery:
+            Year:
+            Genre:
+            Description
+        </p>
+        <div class="row u-full-width">
+            <span> Color Scheme </span>
         </div>
+        <div id="rating" class="u-cf">
+            <span>Rating</span><button class="button-primary">Vote</button>
+            <div>
+                <p>Reviews</p>
+
+            </div>
+        </div>
+        <!--        <div id='painting-table' class="row">-->
+        <!--            <table class="u-full-width">-->
+        <!--                <thead>-->
+        <!--                <tr>-->
+        <!--                    <th></th>-->
+        <!--                    <th>title</th>-->
+        <!--                    <th>Artist</th>-->
+        <!--                    <th>Year</th>-->
+        <!--                </tr>-->
+        <!--                </thead>-->
+        <!--                <tbody>-->
+        <!--                <tr>-->
+        <!--                    <td><img></td>-->
+        <!--                    <td>Mona lisa</td>-->
+        <!--                    <td>Davinchi</td>-->
+        <!--                    <td>Italy</td>-->
+        <!--                </tr>-->
+        <!--                <tr>-->
+        <!--                    <td><img></td>-->
+        <!--                    <td>Mona lisa</td>-->
+        <!--                    <td>Davinchi</td>-->
+        <!--                    <td>Italy</td>-->
+        <!--                </tr>-->
+        <!--                </tbody>-->
+        <!--            </table>-->
+        <!--        </div>-->
     </div>
 </div>
 
