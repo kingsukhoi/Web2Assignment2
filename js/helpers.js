@@ -92,13 +92,16 @@ function imageFollow(e) {
     }
     function updatePosition(e) {
         e = e || window.event;
-        img.style.left  = (e.clientX - 5) + 'px';
-        img.style.top = (e.clientY - 5) + 'px';
+        img.style.left  = (e.clientX + 5) + 'px';
+        img.style.top = (e.clientY + 5) + 'px';
     }
     console.log('start');
     makeImage();
     e.target.addEventListener('mousemove', updatePosition);
-    e.target.addEventListener('mouseleave', ()=> {console.log('end'); removeElement(img);})
+    e.target.addEventListener('mouseleave', ()=> {
+        console.log('end');
+        removeElement(img);
+    });
 }
 
 /**
