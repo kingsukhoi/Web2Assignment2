@@ -68,7 +68,7 @@ generateNavBar($pdo);
         <div class="row">
             <div id="artist-info" class="two column">
                 <img src="make-image.php?size=square&type=artists&file=<?php echo $id ?>"/>
-                <table>
+                <table class="info-table">
                     <tr id="artist-name"><td colspan="2"><?php echo $artistName. ', '. $artistYears ?></td></tr>
                     <tr id="artist-gender"><td>Gender</td> <td><?php echo $artistGender ?></td></tr>
                     <tr id="artist-nat"><td>Nationality</td> <td><?php echo $artistNationality ?></td></tr>

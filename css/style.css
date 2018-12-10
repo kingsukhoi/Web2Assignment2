@@ -923,3 +923,7 @@ div.tns-nav > button:active {
     margin: auto;
     width: 89%;
 }
+
+.info-table tr>:first-child{
+    font-weight: bold;
+}

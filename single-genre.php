@@ -57,11 +57,10 @@ generateNavBar($pdo); ?>
         <div class="row">
             <div id="genre-info" class="two column">
                 <img src="make-image.php?type=genres&file=<?php echo $id ?>">
-                <div id="genre-name"><?php echo $genreName ?></div>
-                <table>
-                    <tr id="genre-desc"><td>Description</td> <td><?php echo $genreDesc ?></td></tr>
-                    <tr id="era"><td>Era</td> <td><?php echo $eraName . ' (' . $eraYears . ')' ?></td></tr>
-                    <tr id="genre-link"><td>WebLink</td> <td><a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td></tr>
+                <table class="info-table">
+                    <tr id="genre-desc"><td >Description</td> <td><?php echo $genreDesc ?></td></tr>
+                    <tr id="era"><td >Era</td> <td><?php echo $eraName . ' (' . $eraYears . ')' ?></td></tr>
+                    <tr id="genre-link"><td >WebLink</td> <td><a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td></tr>
                 </table>
             </div>
         </div>
