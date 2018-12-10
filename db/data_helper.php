@@ -12,24 +12,26 @@
  * @param string $table table name
  * @return bool|PDOStatement
  */
-function getDataByID(PDO $connection, string $id, string $idName, string $paramList, string $table){
+function getDataByID(PDO $connection, string $id, string $idName, string $paramList, string $table)
+{
     $sql = "
 SELECT $paramList
 FROM $table
 ";
     // truthy falsy baby
-    if ($id){
+    if ($id) {
         $sql .= "WHERE $idName = :id";
     }
-    $stmt = $connection -> prepare($sql);
-    $stmt -> bindValue(':id', $id);
-    $stmt -> execute();
+    $stmt = $connection->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
     return $stmt;
 }
 
-function getDataByEmail(PDO $connection, string $email, string $paramList){
+function getDataByEmail(PDO $connection, string $email, string $paramList)
+{
     $stmt = $connection->prepare("SELECT $paramList FROM art.Customers WHERE Email = :email;");
-    $stmt->execute([':email'=>$email]);
+    $stmt->execute([':email' => $email]);
     return $stmt;
 }
 
@@ -38,6 +40,7 @@ function getDataByEmail(PDO $connection, string $email, string $paramList){
  * @param string $email email address
  * @return bool True email exists. False no exist
  */
-function EmailExists(PDO $pdo , string $email){
+function EmailExists(PDO $pdo, string $email)
+{
     return !(getDataByEmail($pdo, $email, 'CustomerID')->rowCount() == 0);
 }

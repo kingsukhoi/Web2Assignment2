@@ -927,3 +927,9 @@ div.tns-nav > button:active {
 .info-table tr>:first-child{
     font-weight: bold;
 }
+.pull-center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
