@@ -7,20 +7,6 @@
 generateNavBar() ?>
 <body>
 
-<a>
-<?
-if (Session_Singleton::SessionStarted()) {
-    $pdo = newConnection();
-    $stmt = $pdo->prepare(
-        'SELECT concat(FirstName, \' \', LastName) FROM art.Customers
-WHERE CustomerID=:id');
-    $stmt->execute([':id' => Session_Singleton::GetCustomerID()]);
-    $result = $stmt->fetch()[0];
-    echo "Hello $result" . '!!';
-    $pdo = null;
-}
-?>
-</a>
 <div id="gallery-list" class="row">
 
     <div class="dropdown">
