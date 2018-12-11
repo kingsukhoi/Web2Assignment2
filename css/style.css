@@ -43,12 +43,6 @@ img {
     margin-top: 10%;
 }
 
-div {
-    border-color: black;
-    border-style: dashed;
-    padding: 1px;
-}
-
 #login .columns {
     width: 100%;
 
