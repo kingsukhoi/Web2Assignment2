@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     send_error(400, "Single painting page: Shits borked, query string not set");
 }
 $paintingInfoSql = "
-SELECT p.PaintingID,p.ArtistID,p.GalleryID,p.ImageFileName,p.Title,p.YearOfWork,p.JsonAnnotations,p.Description,
+SELECT p.PaintingID,p.ArtistID,p.GalleryID,p.ImageFileName,p.Title,p.YearOfWork,p.JsonAnnotations,p.Description,p.ArtistID,
        IFNULL(a.FirstName, '') as FirstName, IFNULL(a.LastName, '') as LastName,
        g.GalleryID, g.GalleryName,
        ROUND(AVG(r.Rating), 1) as Rating,
@@ -51,6 +51,7 @@ $colorData = json_decode($paintingInfoData['JsonAnnotations']);
 $year = $paintingInfoData['YearOfWork'];
 $description = $paintingInfoData['Description'];
 $image_file_name = $paintingInfoData['ImageFileName'];
+$artist_id = $paintingInfoData['ArtistID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,13 +71,36 @@ generateNavBar($pdo);
     <div id="image-single" class="four columns">
 
         <img src="./make-image.php?file=<?= $image_file_name ?>&type=paintings&size=full">
+        <?if(Session_Singleton::SessionStarted()){
+            if(Session_Singleton::InFavorites($id)){
+                ?>
+                <a href="services/favorites.php?remove=<?echo $id?>">Remove From Favorites</a>
+                <?
+            }else{
+                ?>
+                <a href="services/favorites.php?add=<?echo $id?>">Add To Favorites</a>
+                <?
+            }
 
+        }
+        ?>
     </div>
     <div id="image-details" class="five columns">
         <table class="info-table">
-            <tr> <h2><? echo $title ?>, <? echo $full_name ?></h2></tr>
-            <tr id="Gallery"><td>Gallery:</td> <td><? echo $gallery_name?></td></tr>
-            <tr id="genre-g"><td>Genre</td> <td><?=$genre_name?></td></tr>
+            <tr><td colspan="2"><h2><? echo $title ?></h2></td> </tr>
+            <tr><td>Artist</td><td>
+                    <a target="_blank" href="single-artist.php?id=<?echo $artist_id?>"><? echo $full_name ?></a>
+                </td> </tr>
+            <tr id="Gallery"><td>Gallery:</td>
+                <td>
+                    <a target="_blank" href="single-gallery.php?id=<?echo $gallery_id?>"><? echo $gallery_name?>
+                    </a>
+                </td>
+            </tr>
+            <tr id="genre-g"><td>Genre</td>
+                <td>
+                    <a href="single-genre.php?id=<?echo $genre_id?>" target="_blank"><?=$genre_name?></a>
+                </td></tr>
             <tr id="description"><td>Description</td> <td><? echo $description?></td></tr>
             <tr><td>Rating</td><td><?= $rating ?> <button class="button-primary">Vote</button>
                 </td></tr>
