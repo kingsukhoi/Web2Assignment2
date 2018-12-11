@@ -137,7 +137,7 @@ function addPaintings(response) {
                 firstName = response['FirstName']
             }
             if (response['LastName']) {
-                firstName = response['LastName']
+                lastName = response['LastName']
             }
             const artist = makeTD(`${firstName} ${lastName}`);
             tr.appendChild(img);
