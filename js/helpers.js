@@ -92,8 +92,9 @@ function imageFollow(e) {
     }
     function updatePosition(e) {
         e = e || window.event;
-        img.style.left  = (e.clientX + 5) + 'px';
-        img.style.top = (e.clientY + 5) + 'px';
+        console.log("x"+e.clientX)
+        img.style.left  = (e.pageX + 5) + 'px';
+        img.style.top = (e.pageY + 5) + 'px';
     }
     console.log('start');
     makeImage();

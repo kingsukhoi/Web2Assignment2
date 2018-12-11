@@ -56,7 +56,7 @@ $GalleryID = $result['GalleryID'];
 
 <div class="row">
 
-    <div id="gallery-single" class="three columns">
+    <div id="gallery-single" class="five columns">
 
         <h1><?echo $GalleryName?></h1>
         <div class="row">
@@ -84,7 +84,7 @@ $GalleryID = $result['GalleryID'];
         </div>
 
     </div>
-    <div id="paintings" class="nine columns">
+    <div id="paintings" class="seven columns">
         <h1>Paitings</h1>
 
         <div id='painting-table' class="row">

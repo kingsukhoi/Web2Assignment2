@@ -51,41 +51,52 @@ generateNavBar($pdo); ?>
 
 <div class="row">
 
-    <div id="genre-single" class="three columns">
+    <div id="genre-single" class="five columns">
 
-        <h1><?php echo $genreName ?></h1>
+
         <div class="row">
+            <h1><?php echo $genreName ?></h1>
             <div id="genre-info" class="two column">
                 <img src="make-image.php?type=genres&file=<?php echo $id ?>">
                 <table class="info-table">
-                    <tr id="genre-desc"><td >Description</td> <td><?php echo $genreDesc ?></td></tr>
-                    <tr id="era"><td >Era</td> <td><?php echo $eraName . ' (' . $eraYears . ')' ?></td></tr>
-                    <tr id="genre-link"><td >WebLink</td> <td><a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td></tr>
+                    <tr id="genre-desc">
+                        <td>Description</td>
+                        <td><?php echo $genreDesc ?></td>
+                    </tr>
+                    <tr id="era">
+                        <td>Era</td>
+                        <td><?php echo $eraName . ' (' . $eraYears . ')' ?></td>
+                    </tr>
+                    <tr id="genre-link">
+                        <td>WebLink</td>
+                        <td><a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td>
+                    </tr>
                 </table>
             </div>
         </div>
 
     </div>
 
-<div id="paintings" class="nine columns">
-    <h1>Paitings</h1>
+    <div id="paintings" class="seven columns">
 
-    <div id='painting-table' class="row">
-        <table class="u-full-width">
-            <thead>
-            <tr>
-                <th></th>
-                <th data-sort="title">Title</th>
-                <th data-sort="artist">Artist</th>
-                <th data-sort="year">Year</th>
-            </tr>
-            </thead>
-            <tbody>
-            <img class="loading" src="images/Blocks-1s-200px.gif">
-            </tbody>
-        </table>
+
+        <div id='painting-table' class="row">
+            <h1>Paintings</h1>
+            <table class="u-full-width">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th data-sort="title">Title</th>
+                    <th data-sort="artist">Artist</th>
+                    <th data-sort="year">Year</th>
+                </tr>
+                </thead>
+                <tbody>
+                <img class="loading" src="images/Blocks-1s-200px.gif">
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </div>
 
 <script src="js/helpers.js"></script>

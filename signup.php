@@ -6,7 +6,8 @@ include 'inc/header.inc.php'
 
 <body>
 <?
-include 'components/nav.php'
+include 'components/nav.php';
+generateNavBar();
 ?>
 <div id="login" class="container">
     <img src="images/logo.png" width="256" height="256" class="pull-center">
