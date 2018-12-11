@@ -946,7 +946,6 @@ div.tns-nav > button:active {
 @media screen and (max-width: 1250px) {
     #genre-single, #paintings, #artist-single,#genres, .row, #image-single, #image-details {
         width: 100%;
-        overflow: scroll;
     }
 
     table {
