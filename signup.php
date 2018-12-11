@@ -9,8 +9,9 @@ include 'inc/header.inc.php'
 include 'components/nav.php'
 ?>
 <div id="login" class="container">
+    <img src="images/logo.png" width="256" height="256" class="pull-center">
     <form action="services/signup.php" method="post">
-        <div class="row">
+        <div>
             <?
             if (isset($_GET['error'])) {
                 ?>
