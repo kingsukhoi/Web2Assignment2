@@ -11,7 +11,7 @@ if (isset($_GET['id'])){
     // redirect to error page
     send_error(400, "Single painting page: Shits borked, query string not set");
 }
-$sql ="
+$paintingInfoSql ="
 SELECT p.PaintingID,p.ArtistID,p.GalleryID,p.ImageFileName,p.Title,p.YearOfWork,p.JsonAnnotations,p.Description,
        IFNULL(a.FirstName, '') as FirstName, IFNULL(a.LastName, '') as LastName,
        g.GalleryID, g.GalleryName,
@@ -25,24 +25,32 @@ FROM art.Paintings p
   JOIN Genres ge ON pg.GenreID = ge.GenreID
 WHERE p.PaintingID = :id;
 ";
-$stmt = $pdo->prepare($sql);
-$stmt -> execute(['id'=>$id]);
-if ($stmt->rowCount() == 0){
+$paintingInfoStmt = $pdo->prepare($paintingInfoSql);
+$paintingInfoStmt -> execute(['id'=>$id]);
+
+$commentSql = "
+SELECT Reviews.`Comment` FROM Reviews
+WHERE PaintingID = 25 AND Reviews.`Comment` IS NOT NULL;
+";
+$commentStmt = $pdo -> prepare($commentSql);
+$commentStmt -> execute([':id'=>$id]);
+
+if ($paintingInfoStmt->rowCount() == 0){
     // redirect to error page
     send_error(400, "Single painting page: Shits borked, Painting ID not valid");
 }
-$data = $stmt->fetch();
-$title = $data['Title'];
-$full_name = trim($data['FirstName'].' '.$data['LastName']);
-$gallery_id = $data['GalleryID'];
-$gallery_name = $data['GalleryName'];
-$genre_name = $data['GenreName'];
-$genre_id = $data['GenreID'];
-$rating = $data['Rating'];
-$colorData = json_decode($data['JsonAnnotations']);
-$year = $data['YearOfWork'];
-$description = $data['Description'];
-$image_file_name = $data['ImageFileName'];
+$paintingInfoData = $paintingInfoStmt->fetch();
+$title = $paintingInfoData['Title'];
+$full_name = trim($paintingInfoData['FirstName'].' '.$paintingInfoData['LastName']);
+$gallery_id = $paintingInfoData['GalleryID'];
+$gallery_name = $paintingInfoData['GalleryName'];
+$genre_name = $paintingInfoData['GenreName'];
+$genre_id = $paintingInfoData['GenreID'];
+$rating = $paintingInfoData['Rating'];
+$colorData = json_decode($paintingInfoData['JsonAnnotations']);
+$year = $paintingInfoData['YearOfWork'];
+$description = $paintingInfoData['Description'];
+$image_file_name = $paintingInfoData['ImageFileName'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +89,9 @@ generateNavBar($pdo);
             <span>Rating</span><?= $rating?><button class="button-primary">Vote</button>
             <div>
                 <p>Reviews</p>
-
+                <?foreach ($commentStmt as $row){?>
+                    <p><?echo $row['Comment']?></p>
+                <?}?>
             </div>
         </div>
     </div>
