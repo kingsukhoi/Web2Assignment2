@@ -80,6 +80,7 @@ $stmt->execute();
             } ?>
             </tbody>
         </table>
+        <a class="button button-primary" href="services/favorites.php?remove-all=true">Clear All</a>
         <?
     }
 }
