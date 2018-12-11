@@ -17,8 +17,8 @@ $conn = newConnection();
 
 $rows = "
 PaintingID,ArtistID,GalleryID,ImageFileName,Title,ShapeID,MuseumLink,AccessionNumber,
-CopyrightText,Description,Excerpt,YearOfWork,Width,Height,Medium,
-Cost,MSRP,GoogleLink,GoogleDescription,WikiLink
+CopyrightText,Description,Excerpt,YearOfWork,Width,Height,Medium,Cost,MSRP,GoogleLink,
+GoogleDescription,WikiLink,JsonAnnotations
 ";
 
 $table = "art.Paintings";
