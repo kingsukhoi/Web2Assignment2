@@ -63,7 +63,7 @@ class Session_Singleton
      */
     static function RemoveFavorite(int $id){
         $lambda = function ($curr) use ($id){
-            return $curr !== $id;
+            return $curr != $id;
         };
         $currArray  = self::ListAllFavorites();
         $_SESSION[self::$FAVORITES_KEY] = array_filter($currArray, $lambda);
@@ -103,7 +103,10 @@ class Session_Singleton
      */
     static function InFavorites(int $paintingID){
         if (self::SessionStarted()) {
-            return in_array($paintingID, self::ListAllFavorites());
+            if(!self::ListAllFavorites())
+                return in_array($paintingID, []);
+            else
+                return in_array($paintingID, self::ListAllFavorites());
         }
         return false;
     }
