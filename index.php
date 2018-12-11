@@ -3,15 +3,30 @@
 <!--header-->
 <?php include 'inc/header.inc.php' ?>
 <!---->
-
-<body>
 <?php include 'components/nav.php';
 generateNavBar() ?>
+<body>
 
+<a>
+<?
+if (Session_Singleton::SessionStarted()) {
+    $pdo = newConnection();
+    $stmt = $pdo->prepare(
+        'SELECT concat(FirstName, \' \', LastName) FROM art.Customers
+WHERE CustomerID=:id');
+    $stmt->execute([':id' => Session_Singleton::GetCustomerID()]);
+    $result = $stmt->fetch()[0];
+    echo "Hello $result" . '!!';
+    $pdo = null;
+}
+?>
+</a>
 <div id="gallery-list" class="row">
+
     <div class="dropdown">
-        <h2>Galleries</h2>
+        <button>Galleries</button>
         <!--<button onclick="showMenu()">Galleries</button>-->
+
         <ul class="dropdown-content">
             <img src="images/Blocks-1s-200px.gif" alt="Loading">
         </ul>

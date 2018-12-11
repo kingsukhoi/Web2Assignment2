@@ -52,12 +52,12 @@ $artistLink = $result['ArtistLink'];
 <!--header-->
 <?php include 'inc/header.inc.php' ?>
 <!---->
-
-<body>
 <?php
 include 'components/nav.php';
 generateNavBar($pdo);
 ?>
+<body>
+
 
 <div class="row"></div>
 <div class="row">
@@ -96,12 +96,11 @@ generateNavBar($pdo);
         </div>
 
     </div>
-    <div id="Genres" class="seven columns">
-
+    <div id="Genres">
 
         <div id='painting-table' class="row">
             <h1>Paintings</h1>
-            <table class="u-full-width">
+            <table>
                 <thead>
                 <tr>
                     <th></th>
@@ -110,13 +109,10 @@ generateNavBar($pdo);
                     <th data-sort="year">Year</th>
                 </tr>
                 </thead>
+                <img class="loading" src="images/Blocks-1s-200px.gif">
+                <tbody>
+                </tbody>
 
-                <div class="scroll">
-                    <img class="loading" src="images/Blocks-1s-200px.gif">
-                    <tbody>
-                    </tbody>
-
-                </div>
 
             </table>
         </div>

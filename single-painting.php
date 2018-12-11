@@ -5,13 +5,13 @@ include "db/data_helper.php";
 include 'helpers/HTTPFunctions.php';
 $pdo = newConnection();
 $id = "";
-if (isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
     // redirect to error page
     send_error(400, "Single painting page: Shits borked, query string not set");
 }
-$paintingInfoSql ="
+$paintingInfoSql = "
 SELECT p.PaintingID,p.ArtistID,p.GalleryID,p.ImageFileName,p.Title,p.YearOfWork,p.JsonAnnotations,p.Description,
        IFNULL(a.FirstName, '') as FirstName, IFNULL(a.LastName, '') as LastName,
        g.GalleryID, g.GalleryName,
@@ -26,22 +26,23 @@ FROM art.Paintings p
 WHERE p.PaintingID = :id;
 ";
 $paintingInfoStmt = $pdo->prepare($paintingInfoSql);
-$paintingInfoStmt -> execute(['id'=>$id]);
+$paintingInfoStmt->execute(['id' => $id]);
 
 $commentSql = "
 SELECT Reviews.`Comment` FROM Reviews
 WHERE PaintingID = 25 AND Reviews.`Comment` IS NOT NULL;
 ";
-$commentStmt = $pdo -> prepare($commentSql);
-$commentStmt -> execute([':id'=>$id]);
+$commentStmt = $pdo->prepare($commentSql);
+$commentStmt->execute([':id' => $id]);
 
-if ($paintingInfoStmt->rowCount() == 0){
+if ($paintingInfoStmt->rowCount() == 0) {
     // redirect to error page
     send_error(400, "Single painting page: Shits borked, Painting ID not valid");
 }
 $paintingInfoData = $paintingInfoStmt->fetch();
+print_r($paintingInfoData);
 $title = $paintingInfoData['Title'];
-$full_name = trim($paintingInfoData['FirstName'].' '.$paintingInfoData['LastName']);
+$full_name = trim($paintingInfoData['FirstName'] . ' ' . $paintingInfoData['LastName']);
 $gallery_id = $paintingInfoData['GalleryID'];
 $gallery_name = $paintingInfoData['GalleryName'];
 $genre_name = $paintingInfoData['GenreName'];
@@ -57,41 +58,50 @@ $image_file_name = $paintingInfoData['ImageFileName'];
 <!--header-->
 <?php include 'inc/header.inc.php' ?>
 <!---->
-
-<body>
 <?php
 include 'components/nav.php';
 generateNavBar($pdo);
 ?>
+<body>
+
 
 
 <div class="row">
 
-    <div id="image-single" class="six columns">
+    <div id="image-single" class="four columns">
 
-        <div class="row">
-            <img src="./make-image.php?file=<?= $image_file_name?>&type=paintings&size=full">
-        </div>
+        <img src="./make-image.php?file=<?= $image_file_name ?>&type=paintings&size=full">
 
     </div>
-    <div id="image-details" class="six columns">
-        <h2><?echo $title?>, <?echo $full_name?></h2>
-        <p>
-            Gallery: <?= $gallery_name?>
-            Year: <?= $year?>
-            Genre: <?= $genre_name?>
-            Description: <?= $description?>
+    <div id="image-details" class="five columns">
+        <table class="info-table">
+            <tr> <h2><? echo $title ?>, <? echo $full_name ?></h2></tr>
+            <tr id="Gallery"><td>Gallery:</td> <td><? echo $gallery_name?></td></tr>
+            <tr id="genre-g"><td>Genre</td> <td><?=$genre_name?></td></tr>
+            <tr id="description"><td>Description</td> <td><? echo $description?></td></tr>
+
+<!--                <td><a target="_blank" href = '--><?// echo $site?><!--'> --><?// echo $site?><!--</a></td> </tr>-->
+        </table>
+
+
+        <h2><? echo $title ?>, <? echo $full_name ?></h2>
+
+            Gallery: <?= $gallery_name ?><br>
+            Year: <?= $year ?><br>
+            Genre: <?= $genre_name ?><br>
+            Description: <?= $description ?><br>
         </p>
         <div class="row u-full-width">
             <span> Color Scheme </span>
         </div>
-        <div id="rating" class="u-cf">
-            <span>Rating</span><?= $rating?><button class="button-primary">Vote</button>
+        <div id="rating">
+            <span>Rating</span><?= $rating ?>
+            <button class="button-primary">Vote</button>
             <div>
                 <p>Reviews</p>
-                <?foreach ($commentStmt as $row){?>
-                    <p><?echo $row['Comment']?></p>
-                <?}?>
+                <? foreach ($commentStmt as $row) { ?>
+                    <p><? echo $row['Comment'] ?></p>
+                <? } ?>
             </div>
         </div>
     </div>

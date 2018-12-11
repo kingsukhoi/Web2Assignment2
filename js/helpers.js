@@ -152,7 +152,7 @@ function addPaintings(response) {
             if (response['LastName']) {
                 lastName = response['LastName']
             }
-            const artist = makeTD(makeA(`single-artist=${curr['ArtistID']}`, `${firstName} ${lastName}`));
+            const artist = makeTD(makeA(`single-artist.php?id=${curr['ArtistID']}`, `${firstName} ${lastName}`));
             tr.appendChild(img);
             tr.appendChild(title);
             tr.appendChild(artist);

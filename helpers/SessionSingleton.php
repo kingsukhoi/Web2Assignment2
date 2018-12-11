@@ -71,6 +71,7 @@ class Session_Singleton
     }
 
     static function RemoveAllFavorites(){
+
         $_SESSION[self::$FAVORITES_KEY] = [];
     }
 

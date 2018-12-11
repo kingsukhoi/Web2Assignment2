@@ -42,11 +42,11 @@ $eraYears = $resultEra['EraYears'];
 <!--header-->
 <?php include 'inc/header.inc.php' ?>
 <!---->
-
-<body>
 <?php
 include 'components/nav.php';
 generateNavBar($pdo); ?>
+<body>
+
 
 
 <div class="row">

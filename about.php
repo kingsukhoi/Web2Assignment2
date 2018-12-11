@@ -7,11 +7,12 @@ include "inc/session.inc.php";
 <?php
 include 'inc/header.inc.php'
 ?>
-<!---->
-<body>
 <?php
-include 'components/nav.php'
+include 'components/nav.php';
+generateNavBar();
 ?>
+<body>
+
 
 <div class="row">
     <div class="four columns">
