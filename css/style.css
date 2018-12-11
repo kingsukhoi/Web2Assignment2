@@ -980,6 +980,7 @@ tr:hover {
 
 table {
     overflow: scroll;
+    border-collapse: collapse;
 }
 
 img {
