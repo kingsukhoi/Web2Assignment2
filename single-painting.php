@@ -74,11 +74,11 @@ generateNavBar($pdo);
         <?if(Session_Singleton::SessionStarted()){
             if(Session_Singleton::InFavorites($id)){
                 ?>
-                <a href="services/favorites.php?remove=<?echo $id?>">Remove From Favorites</a>
+                <a class="button" href="services/favorites.php?remove=<?echo $id?>">Remove From Favorites</a>
                 <?
             }else{
                 ?>
-                <a href="services/favorites.php?add=<?echo $id?>">Add To Favorites</a>
+                <a class="button-primary button" href="services/favorites.php?add=<?echo $id?>">Add To Favorites</a>
                 <?
             }
 
