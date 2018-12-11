@@ -17,7 +17,8 @@
 function send_error(int $status, string $msg, string $redirectUrl=null){
     header("HTTP/1.0 $status $msg");
     if ($redirectUrl==null){
-        echo json_encode(['status'=>$status, 'message'=>$msg]);
+        //echo json_encode(['status'=>$status, 'message'=>$msg]);
+        set_redirect('error.php?error='.$msg);
     }else{
         set_redirect($redirectUrl.'?error='.$msg);
     }
