@@ -861,29 +861,6 @@ there.
 
 /*CARROUSEL */
 
-.row {
-    width: 90%;
-    margin: 20px auto;
-}
-
-.item {
-    margin: 10px 0;
-}
-
-> .item-content {
-    background: #39ed00;
-    padding: 10px;
-    text-align: center;
-    font-size: 36px;
-    height: 350px;
-}
-
-
-div.photo-item {
-    height: 30px;
-    width: 30px;
-}
-
 div.tns-nav {
     display: flex;
     justify-content: center;
