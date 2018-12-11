@@ -50,7 +50,7 @@ class Session_Singleton
     static function AddToFavorites(int $paintingID)
     {
         if (self::SessionStarted()) {
-            if (!in_array($paintingID, self::ListAllFavorites()))
+            if (!self::InFavorites($paintingID))
                 $_SESSION[self::$FAVORITES_KEY][] = $paintingID;
             return true;
         }
@@ -95,5 +95,16 @@ class Session_Singleton
             return $_SESSION[self::$CUSTOMER_ID_KEY];
         else
             return false;
+    }
+
+    /**check if id is in favorites array
+     * @param $paintingID int id
+     * @return bool is in array
+     */
+    static function InFavorites(int $paintingID){
+        if (self::SessionStarted()) {
+            return in_array($paintingID, self::ListAllFavorites());
+        }
+        return false;
     }
 }
