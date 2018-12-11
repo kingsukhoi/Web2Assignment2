@@ -11,6 +11,16 @@ if (isset($_GET['id'])) {
     // redirect to error page
     send_error(400, "Single painting page: Shits borked, query string not set");
 }
+
+$checkIfIDExistsSql = "SELECT count(*) FROM Paintings WHERE PaintingID = :id;";
+$checkIfIDExistsStmt = $pdo->prepare($checkIfIDExistsSql);
+$checkIfIDExistsStmt->execute([':id' => $id]);
+
+if ($checkIfIDExistsStmt->fetch()[0] == 0) {
+    // redirect to error page
+    send_error(400, "Single painting page: Shits borked, Painting ID not valid");
+}
+
 $paintingInfoSql = "
 SELECT p.PaintingID,p.ArtistID,p.GalleryID,p.ImageFileName,p.Title,p.YearOfWork,p.JsonAnnotations,p.Description,p.ArtistID,
        IFNULL(a.FirstName, '') as FirstName, IFNULL(a.LastName, '') as LastName,
@@ -26,7 +36,7 @@ FROM art.Paintings p
 WHERE p.PaintingID = :id;
 ";
 $paintingInfoStmt = $pdo->prepare($paintingInfoSql);
-$paintingInfoStmt->execute(['id' => $id]);
+$paintingInfoStmt->execute([':id' => $id]);
 
 $commentSql = "
 SELECT Reviews.`Comment` FROM Reviews
@@ -35,10 +45,6 @@ WHERE PaintingID = 25 AND Reviews.`Comment` IS NOT NULL;
 $commentStmt = $pdo->prepare($commentSql);
 $commentStmt->execute([':id' => $id]);
 
-if ($paintingInfoStmt->rowCount() == 0) {
-    // redirect to error page
-    send_error(400, "Single painting page: Shits borked, Painting ID not valid");
-}
 $paintingInfoData = $paintingInfoStmt->fetch();
 $title = $paintingInfoData['Title'];
 $full_name = trim($paintingInfoData['FirstName'] . ' ' . $paintingInfoData['LastName']);
