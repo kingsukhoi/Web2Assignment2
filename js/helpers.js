@@ -50,6 +50,18 @@ function makeTD(elem, classList = '') {
     return rtnMe;
 }
 
+function makeA(link, elem) {
+    const rtnMe = document.createElement('a');
+    rtnMe.href = link;
+    rtnMe.target = '_blank';
+    if (typeof elem !== 'string')
+        rtnMe.appendChild(elem);
+    else {
+        rtnMe.innerText = elem;
+    }
+    return rtnMe;
+}
+
 /**
  * can't remove loading gif the normal way so we doing this
  */
@@ -126,7 +138,7 @@ function addPaintings(response) {
     response.forEach((curr) => {
         const tr = document.createElement('tr');
         let img = makeImage(curr);
-        const title = makeTD(curr['Title']);
+        const title = makeTD(makeA(`single-painting.php?id=${curr['PaintingID']}`, curr['Title']));
         const year = makeTD(curr['YearOfWork']);
         doWebCall(`./services/artist.php?id=${curr['ArtistID']}`, (response) => {
             // this is where stuff get's appended
@@ -139,7 +151,7 @@ function addPaintings(response) {
             if (response['LastName']) {
                 lastName = response['LastName']
             }
-            const artist = makeTD(`${firstName} ${lastName}`);
+            const artist = makeTD(makeA(`single-artist=${curr['ArtistID']}`, `${firstName} ${lastName}`));
             tr.appendChild(img);
             tr.appendChild(title);
             tr.appendChild(artist);
