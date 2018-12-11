@@ -83,7 +83,9 @@ generateNavBar($pdo);
             <tr><td>Color Scheme</td>
                 <td id="color-scheme-container">
                     <?foreach ($colorData->dominantColors as $color){?>
-                        <div class="color-scheme-box" style="background-color: <?php echo $color->web?>"></div>
+                        <div class="tooltip color-scheme-box" style="background-color: <?php echo $color->web?>">
+                            <span class="tooltiptext"><?echo $color->name?></span>
+                        </div>
                     <?}?>
                 </td>
             </tr>
