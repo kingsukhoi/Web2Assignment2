@@ -45,7 +45,6 @@ function addArtists() {
             controls: false,
             gutter: 2,
             navPosition: 'bottom',
-            edgePadding: 30,
 
         });
     }
@@ -83,7 +82,6 @@ function addGenres() {
             controls: false,
             gutter: 2,
             navPosition: 'bottom',
-            edgePadding: 30,
 
         });
     }
