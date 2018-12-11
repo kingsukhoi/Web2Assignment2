@@ -975,7 +975,7 @@ li:hover {
 }
 
 tr:hover {
-    background-color: rgb(57, 237, 0, 0.2);
+    background-color: rgba(57, 237, 0, 0.2);
 }
 
 table {
