@@ -89,17 +89,17 @@ generateNavBar($pdo);
         <table class="info-table">
             <tr><td colspan="2"><h2><? echo $title ?></h2></td> </tr>
             <tr><td>Artist</td><td>
-                    <a target="_blank" href="single-artist.php?id=<?echo $artist_id?>"><? echo $full_name ?></a>
+                    <a  href="single-artist.php?id=<?echo $artist_id?>"><? echo $full_name ?></a>
                 </td> </tr>
             <tr id="Gallery"><td>Gallery:</td>
                 <td>
-                    <a target="_blank" href="single-gallery.php?id=<?echo $gallery_id?>"><? echo $gallery_name?>
+                    <a  href="single-gallery.php?id=<?echo $gallery_id?>"><? echo $gallery_name?>
                     </a>
                 </td>
             </tr>
             <tr id="genre-g"><td>Genre</td>
                 <td>
-                    <a href="single-genre.php?id=<?echo $genre_id?>" target="_blank"><?=$genre_name?></a>
+                    <a href="single-genre.php?id=<?echo $genre_id?>" ><?=$genre_name?></a>
                 </td></tr>
             <tr id="description"><td>Description</td> <td><? echo $description?></td></tr>
             <tr><td>Rating</td><td><?= $rating ?> <button class="button-primary">Vote</button>

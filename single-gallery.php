@@ -67,7 +67,7 @@ $GalleryID = $result['GalleryID'];
                     <tr id="gallery-city"><td>City</td> <td><? echo $GalleryCity?></td></tr>
                     <tr id="gallery-country"><td>Country</td> <td><? echo $GalleryCountry?></td></tr>
                     <tr id="gallery-website"><td>WebSite</td>
-                        <td><a target="_blank" href = '<? echo $site?>'> <? echo $site?></a></td> </tr>
+                        <td><a  href = '<? echo $site?>'> <? echo $site?></a></td> </tr>
                 </table>
             </div>
 

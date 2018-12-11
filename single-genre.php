@@ -69,7 +69,7 @@ generateNavBar($pdo); ?>
                     </tr>
                     <tr id="genre-link">
                         <td>WebLink</td>
-                        <td><a target="_blank" href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td>
+                        <td><a  href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td>
                     </tr>
                 </table>
             </div>

@@ -88,7 +88,7 @@ generateNavBar($pdo);
                     </tr>
                     <tr id="artist-link">
                         <td>WebLink</td>
-                        <td><a target="_blank" href='<? echo $artistLink ?>'> <? echo $artistLink ?></a></td>
+                        <td><a  href='<? echo $artistLink ?>'> <? echo $artistLink ?></a></td>
                     </tr>
                 </table>
             </div>

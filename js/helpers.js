@@ -53,7 +53,6 @@ function makeTD(elem, classList = '') {
 function makeA(link, elem) {
     const rtnMe = document.createElement('a');
     rtnMe.href = link;
-    rtnMe.target = '_blank';
     if (typeof elem !== 'string')
         rtnMe.appendChild(elem);
     else {
@@ -104,7 +103,7 @@ function imageFollow(e) {
     }
     function updatePosition(e) {
         e = e || window.event;
-        console.log("x"+e.clientX)
+        console.log("x"+e.clientX);
         img.style.left  = (e.pageX + 5) + 'px';
         img.style.top = (e.pageY + 5) + 'px';
     }
