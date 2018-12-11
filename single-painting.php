@@ -40,7 +40,6 @@ if ($paintingInfoStmt->rowCount() == 0) {
     send_error(400, "Single painting page: Shits borked, Painting ID not valid");
 }
 $paintingInfoData = $paintingInfoStmt->fetch();
-print_r($paintingInfoData);
 $title = $paintingInfoData['Title'];
 $full_name = trim($paintingInfoData['FirstName'] . ' ' . $paintingInfoData['LastName']);
 $gallery_id = $paintingInfoData['GalleryID'];
@@ -79,30 +78,20 @@ generateNavBar($pdo);
             <tr id="Gallery"><td>Gallery:</td> <td><? echo $gallery_name?></td></tr>
             <tr id="genre-g"><td>Genre</td> <td><?=$genre_name?></td></tr>
             <tr id="description"><td>Description</td> <td><? echo $description?></td></tr>
-
-<!--                <td><a target="_blank" href = '--><?// echo $site?><!--'> --><?// echo $site?><!--</a></td> </tr>-->
+            <tr><td>Rating</td><td><?= $rating ?> <button class="button-primary">Vote</button>
+                </td></tr>
+            <tr><td>Color Scheme</td>
+                <td id="color-scheme-container">
+                    <?foreach ($colorData->dominantColors as $color){?>
+                        <div class="color-scheme-box" style="background-color: <?php echo $color->web?>"></div>
+                    <?}?>
+                </td>
+            </tr>
+            <tr><td colspan="2">Reviews</td></tr>
+            <? foreach ($commentStmt as $row) { ?>
+                <tr><td colspan="2" style="font-weight: normal"><? echo $row['Comment'] ?></td></tr>
+            <? } ?>
         </table>
-
-
-        <h2><? echo $title ?>, <? echo $full_name ?></h2>
-
-            Gallery: <?= $gallery_name ?><br>
-            Year: <?= $year ?><br>
-            Genre: <?= $genre_name ?><br>
-            Description: <?= $description ?><br>
-        </p>
-        <div class="row u-full-width">
-            <span> Color Scheme </span>
-        </div>
-        <div id="rating">
-            <span>Rating</span><?= $rating ?>
-            <button class="button-primary">Vote</button>
-            <div>
-                <p>Reviews</p>
-                <? foreach ($commentStmt as $row) { ?>
-                    <p><? echo $row['Comment'] ?></p>
-                <? } ?>
-            </div>
         </div>
     </div>
 </div>
