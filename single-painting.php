@@ -1,5 +1,24 @@
 <?php
 include "inc/session.inc.php";
+include "db/db_helper.php";
+include "db/data_helper.php";
+include 'helpers/HTTPFunctions.php';
+$pdo = newConnection();
+$id = "";
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
+} else {
+    // redirect to error page
+    send_error(400, "Single painting page: Shits borked, query string not set");
+}
+$paramList ="PaintingID,ArtistID,GalleryID,ImageFileName,Title,YearOfWork";
+$data = getDataByID($pdo, $id,"PaintingID", $paramList, 'art.Paintings');
+
+if ($data->rowCount() == 0){
+    // redirect to error page
+    send_error(400, "Single gallery page: Shits borked, gallery ID not valid");
+}
+$data->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +29,6 @@ include "inc/session.inc.php";
 <body>
 <?php
 include 'components/nav.php';
-include "db/db_helper.php";
-$pdo = newConnection();
 generateNavBar($pdo);
 ?>
 
@@ -21,7 +38,7 @@ generateNavBar($pdo);
     <div id="image-single" class="six columns">
 
         <div class="row">
-            <img src="#">Image goes here
+            <img src="./make-image.php?file=001080&type=paintings&size=full">
         </div>
 
     </div>
