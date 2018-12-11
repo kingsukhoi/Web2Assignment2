@@ -1,15 +1,15 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: farsos
-     * Date: 12/9/18
-     * Time: 4:54 PM
-     */
-    include "inc/session.inc.php";
-    include "db/db_helper.php";
-    include "db/data_helper.php";
-    include 'helpers/HTTPFunctions.php';
-    $pdo = newConnection();
+/**
+ * Created by PhpStorm.
+ * User: farsos
+ * Date: 12/9/18
+ * Time: 4:54 PM
+ */
+include "inc/session.inc.php";
+include "db/db_helper.php";
+include "db/data_helper.php";
+include 'helpers/HTTPFunctions.php';
+$pdo = newConnection();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,33 +18,38 @@
 <!---->
 
 <body>
-    <?php
-        include 'components/nav.php';
-        $favoriteList = implode(',', Session_Singleton::ListAllFavorites());
-        generateNavBar($pdo);
-        if(Session_Singleton::SessionStarted()){
-        $stmt = $pdo -> prepare(
-"SELECT p.PaintingID, p.ImageFileName, p.Title, p.ArtistID, p.YearOfWork, concat(IFNULL(a.FirstName, ''), ' ', IFNULL(a.LastName, ' ')) AS Name
+<?php
+include 'components/nav.php';
+$favoriteList = implode(',', Session_Singleton::ListAllFavorites());
+generateNavBar($pdo);
+if(Session_Singleton::SessionStarted()){
+if(count(Session_Singleton::ListAllFavorites())==0){
+    ?>
+    <h1>Please add some favorites</h1>
+    <?
+}else{
+$stmt = $pdo -> prepare(
+    "SELECT p.PaintingID, p.ImageFileName, p.Title, p.ArtistID, p.YearOfWork, concat(IFNULL(a.FirstName, ''), ' ', IFNULL(a.LastName, ' ')) AS Name
 FROM Paintings p JOIN Artists a ON p.ArtistID = a.ArtistID
 WHERE PaintingID IN ($favoriteList)
 ORDER BY Title");
-        //$stmt -> bindValue(':ids', $favoriteList);
-        $stmt -> execute();
-    ?>
-    <div id="favorite-table">
-        <div >
-            <table>
-                <thead>
-                <tr>
-                    <th></th>
-                    <th data-sort="title">Title</th>
-                    <th data-sort="artist">Artist</th>
-                    <th data-sort="year">Year</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?foreach ($stmt as $row){?>
+//$stmt -> bindValue(':ids', $favoriteList);
+$stmt -> execute();
+?>
+<div id="favorite-table">
+    <div >
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th data-sort="title">Title</th>
+                <th data-sort="artist">Artist</th>
+                <th data-sort="year">Year</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?foreach ($stmt as $row){?>
                 <tr>
                     <td><img src="make-image.php?size=square&amp;width=100&amp;type=paintings&amp;file=<?echo $row['ImageFileName']?>"
                              alt="A Centennial of Independence" data-image-file="<?echo $row['ImageFileName']?>"></td>
@@ -55,19 +60,20 @@ ORDER BY Title");
                             <img src="images/garbage.png" alt="garbage" width="50px">
                         </a> </td>
                 </tr>
-                <?}?>
-                </tbody>
-            </table>
-            <?
-            }
-            else{
-                ?>
-                <br>
-                <h1>Please <a href="./login.php">Login</a> To View Favorites</h1>
-                <?
-            }
+            <?}?>
+            </tbody>
+        </table>
+        <?
+        }
+        }
+        else{
             ?>
-        </div>
+            <br>
+            <h1>Please <a href="./login.php">Login</a> To View Favorites</h1>
+            <?
+        }
+        ?>
     </div>
+</div>
 </body>
 </html>
