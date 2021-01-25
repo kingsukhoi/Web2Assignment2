@@ -1,5 +1,7 @@
 <?php
-include "db/db_helper.php";
+if (!function_exists('newConnection')){
+    include "db/db_helper.php";
+}
 /** @noinspection ALL */
 function generateNavBar()
 {
