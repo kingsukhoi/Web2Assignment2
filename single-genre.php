@@ -69,7 +69,7 @@ generateNavBar(); ?>
                     </tr>
                     <tr id="genre-link">
                         <td>WebLink</td>
-                        <td><a  href='<? echo $genreLink ?>'> <? echo $genreLink ?></a></td>
+                        <td><a  href='<?php echo $genreLink ?>'> <?php echo $genreLink ?></a></td>
                     </tr>
                 </table>
             </div>

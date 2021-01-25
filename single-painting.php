@@ -121,7 +121,7 @@ generateNavBar();
             </tr>
             <tr><td colspan="2">Reviews</td></tr>
             <?php foreach ($commentStmt as $row) { ?>
-                <tr><td colspan="2" style="font-weight: normal"><? echo $row['Comment'] ?></td></tr>
+                <tr><td colspan="2" style="font-weight: normal"><?php echo $row['Comment'] ?></td></tr>
             <?php } ?>
         </table>
         </div>
