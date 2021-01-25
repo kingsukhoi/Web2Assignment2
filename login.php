@@ -10,7 +10,7 @@ generateNavBar();
     <img src="images/logo.png" width="256" height="256" class="pull-center">
     <form action="services/login.php" method="post">
         <div>
-            <div class="five column error"><?echo isset($_GET['error'])?'Error: '. htmlentities($_GET['error']):''?></div>
+            <div class="five column error"><?php echo isset($_GET['error'])?'Error: '. htmlentities($_GET['error']):''?></div>
             <div class="five columns">
                 <label for="Username">Email</label>
                 <input class="u-full-width" name="email" type="email" placeholder="Email" id="email" required

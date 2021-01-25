@@ -95,7 +95,7 @@ generateNavBar();
         <table class="info-table">
             <tr><td colspan="2"><h2><?php echo $title ?></h2></td> </tr>
             <tr><td>Artist</td><td>
-                    <a  href="single-artist.php?id=<?php echo $artist_id?>"><? echo $full_name ?></a>
+                    <a  href="single-artist.php?id=<?php echo $artist_id?>"><?php echo $full_name ?></a>
                 </td> </tr>
             <tr id="Gallery"><td>Gallery:</td>
                 <td>
@@ -114,7 +114,7 @@ generateNavBar();
                 <td id="color-scheme-container">
                     <?php foreach ($colorData->dominantColors as $color){?>
                         <div class="tooltip color-scheme-box" style="background-color: <?php echo $color->web?>">
-                            <span class="tooltiptext"><?echo $color->name?></span>
+                            <span class="tooltiptext"><?php echo $color->name?></span>
                         </div>
                     <?php }?>
                 </td>

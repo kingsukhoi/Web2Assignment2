@@ -16,7 +16,7 @@ generateNavBar();
             <?php
             if (isset($_GET['error'])) {
                 ?>
-                <div class="error five column"><strong>Error: </strong><?echo htmlentities($_GET['error'])?></div>
+                <div class="error five column"><strong>Error: </strong><?php echo htmlentities($_GET['error'])?></div>
                 <?php
             }
             ?>

@@ -71,8 +71,7 @@ $stmt->execute();
                         echo trim($row['Name']) ?></td>
                     <td><?php
                         echo $row['YearOfWork'] ?></td>
-                    <td><a href="services/favorites.php?remove=<?
-                        echo $row['PaintingID'] ?>">
+                    <td><a href="services/favorites.php?remove=<?php                         echo $row['PaintingID'] ?>">
                             <img src="images/garbage.png" alt="garbage" width="50px">
                         </a></td>
                 </tr>
