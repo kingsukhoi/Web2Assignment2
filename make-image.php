@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This will return a php generated image
  * Necessary query string parameters include:
@@ -11,6 +11,7 @@
     $pic = $_GET['file'];
     $source = $_GET['type'];
 
+    $width = null;
     if(isset($_GET['width'])) {
         $width = $_GET['width'];
     }

@@ -33,7 +33,7 @@ if ($data->rowCount() == 0){
 <body>
 <?php
 include 'components/nav.php';
-generateNavBar($pdo);
+generateNavBar();
 
 /**
  * I'm gonna clean this up later, just trying to get shit to work for now.
@@ -58,16 +58,16 @@ $GalleryID = $result['GalleryID'];
 
     <div id="gallery-single" class="five columns">
 
-        <h1><?echo $GalleryName?></h1>
+        <h1><?php echo $GalleryName?></h1>
         <div class="row">
             <div id="gallery-info" class="two column">
                 <table class="info-table">
-                    <tr id="gallery-native-name"><td>Native name</td> <td><? echo $GalleryNativeName?></td></tr>
-                    <tr id="gallery-address"><td>Address</td> <td><? echo $GalleryAddress?></td></tr>
-                    <tr id="gallery-city"><td>City</td> <td><? echo $GalleryCity?></td></tr>
-                    <tr id="gallery-country"><td>Country</td> <td><? echo $GalleryCountry?></td></tr>
+                    <tr id="gallery-native-name"><td>Native name</td> <td><?php echo $GalleryNativeName?></td></tr>
+                    <tr id="gallery-address"><td>Address</td> <td><?php echo $GalleryAddress?></td></tr>
+                    <tr id="gallery-city"><td>City</td> <td><?php echo $GalleryCity?></td></tr>
+                    <tr id="gallery-country"><td>Country</td> <td><?php echo $GalleryCountry?></td></tr>
                     <tr id="gallery-website"><td>WebSite</td>
-                        <td><a  href = '<? echo $site?>'> <? echo $site?></a></td> </tr>
+                        <td><a  href = '<?php echo $site?>'> <?php echo $site?></a></td> </tr>
                 </table>
             </div>
 

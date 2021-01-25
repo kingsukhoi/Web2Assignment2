@@ -22,13 +22,13 @@ $pdo = newConnection();
 error_reporting(0);
 ini_set('display_errors', 0);
 include 'components/nav.php';
-generateNavBar($pdo);
+generateNavBar();
 //print_r(gettype(count(Session_Singleton::ListAllFavorites())));
 if (Session_Singleton::SessionStarted()){
 if (empty(Session_Singleton::ListAllFavorites())){
     ?>
     <h1>Please add some favorites</h1>
-    <?
+    <?php
 }
 else{
 if (count(Session_Singleton::ListAllFavorites()) == 1) {
@@ -57,38 +57,38 @@ $stmt->execute();
             </tr>
             </thead>
             <tbody>
-            <?
+            <?php
             foreach ($stmt as $row) {
                 ?>
                 <tr>
-                    <td><img src="make-image.php?size=square&amp;width=100&amp;type=paintings&amp;file=<?
+                    <td><img src="make-image.php?size=square&amp;width=100&amp;type=paintings&amp;file=<?php
                         echo $row['ImageFileName'] ?>"
-                             alt="A Centennial of Independence" data-image-file="<?
+                             alt="A Centennial of Independence" data-image-file="<?php
                         echo $row['ImageFileName'] ?>"></td>
-                    <td><?
+                    <td><?php
                         echo $row['Title'] ?></td>
-                    <td><?
+                    <td><?php
                         echo trim($row['Name']) ?></td>
-                    <td><?
+                    <td><?php
                         echo $row['YearOfWork'] ?></td>
                     <td><a href="services/favorites.php?remove=<?
                         echo $row['PaintingID'] ?>">
                             <img src="images/garbage.png" alt="garbage" width="50px">
                         </a></td>
                 </tr>
-                <?
+                <?php
             } ?>
             </tbody>
         </table>
         <a class="button button-primary" href="services/favorites.php?remove-all=true">Clear All</a>
-        <?
+        <?php
     }
 }
         else {
             ?>
             <br>
             <h1>Please <a href="./login.php">Login</a> To View Favorites</h1>
-            <?
+            <?php
         }
 
         ?>

@@ -1,11 +1,11 @@
-<?include "inc/session.inc.php";?>
+<?php include "inc/session.inc.php";?>
 <html lang="en">
 <?php
 include 'inc/header.inc.php'
 ?>
 
 <body>
-<?
+<?php
 include 'components/nav.php';
 generateNavBar();
 ?>
@@ -13,11 +13,11 @@ generateNavBar();
     <img src="images/logo.png" width="256" height="256" class="pull-center">
     <form action="services/signup.php" method="post">
         <div>
-            <?
+            <?php
             if (isset($_GET['error'])) {
                 ?>
                 <div class="error five column"><strong>Error: </strong><?echo htmlentities($_GET['error'])?></div>
-                <?
+                <?php
             }
             ?>
             <div class="five columns">

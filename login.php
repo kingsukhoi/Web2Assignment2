@@ -2,7 +2,7 @@
 include "inc/session.inc.php";
 include 'inc/header.inc.php'
 ?>
-<?
+<?php
 include 'components/nav.php';
 generateNavBar();
 ?>

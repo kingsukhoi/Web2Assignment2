@@ -44,7 +44,7 @@ $eraYears = $resultEra['EraYears'];
 <!---->
 <?php
 include 'components/nav.php';
-generateNavBar($pdo); ?>
+generateNavBar(); ?>
 <body>
 
 
