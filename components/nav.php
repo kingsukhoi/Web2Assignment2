@@ -1,4 +1,5 @@
 <?php
+include "db/db_helper.php";
 /** @noinspection ALL */
 function generateNavBar()
 {
