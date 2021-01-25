@@ -23,7 +23,9 @@ FROM $table
         $sql .= "WHERE $idName = :id";
     }
     $stmt = $connection->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    if ($id) {
+        $stmt->bindValue(':id', $id);
+    }
     $stmt->execute();
     return $stmt;
 }
