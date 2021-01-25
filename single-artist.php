@@ -88,7 +88,7 @@ generateNavBar();
                     </tr>
                     <tr id="artist-link">
                         <td>WebLink</td>
-                        <td><a  href='<?php echo $artistLink ?>'> <? echo $artistLink ?></a></td>
+                        <td><a  href='<?php echo $artistLink ?>'> <?php echo $artistLink?></a></td>
                     </tr>
                 </table>
             </div>
