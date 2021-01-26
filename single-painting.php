@@ -40,7 +40,7 @@ $paintingInfoStmt->execute([':id' => $id]);
 
 $commentSql = "
 SELECT Reviews.`Comment` FROM Reviews
-WHERE PaintingID = 25 AND Reviews.`Comment` IS NOT NULL;
+WHERE PaintingID = :id AND Reviews.`Comment` IS NOT NULL;
 ";
 $commentStmt = $pdo->prepare($commentSql);
 $commentStmt->execute([':id' => $id]);
@@ -66,7 +66,7 @@ $artist_id = $paintingInfoData['ArtistID'];
 <!---->
 <?php
 include 'components/nav.php';
-generateNavBar($pdo);
+generateNavBar();
 ?>
 <body>
 
@@ -76,16 +76,16 @@ generateNavBar($pdo);
 
     <div id="image-single" class="four columns">
 
-        <img src="./make-image.php?file=<?= $image_file_name ?>&type=paintings&size=full">
-        <?if(Session_Singleton::SessionStarted()){
+        <img src="./make-image.php?file=<?php echo $image_file_name ?>&type=paintings&size=full">
+        <?php if(Session_Singleton::SessionStarted()){
             if(Session_Singleton::InFavorites($id)){
                 ?>
-                <a class="button" href="services/favorites.php?remove=<?echo $id?>">Remove From Favorites</a>
-                <?
+                <a class="button" href="services/favorites.php?remove=<?php echo $id?>">Remove From Favorites</a>
+                <?php
             }else{
                 ?>
-                <a class="button-primary button" href="services/favorites.php?add=<?echo $id?>">Add To Favorites</a>
-                <?
+                <a class="button-primary button" href="services/favorites.php?add=<?php echo $id?>">Add To Favorites</a>
+                <?php
             }
 
         }
@@ -93,36 +93,36 @@ generateNavBar($pdo);
     </div>
     <div id="image-details" class="five columns">
         <table class="info-table">
-            <tr><td colspan="2"><h2><? echo $title ?></h2></td> </tr>
+            <tr><td colspan="2"><h2><?php echo $title ?></h2></td> </tr>
             <tr><td>Artist</td><td>
-                    <a  href="single-artist.php?id=<?echo $artist_id?>"><? echo $full_name ?></a>
+                    <a  href="single-artist.php?id=<?php echo $artist_id?>"><?php echo $full_name ?></a>
                 </td> </tr>
             <tr id="Gallery"><td>Gallery:</td>
                 <td>
-                    <a  href="single-gallery.php?id=<?echo $gallery_id?>"><? echo $gallery_name?>
+                    <a  href="single-gallery.php?id=<?php echo $gallery_id?>"><?php echo $gallery_name?>
                     </a>
                 </td>
             </tr>
             <tr id="genre-g"><td>Genre</td>
                 <td>
-                    <a href="single-genre.php?id=<?echo $genre_id?>" ><?=$genre_name?></a>
+                    <a href="single-genre.php?id=<?php echo $genre_id?>" ><?php echo $genre_name?></a>
                 </td></tr>
-            <tr id="description"><td>Description</td> <td><? echo $description?></td></tr>
-            <tr><td>Rating</td><td><?= $rating ?> <button class="button-primary">Vote</button>
+            <tr id="description"><td>Description</td> <td><?php echo $description?></td></tr>
+            <tr><td>Rating</td><td><?php echo $rating ?> <button class="button-primary">Vote</button>
                 </td></tr>
             <tr><td>Color Scheme</td>
                 <td id="color-scheme-container">
-                    <?foreach ($colorData->dominantColors as $color){?>
+                    <?php foreach ($colorData->dominantColors as $color){?>
                         <div class="tooltip color-scheme-box" style="background-color: <?php echo $color->web?>">
-                            <span class="tooltiptext"><?echo $color->name?></span>
+                            <span class="tooltiptext"><?php echo $color->name?></span>
                         </div>
-                    <?}?>
+                    <?php }?>
                 </td>
             </tr>
             <tr><td colspan="2">Reviews</td></tr>
-            <? foreach ($commentStmt as $row) { ?>
-                <tr><td colspan="2" style="font-weight: normal"><? echo $row['Comment'] ?></td></tr>
-            <? } ?>
+            <?php foreach ($commentStmt as $row) { ?>
+                <tr><td colspan="2" style="font-weight: normal"><?php echo $row['Comment'] ?></td></tr>
+            <?php } ?>
         </table>
         </div>
     </div>

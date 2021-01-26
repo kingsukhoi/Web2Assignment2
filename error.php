@@ -13,6 +13,6 @@ generateNavBar();
 ?>
 <body>
 <img src="images/Error.jpg">
-<h1><?echo $_GET['error']?></h1>
+<h1><?php echo $_GET['error']?></h1>
 </body>
 </html>

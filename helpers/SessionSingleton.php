@@ -39,7 +39,7 @@ class Session_Singleton
      */
     static function SessionStarted()
     {
-        return (!trim($_SESSION[self::$CUSTOMER_ID_KEY])=="");
+        return (isset($_SESSION[self::$CUSTOMER_ID_KEY]));
     }
 
     /**
@@ -81,7 +81,7 @@ class Session_Singleton
      */
     static function ListAllFavorites()
     {
-        if (self::SessionStarted()) {
+        if (isset($_SESSION[self::$FAVORITES_KEY])) {
             return $_SESSION[self::$FAVORITES_KEY];
         }
         return [];
@@ -91,7 +91,7 @@ class Session_Singleton
      * @return bool|string bool if shit hit the fan, string if there's an id
      */
     static function GetCustomerID(){
-        if(self::SessionStarted())
+        if(isset($_SESSION[self::$CUSTOMER_ID_KEY]))
             return $_SESSION[self::$CUSTOMER_ID_KEY];
         else
             return false;

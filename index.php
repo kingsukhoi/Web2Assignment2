@@ -1,9 +1,10 @@
-<? include "inc/session.inc.php"; ?>
+<?php include "inc/session.inc.php"; ?>
 <!DOCTYPE html>
 <!--header-->
 <?php include 'inc/header.inc.php' ?>
 <!---->
-<?php include 'components/nav.php';
+<?php
+include 'components/nav.php';
 generateNavBar() ?>
 <body>
 

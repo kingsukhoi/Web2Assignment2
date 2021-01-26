@@ -54,7 +54,7 @@ $artistLink = $result['ArtistLink'];
 <!---->
 <?php
 include 'components/nav.php';
-generateNavBar($pdo);
+generateNavBar();
 ?>
 <body>
 
@@ -72,7 +72,7 @@ generateNavBar($pdo);
                 <table class="u-full-width info-table">
                     <tr id="artist-lifespan">
                         <td>Life Span</td>
-                        <td><? echo $artistYears ?></td>
+                        <td><?php echo $artistYears ?></td>
                     </tr>
                     <tr>
                         <td>Gender</td>
@@ -88,7 +88,7 @@ generateNavBar($pdo);
                     </tr>
                     <tr id="artist-link">
                         <td>WebLink</td>
-                        <td><a  href='<? echo $artistLink ?>'> <? echo $artistLink ?></a></td>
+                        <td><a  href='<?php echo $artistLink ?>'> <?php echo $artistLink?></a></td>
                     </tr>
                 </table>
             </div>
